@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.Change131">
+   <children>
+      <Button fx:id="troVe" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#troVe" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #90eeed;" text="Trở về">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></Button>
+      <Label layoutX="306.0" layoutY="35.0" text="Thêm nhân khẩu">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="hoTenField" layoutX="67.0" layoutY="136.0" promptText="Họ tên" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <Line endX="100.0" layoutX="373.0" layoutY="73.0" startX="-100.0" />
+      <ChoiceBox fx:id="soHoKhauChoice" layoutX="298.0" layoutY="94.0" prefWidth="150.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <Label layoutX="196.0" layoutY="97.0" text="Số hộ khẩu">
+         <font>
+            <Font name="Comic Sans MS" size="18.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="ngaySinhPick" layoutX="315.0" layoutY="136.0" prefHeight="31.0" prefWidth="118.0" promptText="Ngày sinh" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <RadioButton fx:id="namRadioButton" layoutX="505.0" layoutY="141.0" mnemonicParsing="false" text="Nam" />
+      <RadioButton fx:id="nuRadioButton" layoutX="586.0" layoutY="141.0" mnemonicParsing="false" text="Nữ" />
+      <TextField fx:id="noiSinhField" layoutX="67.0" layoutY="195.0" prefHeight="32.0" prefWidth="373.0" promptText="Nơi sinh" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="nguyenQuanField" layoutX="67.0" layoutY="238.0" prefHeight="32.0" prefWidth="576.0" promptText="Nguyên quán" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="danTocField" layoutX="67.0" layoutY="285.0" prefHeight="32.0" prefWidth="150.0" promptText="Dân tộc" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tonGiaoField" layoutX="277.0" layoutY="285.0" prefHeight="32.0" prefWidth="157.0" promptText="Tôn giáo" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ngheNghiepField" layoutX="493.0" layoutY="285.0" prefHeight="32.0" prefWidth="150.0" promptText="Nghề nghiệp" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="noiLamViecField" layoutX="67.0" layoutY="336.0" prefHeight="32.0" prefWidth="576.0" promptText="Nơi làm việc" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="CMNDField" layoutX="67.0" layoutY="379.0" prefHeight="32.0" prefWidth="150.0" promptText="CMND" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="noiCapField" layoutX="368.0" layoutY="379.0" prefHeight="32.0" prefWidth="275.0" promptText="Nơi cấp" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="ngayCapPick" layoutX="230.0" layoutY="380.0" prefHeight="31.0" prefWidth="118.0" promptText="Ngày cấp" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <DatePicker fx:id="ndkThuongTruField" layoutX="67.0" layoutY="430.0" prefHeight="31.0" prefWidth="186.0" promptText="Ngày đk thường trú" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <TextField fx:id="quanHeCHField" layoutX="467.0" layoutY="195.0" prefHeight="32.0" prefWidth="176.0" promptText="Quan hệ với chủ hộ" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="diaChiThuongTrutruocField" layoutX="270.0" layoutY="430.0" prefHeight="32.0" prefWidth="373.0" promptText="Địa chỉ thường trú trước khi chuyển đến" style="-fx-background-radius: 10; -fx-background-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="themButton" disable="true" layoutX="332.0" layoutY="478.0" mnemonicParsing="false" onAction="#them" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #90eeed;" text="Thêm">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

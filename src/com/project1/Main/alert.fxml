@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0"
+            prefWidth="250.0" style="-fx-background-radius: 20; -fx-border-radius: 20;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Main.Alert">
+    <Label fx:id="textAlert" alignment="CENTER" prefHeight="40.0" prefWidth="300.0" text="Sai tài khoản hoặc mật khẩu"
+           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+           AnchorPane.topAnchor="0.0">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Label>
+</AnchorPane>

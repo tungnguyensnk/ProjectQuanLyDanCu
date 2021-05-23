@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.project1.Case1.Change132">
+   <Button fx:id="troVe" layoutX="33.0" layoutY="36.0" mnemonicParsing="false" onAction="#troVe"
+           style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Button>
+   <Line endX="300.0" layoutX="380.0" layoutY="270.0" startX="-300.0" strokeWidth="2.0"/>
+   <Label layoutX="303.0" layoutY="40.0" text="Chuyển đi nơi khác">
+      <font>
+         <Font name="Comic Sans MS" size="18.0"/>
+      </font>
+   </Label>
+   <Line endX="100.0" layoutX="381.0" layoutY="68.0" startX="-100.0"/>
+   <ChoiceBox fx:id="soHoKhau1Choice" layoutX="170.0" layoutY="113.0" prefHeight="31.0" prefWidth="111.0"
+              style="-fx-background-color: #fd8a4f; -fx-background-radius: 10; -fx-border-radius: 10;"/>
+   <Label layoutX="85.0" layoutY="118.0" text="Số hộ khẩu">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Label>
+   <Label layoutX="343.0" layoutY="118.0" text="Thành viên">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Label>
+   <ChoiceBox fx:id="hoTen1Choice" layoutX="426.0" layoutY="114.0" prefHeight="31.0" prefWidth="249.0"
+              style="-fx-background-color: #fd8a4f; -fx-background-radius: 10; -fx-border-radius: 10;"/>
+   <DatePicker fx:id="ngayDiPick" layoutX="79.0" layoutY="170.0" prefHeight="31.0" prefWidth="111.0"
+               promptText="Ngày đi" style="-fx-background-color: #fd8a4f;"/>
+   <TextField fx:id="noiDiPick" layoutX="239.0" layoutY="170.0" prefHeight="31.0" prefWidth="439.0" promptText="Nơi đi"
+              style="-fx-background-radius: 10; -fx-border-radius: 10;">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </TextField>
+   <Button layoutX="339.0" layoutY="220.0" mnemonicParsing="false" onAction="#xacNhan1"
+           style="-fx-background-color: #fd8a4f; -fx-background-radius: 10; -fx-border-radius: 10;" text="Xác nhận"
+           fx:id="xacNhan1Button">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Button>
+   <Label layoutX="347.0" layoutY="291.0" text="Qua đời">
+      <font>
+         <Font name="Comic Sans MS" size="18.0"/>
+      </font>
+   </Label>
+   <Line endX="60.0" layoutX="372.0" layoutY="316.0" startX="-45.0"/>
+   <Label layoutX="85.0" layoutY="382.0" text="Số hộ khẩu">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Label>
+   <ChoiceBox fx:id="soHoKhau2Choice" layoutX="170.0" layoutY="377.0" prefHeight="31.0" prefWidth="111.0"
+              style="-fx-background-color: #e06060; -fx-background-radius: 10; -fx-border-radius: 10;"/>
+   <Label layoutX="342.0" layoutY="382.0" text="Thành viên">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Label>
+   <ChoiceBox fx:id="hoTen2Choice" layoutX="426.0" layoutY="377.0" prefHeight="31.0" prefWidth="249.0"
+              style="-fx-background-color: #e06060; -fx-background-radius: 10; -fx-border-radius: 10;"/>
+   <Button layoutX="338.0" layoutY="458.0" mnemonicParsing="false" onAction="#xacNhan2"
+           style="-fx-background-color: #e06060; -fx-background-radius: 10; -fx-border-radius: 10;" text="Xác nhận"
+           fx:id="xacNhan2Button">
+      <font>
+         <Font name="Comic Sans MS" size="15.0"/>
+      </font>
+   </Button>
+</AnchorPane>

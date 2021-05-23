@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.Change1">
+   <children>
+       <Button fx:id="button1" alignment="CENTER" layoutX="103.0" layoutY="74.0" mnemonicParsing="false" onAction="#change11" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #fd8a4f; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Thông tin&#10;hộ khẩu" textAlignment="CENTER">
+           <font>
+               <Font name="Comic Sans MS" size="18.0" />
+           </font>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+       </Button>
+       <Button fx:id="button2" alignment="CENTER" layoutX="393.0" layoutY="74.0" mnemonicParsing="false" onAction="#change12" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #fa6373; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Thông tin&#10;nhân khẩu" textAlignment="CENTER">
+           <font>
+               <Font name="Comic Sans MS" size="18.0" />
+           </font>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+       </Button>
+       <Button fx:id="button3" alignment="CENTER" layoutX="103.0" layoutY="270.0" mnemonicParsing="false" onAction="#change13" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #90eeed; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Hoạt động biến đổi&#10;nhân khẩu" textAlignment="CENTER">
+           <font>
+               <Font name="Comic Sans MS" size="18.0" />
+           </font>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+       </Button>
+       <Button fx:id="button4" alignment="CENTER" layoutX="393.0" layoutY="270.0" mnemonicParsing="false" onAction="#change14" prefHeight="160.0" prefWidth="250.0" style="-fx-background-color: #32bfbe; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Thống kê" textAlignment="CENTER">
+           <font>
+               <Font name="Comic Sans MS" size="18.0" />
+           </font>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
+       </Button>
+      <ImageView fitHeight="42.0" fitWidth="36.0" layoutX="210.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/home.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="500.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/personal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="210.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/my-profile.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="70.0" fitWidth="36.0" layoutX="500.0" layoutY="369.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/thongke.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

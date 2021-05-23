@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" style="-fx-background-radius: 0 0 20 0; -fx-border-radius: 0 0 20 0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.Change12a">
+   <children>
+       <TableView fx:id="table" layoutX="14.0" layoutY="79.0" prefHeight="460.0" prefWidth="717.0">
+           <columns>
+               <TableColumn fx:id="soHoKhauCol" editable="false" prefWidth="153.0" resizable="false" text="Số hộ khẩu" />
+               <TableColumn fx:id="hoTenCol" editable="false" minWidth="0.0" prefWidth="179.0" resizable="false" text="Họ tên" />
+               <TableColumn fx:id="diaChiCol" editable="false" prefWidth="384.0" resizable="false" text="Địa chỉ" />
+           </columns>
+       </TableView>
+       <Button fx:id="troVe" layoutX="26.0" layoutY="26.0" mnemonicParsing="false" onAction="#troVe" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
+           <font>
+               <Font name="Comic Sans MS" size="15.0" />
+           </font>
+       </Button>
+       <Button layoutX="518.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="In file pdf">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></Button>
+       <TextField fx:id="filterField" layoutX="233.0" layoutY="27.0" promptText="Bạn muốn tìm gì?" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <ImageView fitHeight="32.0" fitWidth="25.0" layoutX="208.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/btn_search.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="617.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Đổi dạng xem">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

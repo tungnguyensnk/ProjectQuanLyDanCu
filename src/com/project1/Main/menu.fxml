@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="root" prefHeight="540.0" prefWidth="960.0"
+            style="-fx-background-radius: 20px; -fx-border-radius: 20px; -fx-background-color: #1a6dd7;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.project1.Main.Menu">
+    <AnchorPane fx:id="contentRoot" layoutX="200.0" prefHeight="540.0" prefWidth="760.0"
+                style="-fx-background-color: #fcfdff; -fx-background-radius: 20;"/>
+    <ImageView fitHeight="118.0" fitWidth="99.0" layoutX="51.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../img/profile.png"/>
+    </ImageView>
+    <Label fx:id="name" alignment="CENTER" layoutX="1.0" layoutY="168.0" prefHeight="30.0" prefWidth="200.0"
+           style="-fx-text-fill: white;" text="Name">
+        <font>
+            <Font name="Comic Sans MS" size="14.0"/>
+        </font>
+    </Label>
+    <Button fx:id="hoKhau" layoutY="239.0" mnemonicParsing="false" onAction="#change1" prefHeight="44.0"
+            prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Thông tin hộ khẩu">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="thuPhi" layoutY="283.0" mnemonicParsing="false" onAction="#change2" prefHeight="44.0"
+            prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Thu phí, đóng góp">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="nhaVanHoa" layoutY="327.0" mnemonicParsing="false" onAction="#change3" prefHeight="44.0"
+            prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Sử dụng nhà văn hóa">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="lichSinhHoat" layoutY="371.0" mnemonicParsing="false" onAction="#change4" prefHeight="44.0"
+            prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Lịch sinh hoạt">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="logOut" layoutY="475.0" mnemonicParsing="false" onAction="#logOut" prefHeight="44.0"
+            prefWidth="200.0"
+            style="-fx-background-color: #1a6dd7; -fx-text-fill: white; -fx-font-weight: bold;" text="Log out">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+</AnchorPane>

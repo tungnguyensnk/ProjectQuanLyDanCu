@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            onKeyPressed="#loginEnter" prefHeight="400.0" prefWidth="711.0" style="-fx-background-radius: 5px;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.project1.Main.Controller">
+    <ImageView fitHeight="400.0" fitWidth="711.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../img/bg.jpg"/>
+    </ImageView>
+    <Label layoutX="172.0" layoutY="65.0" opacity="0.55" prefHeight="269.0" prefWidth="367.0"
+           style="-fx-background-color: black;"/>
+    <Label layoutX="274.0" layoutY="86.0" opacity="0.9" prefHeight="35.0" prefWidth="163.0" text="LOGIN FORM"
+           textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="Comic Sans MS" size="24.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="userName" layoutX="204.0" layoutY="145.0" prefHeight="41.0" prefWidth="303.0"
+               promptText="Username"
+               style="-fx-background-color: rgba(0, 0, 0, 0.4); -fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: white; -fx-border-width: 2; -fx-text-fill: white; -fx-padding: 0 0 0 45;"
+               AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
+        <font>
+            <Font name="Comic Sans MS" size="17.0"/>
+        </font>
+    </TextField>
+    <PasswordField fx:id="passWord" layoutX="204.0" layoutY="200.0" prefHeight="41.0" prefWidth="303.0"
+                   promptText="Password"
+                   style="-fx-background-color: rgba(0, 0, 0, 0.4); -fx-border-radius: 5px; -fx-border-width: 2px; -fx-border-color: white; -fx-background-radius: 5px; -fx-text-fill: white; -fx-padding: 0 0 0 45;">
+        <font>
+            <Font name="Comic Sans MS" size="17.0"/>
+        </font>
+    </PasswordField>
+    <Button fx:id="loginButton" layoutX="300.0" layoutY="273.0" mnemonicParsing="false" onAction="#loginCheck"
+            prefHeight="37.0" prefWidth="111.0"
+            style="-fx-background-color: #2dde98; -fx-background-radius: 50; -fx-border-radius: 50;" text="Sign in"
+            textAlignment="CENTER" textFill="WHITE">
+        <font>
+            <Font name="Comic Sans MS" size="18.0"/>
+        </font>
+    </Button>
+    <ImageView fx:id="exit" fitHeight="35.0" fitWidth="53.0" layoutX="676.0" onMouseClicked="#exitApp"
+               pickOnBounds="true" preserveRatio="true">
+        <Image url="@../img/x.png"/>
+    </ImageView>
+    <Label alignment="CENTER" layoutX="173.0" layoutY="365.0" prefHeight="21.0" prefWidth="367.0"
+           text="© 2021 All Rights Reserved | Design by  うれしい" textAlignment="CENTER" textFill="WHITE"/>
+    <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="210.0" layoutY="151.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../img/user.png"/>
+    </ImageView>
+    <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="210.0" layoutY="206.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../img/lock.png"/>
+    </ImageView>
+    <Button layoutX="442.0" layoutY="279.0" mnemonicParsing="false" onAction="#forgot"
+            style="-fx-background-color: transparent; -fx-text-fill: white;" text="Forgot?">
+        <font>
+            <Font name="Comic Sans MS" size="15.0"/>
+        </font>
+    </Button>
+</AnchorPane>
