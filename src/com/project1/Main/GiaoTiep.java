@@ -99,4 +99,16 @@ public class GiaoTiep {
         }
         stmt.execute(sql1+sql2+");");
     }
+    public static String getGhiChuNhanKhau(int id) throws SQLException {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT ghichu FROM nhankhau WHERE id = "+id+";");
+        rs.next();
+        if(rs.getString(1)==null)
+            return "";
+        return rs.getString(1);
+    }
+    public static void setGhiChuNhanKhau(int id,String ghiChu) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("UPDATE nhankhau SET ghichu = '"+getGhiChuNhanKhau(id)+"\n"+ghiChu+"' WHERE ID = "+id+";");
+    }
 }

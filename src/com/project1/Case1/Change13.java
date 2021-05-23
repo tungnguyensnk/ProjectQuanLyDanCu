@@ -60,7 +60,13 @@ public class Change13 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void change133(ActionEvent actionEvent) {
+    public void change133(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("change133.fxml"));
+        Parent pr = loader.load();
+        Change133 controller = loader.getController();
+        controller.setMenu(menu);
+        menu.contentRoot.getChildren().clear();
+        menu.contentRoot.getChildren().add(pr);
     }
 
     public void change134(ActionEvent actionEvent) {

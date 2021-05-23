@@ -59,8 +59,8 @@ public class Change131 implements Initializable {
         ArrayList<String> arrayList = new ArrayList<>();
         try {
             ArrayList<HoKhau> hoKhauArrayList = GiaoTiep.getHoKhau();
-            for(int i=0 ; i< hoKhauArrayList.size();i++){
-                arrayList.add(String.valueOf(hoKhauArrayList.get(i).getIdho()));
+            for (HoKhau hoKhau : hoKhauArrayList) {
+                arrayList.add(String.valueOf(hoKhau.getIdho()));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
