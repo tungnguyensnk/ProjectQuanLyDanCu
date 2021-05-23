@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-3:thay đổi hoạt động nhân khẩu
+ */
 public class Change13 implements Initializable {
     public Button button1;
     public Button button2;
@@ -22,8 +25,12 @@ public class Change13 implements Initializable {
     public void setMenu(Menu controller) {
         this.menu = controller;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * tạo style cho button
+         */
         button1.setOnMouseEntered(e -> button1.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +
                 "-fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
         button1.setOnMouseExited(e -> button1.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +
@@ -42,7 +49,12 @@ public class Change13 implements Initializable {
                 "-fx-background-radius: 20px;"));
     }
 
-    public void change131(ActionEvent actionEvent) throws IOException {
+    /**
+     * chức năng 1-3-1:thêm nhân khẩu
+     *
+     * @throws IOException
+     */
+    public void change131() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change131.fxml"));
         Parent pr = loader.load();
         Change131 controller = loader.getController();
@@ -51,7 +63,12 @@ public class Change13 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void change132(ActionEvent actionEvent) throws IOException {
+    /**
+     * chức năng 1-3-2: chuyển đi
+     *
+     * @throws IOException
+     */
+    public void change132() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change132.fxml"));
         Parent pr = loader.load();
         Change132 controller = loader.getController();
@@ -60,7 +77,12 @@ public class Change13 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void change133(ActionEvent actionEvent) throws IOException {
+    /**
+     * chức năng 1-3-3:thay đổi chủ hộ và tách khẩu
+     *
+     * @throws IOException
+     */
+    public void change133() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change133.fxml"));
         Parent pr = loader.load();
         Change133 controller = loader.getController();
@@ -69,10 +91,13 @@ public class Change13 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void change134(ActionEvent actionEvent) {
+    /**
+     * chức năng 1-3-4: tạm trú tạm vắng
+     */
+    public void change134() {
     }
 
-    public void troVe(ActionEvent actionEvent) throws IOException {
+    public void troVe() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change1.fxml"));
         Parent pr = loader.load();
         Change1 controller = loader.getController();

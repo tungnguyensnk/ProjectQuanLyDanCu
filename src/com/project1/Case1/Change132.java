@@ -26,6 +26,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-3-2: nhân khẩu chuyển đi
+ */
 public class Change132 implements Initializable {
     public Button troVe;
     public ChoiceBox soHoKhau1Choice;
@@ -41,6 +44,7 @@ public class Change132 implements Initializable {
     public void setMenu(Menu controller) {
         this.menu = controller;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<String> arrayList = new ArrayList<>();
@@ -56,12 +60,12 @@ public class Change132 implements Initializable {
         soHoKhau1Choice.setItems(idList);
         soHoKhau2Choice.setItems(idList);
         ArrayList<String> nhanKhau1 = new ArrayList<>();
-        soHoKhau1Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) ->{
+        soHoKhau1Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             try {
                 nhanKhau1.clear();
                 ArrayList<NhanKhau> nhanKhauArrayList = GiaoTiep.getNhanKhau();
-                for (NhanKhau nhanKhau: nhanKhauArrayList) {
-                    if(t1.equals(String.valueOf(nhanKhau.getIdho()))){
+                for (NhanKhau nhanKhau : nhanKhauArrayList) {
+                    if (t1.equals(String.valueOf(nhanKhau.getIdho()))) {
                         nhanKhau1.add(nhanKhau.getHoten());
                     }
                 }
@@ -72,12 +76,12 @@ public class Change132 implements Initializable {
             }
         });
         ArrayList<String> nhanKhau2 = new ArrayList<>();
-        soHoKhau2Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) ->{
+        soHoKhau2Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             try {
                 nhanKhau2.clear();
                 ArrayList<NhanKhau> nhanKhauArrayList = GiaoTiep.getNhanKhau();
-                for (NhanKhau nhanKhau: nhanKhauArrayList) {
-                    if(t1.equals(String.valueOf(nhanKhau.getIdho()))){
+                for (NhanKhau nhanKhau : nhanKhauArrayList) {
+                    if (t1.equals(String.valueOf(nhanKhau.getIdho()))) {
                         nhanKhau2.add(nhanKhau.getHoten());
                     }
                 }
@@ -100,9 +104,9 @@ public class Change132 implements Initializable {
 
     public void xacNhan1(ActionEvent actionEvent) throws SQLException, IOException {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        for (NhanKhau nhanKhau: GiaoTiep.getNhanKhau()) {
-            if(hoTen1Choice.getValue().equals(nhanKhau.getHoten())){
-                GiaoTiep.setGhiChuNhanKhau(nhanKhau.getId(), "Chuyển đến "+noiDiPick.getText()+" ngày "+
+        for (NhanKhau nhanKhau : GiaoTiep.getNhanKhau()) {
+            if (hoTen1Choice.getValue().equals(nhanKhau.getHoten())) {
+                GiaoTiep.setGhiChuNhanKhau(nhanKhau.getId(), "Chuyển đến " + noiDiPick.getText() + " ngày " +
                         ngayDiPick.getValue().format(dateTimeFormatter));
             }
         }
@@ -115,8 +119,8 @@ public class Change132 implements Initializable {
         alert1.setScene(sc1);
         sc1.setFill(Color.TRANSPARENT);
         alert1.initStyle(StageStyle.TRANSPARENT);
-        alert1.setX(troVe.getScene().getWindow().getX()+430);
-        alert1.setY(troVe.getScene().getWindow().getY()+200);
+        alert1.setX(troVe.getScene().getWindow().getX() + 430);
+        alert1.setY(troVe.getScene().getWindow().getY() + 200);
         alert1.setAlwaysOnTop(true);
         alert1.show();
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
@@ -126,9 +130,9 @@ public class Change132 implements Initializable {
 
     public void xacNhan2(ActionEvent actionEvent) throws SQLException, IOException {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        for (NhanKhau nhanKhau: GiaoTiep.getNhanKhau()) {
-            if(hoTen2Choice.getValue().equals(nhanKhau.getHoten())){
-                GiaoTiep.setGhiChuNhanKhau(nhanKhau.getId(), "Qua đời ngày "+ LocalDate.now().format(dateTimeFormatter));
+        for (NhanKhau nhanKhau : GiaoTiep.getNhanKhau()) {
+            if (hoTen2Choice.getValue().equals(nhanKhau.getHoten())) {
+                GiaoTiep.setGhiChuNhanKhau(nhanKhau.getId(), "Qua đời ngày " + LocalDate.now().format(dateTimeFormatter));
             }
         }
         Stage alert1 = new Stage();
@@ -140,8 +144,8 @@ public class Change132 implements Initializable {
         alert1.setScene(sc1);
         sc1.setFill(Color.TRANSPARENT);
         alert1.initStyle(StageStyle.TRANSPARENT);
-        alert1.setX(troVe.getScene().getWindow().getX()+450);
-        alert1.setY(troVe.getScene().getWindow().getY()+450);
+        alert1.setX(troVe.getScene().getWindow().getX() + 450);
+        alert1.setY(troVe.getScene().getWindow().getY() + 450);
         alert1.setAlwaysOnTop(true);
         alert1.show();
         PauseTransition delay = new PauseTransition(Duration.seconds(2));

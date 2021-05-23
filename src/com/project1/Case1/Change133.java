@@ -24,6 +24,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-3-3: đổi chủ và tách hộ
+ */
 public class Change133 implements Initializable {
     public Button troVe;
     public ChoiceBox soHoKhauChoice;
@@ -33,19 +36,20 @@ public class Change133 implements Initializable {
     public Button xacNhanButton;
     public TextField soHoKhauMoi;
     public TextField diaChiMoi;
-    int dem=0;
+    int dem = 0;
     String s;
-    ArrayList<String> nhanKhau1= new ArrayList<>();
-    ArrayList<String> nhanKhau2= new ArrayList<>();
+    ArrayList<String> nhanKhau1 = new ArrayList<>();
+    ArrayList<String> nhanKhau2 = new ArrayList<>();
     ArrayList<String> listName = new ArrayList<>();
+
     public void setS(String s) {
         listName.add(s);
-        if(dem==0){
-            this.s=s;
-        }
-        else
-            this.s+=", "+s;
+        if (dem == 0) {
+            this.s = s;
+        } else
+            this.s += ", " + s;
     }
+
     Menu menu;
 
     public void setMenu(Menu controller) {
@@ -72,13 +76,13 @@ public class Change133 implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        dem=0;
+        dem = 0;
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhauChoice.setItems(idList);
-        soHoKhauChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) ->{
+        soHoKhauChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             try {
-                dem=0;
-                this.s="";
+                dem = 0;
+                this.s = "";
                 nguoiLabel.setText(s);
                 getHoTenNhanKhau(t1.toString());
                 hoTenChoice.setItems(idList);
@@ -88,8 +92,8 @@ public class Change133 implements Initializable {
             }
         });
         hoTenChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
-            dem=0;
-            this.s="";
+            dem = 0;
+            this.s = "";
             nguoiLabel.setText(s);
             try {
                 getHoTenNhanKhau(soHoKhauChoice.getValue().toString());
@@ -101,9 +105,9 @@ public class Change133 implements Initializable {
             nguoiChoice.setItems(FXCollections.observableList(nhanKhau2));
         });
         nguoiChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
-            if(t1!=null){
+            if (t1 != null) {
                 setS(t1.toString());
-                dem=1;
+                dem = 1;
                 nguoiLabel.setText(s);
                 nhanKhau2.remove(nguoiChoice.getValue());
                 nguoiChoice.setItems(idList);
@@ -111,29 +115,31 @@ public class Change133 implements Initializable {
             }
         });
     }
+
     void getHoTenNhanKhau(String id) throws SQLException {
         nhanKhau1.clear();
         nhanKhau2.clear();
         ArrayList<NhanKhau> nhanKhauArrayList = GiaoTiep.getNhanKhau();
-        for (NhanKhau nhanKhau: nhanKhauArrayList) {
-            if(id.equals(String.valueOf(nhanKhau.getIdho()))){
+        for (NhanKhau nhanKhau : nhanKhauArrayList) {
+            if (id.equals(String.valueOf(nhanKhau.getIdho()))) {
                 nhanKhau1.add(nhanKhau.getHoten());
                 nhanKhau2.add(nhanKhau.getHoten());
             }
         }
     }
+
     public void xacNhan(ActionEvent actionEvent) throws SQLException, IOException {
         listName.add(hoTenChoice.getValue().toString());
-        int n = GiaoTiep.tachHo(listName,diaChiMoi.getText(),Integer.parseInt(soHoKhauChoice.getValue().toString()),Integer.parseInt(soHoKhauMoi.getText()));
+        int n = GiaoTiep.tachHo(listName, diaChiMoi.getText(), Integer.parseInt(soHoKhauChoice.getValue().toString()), Integer.parseInt(soHoKhauMoi.getText()));
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();
         Alert controller = loader.getController();
-        if(n==0)
+        if (n == 0)
             controller.setTextAlert("Đang là chủ hộ!");
-        else if(n==1)
+        else if (n == 1)
             controller.setTextAlert("Đổi chủ hộ thành công!");
-        else if(n==2)
+        else if (n == 2)
             controller.setTextAlert("Tách hộ thành công!");
         else
             controller.setTextAlert("Không thể tách cùng chủ hộ!");
@@ -141,13 +147,13 @@ public class Change133 implements Initializable {
         alert1.setScene(sc1);
         sc1.setFill(Color.TRANSPARENT);
         alert1.initStyle(StageStyle.TRANSPARENT);
-        alert1.setX(troVe.getScene().getWindow().getX()+430);
-        alert1.setY(troVe.getScene().getWindow().getY()+200);
+        alert1.setX(troVe.getScene().getWindow().getX() + 430);
+        alert1.setY(troVe.getScene().getWindow().getY() + 200);
         alert1.setAlwaysOnTop(true);
         alert1.show();
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished(event -> alert1.close());
         delay.play();
-        s="";
+        s = "";
     }
 }

@@ -21,6 +21,11 @@ public class Change1 implements Initializable {
         this.menu = controller;
     }
 
+    /**
+     * chức năng 1-1: hiển thị hộ khẩu
+     *
+     * @throws IOException
+     */
     public void change11() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change11a.fxml"));
         Parent pr = loader.load();
@@ -30,6 +35,11 @@ public class Change1 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
+    /**
+     * chức năng 1-2:hiển thị nhân khẩu
+     *
+     * @throws IOException
+     */
     public void change12() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change12a.fxml"));
         Parent pr = loader.load();
@@ -39,6 +49,11 @@ public class Change1 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
+    /**
+     * chức năng 1-3:thay đổi hoạt động nhân khẩu
+     *
+     * @throws IOException
+     */
     public void change13() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change13.fxml"));
         Parent pr = loader.load();
@@ -48,6 +63,11 @@ public class Change1 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
+    /**
+     * chức năng 1-4:thống kê
+     *
+     * @throws IOException
+     */
     public void change14() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change14.fxml"));
         Parent pr = loader.load();
@@ -59,6 +79,9 @@ public class Change1 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * set style cho các button
+         */
         button1.setOnMouseEntered(e -> button1.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +
                 "-fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
         button1.setOnMouseExited(e -> button1.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +

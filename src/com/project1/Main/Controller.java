@@ -23,14 +23,25 @@ import java.sql.Connection;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Controller khi login
+ */
 public class Controller implements Initializable {
     public TextField userName;
     public PasswordField passWord;
     public ImageView exit;
     public Button loginButton;
 
+    /**
+     * Check xem login có hợp lệ không bằng cách check kết quả trả về của methođ GiaoTiep
+     *
+     * @throws IOException
+     */
     public void loginCheck() throws IOException {
         Connection con = GiaoTiep.connect(userName.getText(), passWord.getText());
+        /**
+         * nếu kq không rỗng,tạo hiệu ứng thu nhỏ màn hình đăng nhập rồi phóng to màn hình menu
+         */
         if (con != null) {
             Scene sc1 = exit.getScene();
             Stage st1 = (Stage) sc1.getWindow();
@@ -44,6 +55,8 @@ public class Controller implements Initializable {
                 scene[i] = new Scene(root, 711 - 36 * i, 400 - 20 * i);
                 st1.setScene(scene[i]);
             }
+
+            //quãng thay đổi giữa 2 scene
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("menu.fxml")));
             scene[19].setRoot(new Region());
             for (int i = 0; i < 20; i++) {
@@ -55,6 +68,10 @@ public class Controller implements Initializable {
             }
             scene[39].setFill(Color.TRANSPARENT);
         } else {
+
+            /**
+             * nếu không, đưa ra cảnh báo sai tk,mk
+             */
             Stage alert1 = new Stage();
             Parent root1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("alert.fxml")));
             Scene sc1 = new Scene(root1);
@@ -74,20 +91,35 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * tạo style cho button đăng nhập
+         */
         loginButton.setOnMouseEntered(e -> loginButton.setStyle("-fx-background-color: #ff4f81;" +
                 "-fx-background-radius: 50; -fx-border-radius: 50;"));
         loginButton.setOnMouseExited(e -> loginButton.setStyle("-fx-background-color: #2dde98;" +
                 "-fx-background-radius: 50; -fx-border-radius: 50;"));
     }
 
+    /**
+     * thoát ứng dụng
+     */
     public void exitApp() {
         System.exit(0);
     }
 
+    /**
+     * quên mật khẩu
+     */
     public void forgot() {
 
     }
 
+    /**
+     * bắt sự kiện login bằng phím enter
+     *
+     * @param keyEvent
+     * @throws IOException
+     */
     public void loginEnter(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             loginCheck();

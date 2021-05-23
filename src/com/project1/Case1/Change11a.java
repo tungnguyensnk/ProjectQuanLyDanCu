@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,6 +21,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-1a: hiển thị dạng bảng
+ */
 public class Change11a implements Initializable {
     public TableView<HoKhau> table;
     public Button troVe;
@@ -38,11 +40,16 @@ public class Change11a implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * lấy dữ liệu hộ khẩu và tạo bảng
+         */
         try {
             hoKhauList = FXCollections.observableArrayList(GiaoTiep.getHoKhau());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        //khai báo kiểu của column và set giá trị điền vào từ hoKhauList
         soHoKhauCol.setCellValueFactory(new PropertyValueFactory<>("idho"));
         soHoKhauCol.setStyle("-fx-alignment: CENTER;");
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hotenchu"));
@@ -50,7 +57,11 @@ public class Change11a implements Initializable {
         diaChiCol.setCellValueFactory(new PropertyValueFactory<>("diachi"));
         diaChiCol.setStyle("-fx-alignment: CENTER;");
         table.setItems(hoKhauList);
+
+        //set style cho bảng
         table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
+
+        //lắng nghe dữ liệu từ filterField và check dữ liệu hợp lệ
         FilteredList<HoKhau> filteredList = new FilteredList<>(hoKhauList, b -> true);
         filterField.textProperty().addListener((observableValue, oldValue, newValue) -> filteredList.setPredicate(e -> {
             if (newValue == null || newValue.isEmpty()) {
@@ -63,19 +74,23 @@ public class Change11a implements Initializable {
                 return true;
             } else return e.getDiachi().toLowerCase().contains(lowerCaseFilter);
         }));
+
+        //đồng bộ nó với bảng
         SortedList<HoKhau> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
+
+        //menu chuột phải
         ContextMenu cm = new ContextMenu();
         MenuItem chiTiet = new MenuItem("Chi tiết");
         MenuItem ghiChu = new MenuItem("Ghi chú");
-        cm.getItems().addAll(chiTiet,ghiChu);
+        cm.getItems().addAll(chiTiet, ghiChu);
 
         table.addEventHandler(MouseEvent.MOUSE_CLICKED, t -> {
-            if(t.getButton() == MouseButton.SECONDARY) {
+            if (t.getButton() == MouseButton.SECONDARY) {
                 cm.show(table, t.getScreenX(), t.getScreenY());
             }
-            if(t.getButton()==MouseButton.PRIMARY){
+            if (t.getButton() == MouseButton.PRIMARY) {
                 cm.hide();
             }
         });

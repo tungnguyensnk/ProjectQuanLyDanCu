@@ -3,7 +3,6 @@ package com.project1.Case1;
 import com.project1.Main.GiaoTiep;
 import com.project1.Main.Menu;
 import com.project1.Main.NhanKhau;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -19,6 +18,9 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-4: thống kê
+ */
 public class Change14 implements Initializable {
     public PieChart tkGioi;
     public BarChart<String, Number> barChart;
@@ -34,6 +36,10 @@ public class Change14 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         int nam = 0, nu = 0, khac, duoild = 0, ld = 0, ngoaild = 0;
+        /**
+         * lấy ngày tháng năm hiện tại trừ đi ntm sinh các nhân khẩu
+         * chia tuổi theo 3 lứa: dưới lao động, lao động, ngoài lao động
+         */
         LocalDate cur = LocalDate.now();
         ArrayList<NhanKhau> arrayList = new ArrayList<>();
         try {
@@ -41,7 +47,9 @@ public class Change14 implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
         for (NhanKhau nhanKhau : arrayList) {
+            //tính toán tuổi
             String[] date = nhanKhau.getNgaysinh().split("/");
             LocalDate tmp = LocalDate.of(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
             int year = Period.between(tmp, cur).getYears();
@@ -51,6 +59,8 @@ public class Change14 implements Initializable {
                 ld++;
             else
                 ngoaild++;
+
+            //tính số lượng nam nữ
             if (nhanKhau.getGioitinh().equals("Nam")) {
                 nam++;
             }
@@ -58,15 +68,23 @@ public class Change14 implements Initializable {
                 nu++;
             }
         }
+
+        //tạo đồ thị cột
         XYChart.Series<String, Number> data = new XYChart.Series<>();
         int sum = ngoaild + duoild + ld;
         data.getData().add(new XYChart.Data<>("Dưới lao động (" + duoild + ")", duoild * 100 / sum));
         data.getData().add(new XYChart.Data<>("Lao động (" + ld + ")", ld * 100 / sum));
         data.getData().add(new XYChart.Data<>("Ngoài lao động (" + ngoaild + ")", ngoaild * 100 / sum));
         barChart.getData().addAll(data);
+
+        /**
+         * tính số lượng nam, nữ và khác
+         */
         khac = arrayList.size() - nam - nu;
         double pnam = ((double) nam * 100) / (nam + nu + khac);
         double pnu = ((double) nu * 100) / (nam + nu + khac);
+
+        //lấy kết quả 2 chữ số sau dấu chấm
         DecimalFormat df = new DecimalFormat("#.##");
         tkGioi.getData().clear();
         tkGioi.getData().addAll(new PieChart.Data(nam + " Nam (" + df.format(pnam) + "%)", nam), new PieChart.Data(nu + " Nữ (" + df.format(pnu) + "%)", nu));

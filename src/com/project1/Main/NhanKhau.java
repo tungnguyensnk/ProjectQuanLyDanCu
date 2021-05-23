@@ -1,22 +1,26 @@
 package com.project1.Main;
 
+/**
+ * lưu các thuộc tính của nhân khẩu
+ */
 public class NhanKhau {
     int idho;
     int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     String quanhech;
     String hoten;
     String gioitinh;
     String ngaysinh;
     String noisinh;
+    String nguyenquan;
+    String dantoc;
+    String nghenghiep;
+    String noilamviec;
+    String cmnd;
+    String ngaycap;
+    String noicap;
+    String ndkthuongtru;
+    String dcthuongtrutrc;
+    String ghichu;
 
     public int getIdho() {
         return idho;
@@ -94,47 +98,12 @@ public class NhanKhau {
         return noilamviec;
     }
 
-    public NhanKhau(int idho, String quanhech, String hoten, String gioitinh, String ngaysinh, String noisinh,
-                    String nguyenquan, String dantoc, String nghenghiep, String noilamviec, String cmnd, String ngaycap,
-                    String noicap, String ndkthuongtru, String dcthuongtrutrc, String ghichu) {
-        this.idho = idho;
-        this.quanhech = quanhech;
-        this.hoten = hoten;
-        this.gioitinh = gioitinh;
-        this.ngaysinh = ngaysinh;
-        this.noisinh = noisinh;
-        this.nguyenquan = nguyenquan;
-        this.dantoc = dantoc;
-        this.nghenghiep = nghenghiep;
-        this.noilamviec = noilamviec;
-        this.cmnd = cmnd;
-        this.ngaycap = ngaycap;
-        this.noicap = noicap;
-        this.ndkthuongtru = ndkthuongtru;
-        this.dcthuongtrutrc = dcthuongtrutrc;
-        this.ghichu = ghichu;
+    public int getId() {
+        return id;
     }
 
-    public NhanKhau(int idho, int id, String quanhech, String hoten, String gioitinh, String ngaysinh, String noisinh,
-                    String nguyenquan, String dantoc, String nghenghiep, String noilamviec, String cmnd, String ngaycap,
-                    String noicap, String ndkthuongtru, String dcthuongtrutrc, String ghichu) {
-        this.idho = idho;
+    public void setId(int id) {
         this.id = id;
-        this.quanhech = quanhech;
-        this.hoten = hoten;
-        this.gioitinh = gioitinh;
-        this.ngaysinh = ngaysinh;
-        this.noisinh = noisinh;
-        this.nguyenquan = nguyenquan;
-        this.dantoc = dantoc;
-        this.nghenghiep = nghenghiep;
-        this.noilamviec = noilamviec;
-        this.cmnd = cmnd;
-        this.ngaycap = ngaycap;
-        this.noicap = noicap;
-        this.ndkthuongtru = ndkthuongtru;
-        this.dcthuongtrutrc = dcthuongtrutrc;
-        this.ghichu = ghichu;
     }
 
     public void setNoilamviec(String noilamviec) {
@@ -189,16 +158,48 @@ public class NhanKhau {
         this.ghichu = ghichu;
     }
 
-    String nguyenquan;
-    String dantoc;
-    String nghenghiep;
-    String noilamviec;
-    String cmnd;
-    String ngaycap;
-    String noicap;
-    String ndkthuongtru;
-    String dcthuongtrutrc;
-    String ghichu;
+    public NhanKhau(int idho, String quanhech, String hoten, String gioitinh, String ngaysinh, String noisinh,
+                    String nguyenquan, String dantoc, String nghenghiep, String noilamviec, String cmnd, String ngaycap,
+                    String noicap, String ndkthuongtru, String dcthuongtrutrc, String ghichu) {
+        this.idho = idho;
+        this.quanhech = quanhech;
+        this.hoten = hoten;
+        this.gioitinh = gioitinh;
+        this.ngaysinh = ngaysinh;
+        this.noisinh = noisinh;
+        this.nguyenquan = nguyenquan;
+        this.dantoc = dantoc;
+        this.nghenghiep = nghenghiep;
+        this.noilamviec = noilamviec;
+        this.cmnd = cmnd;
+        this.ngaycap = ngaycap;
+        this.noicap = noicap;
+        this.ndkthuongtru = ndkthuongtru;
+        this.dcthuongtrutrc = dcthuongtrutrc;
+        this.ghichu = ghichu;
+    }
+
+    public NhanKhau(int idho, int id, String quanhech, String hoten, String gioitinh, String ngaysinh, String noisinh,
+                    String nguyenquan, String dantoc, String nghenghiep, String noilamviec, String cmnd, String ngaycap,
+                    String noicap, String ndkthuongtru, String dcthuongtrutrc, String ghichu) {
+        this.idho = idho;
+        this.id = id;
+        this.quanhech = quanhech;
+        this.hoten = hoten;
+        this.gioitinh = gioitinh;
+        this.ngaysinh = ngaysinh;
+        this.noisinh = noisinh;
+        this.nguyenquan = nguyenquan;
+        this.dantoc = dantoc;
+        this.nghenghiep = nghenghiep;
+        this.noilamviec = noilamviec;
+        this.cmnd = cmnd;
+        this.ngaycap = ngaycap;
+        this.noicap = noicap;
+        this.ndkthuongtru = ndkthuongtru;
+        this.dcthuongtrutrc = dcthuongtrutrc;
+        this.ghichu = ghichu;
+    }
 
     @Override
     public String toString() {

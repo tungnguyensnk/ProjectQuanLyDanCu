@@ -1,8 +1,13 @@
 package com.project1.Main;
 
+/**
+ * lưu các thuộc tính của hộ khẩu
+ */
 public class HoKhau {
     int idho;
     String hotenchu;
+    String diachi;
+    String ghichu;
 
     public String getGhichu() {
         return ghichu;
@@ -35,9 +40,6 @@ public class HoKhau {
     public void setIdho(int idho) {
         this.idho = idho;
     }
-
-    String diachi;
-    String ghichu;
 
     public HoKhau(int idho, String hotenchu, String diachi, String ghichu) {
         this.idho = idho;

@@ -10,6 +10,9 @@ import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
+/**
+ * @author tungn
+ */
 public class Main extends Application {
 
     @Override
@@ -17,6 +20,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         primaryStage.setTitle("Quản Lý Dân Cư");
         Scene sc = new Scene(root, 711, 400);
+        /**
+         * set màu và kiểu trong suốt để lấy bo góc tuyệt đối
+         */
         sc.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(sc);

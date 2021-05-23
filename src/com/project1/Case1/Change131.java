@@ -26,6 +26,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * chức năng 1-3-1: thêm nhân khẩu
+ */
 public class Change131 implements Initializable {
     public Button troVe;
     public TextField hoTenField;
@@ -52,6 +55,7 @@ public class Change131 implements Initializable {
     public void setMenu(Menu controller) {
         this.menu = controller;
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         namRadioButton.setToggleGroup(sex);
@@ -68,14 +72,14 @@ public class Change131 implements Initializable {
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhauChoice.setItems(idList);
         BooleanBinding hoTenVaid = Bindings.createBooleanBinding(() ->
-                !hoTenField.getText().trim().isEmpty(),hoTenField.textProperty());
+                !hoTenField.getText().trim().isEmpty(), hoTenField.textProperty());
         BooleanBinding soHoKhauValid = Bindings.createBooleanBinding(() ->
-                soHoKhauChoice.getValue()!=null,soHoKhauChoice.valueProperty());
+                soHoKhauChoice.getValue() != null, soHoKhauChoice.valueProperty());
         BooleanBinding ngaySinhValid = Bindings.createBooleanBinding(() ->
-                ngaySinhPick.getValue()!=null,ngaySinhPick.valueProperty());
+                ngaySinhPick.getValue() != null, ngaySinhPick.valueProperty());
         namRadioButton.setSelected(true);
         BooleanBinding noiSinhValid = Bindings.createBooleanBinding(() ->
-                !noiSinhField.getText().trim().isEmpty(),noiSinhField.textProperty());
+                !noiSinhField.getText().trim().isEmpty(), noiSinhField.textProperty());
         themButton.disableProperty().bind(soHoKhauValid.not().or(ngaySinhValid.not().
                 or(noiSinhValid).not().or(hoTenVaid.not())));
     }
@@ -91,25 +95,25 @@ public class Change131 implements Initializable {
 
     public void them(ActionEvent actionEvent) throws SQLException, IOException {
         String gioi;
-        if(namRadioButton.isSelected())
-            gioi="Nam";
+        if (namRadioButton.isSelected())
+            gioi = "Nam";
         else
-            gioi="Nữ";
-        String nc,ndk;
+            gioi = "Nữ";
+        String nc, ndk;
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if(ngayCapPick.getValue()!=null)
-            nc=ngayCapPick.getValue().format(dateTimeFormatter);
+        if (ngayCapPick.getValue() != null)
+            nc = ngayCapPick.getValue().format(dateTimeFormatter);
         else
-            nc="";
-        if(ndkThuongTruField.getValue()!=null)
-            ndk=ndkThuongTruField.getValue().format(dateTimeFormatter);
+            nc = "";
+        if (ndkThuongTruField.getValue() != null)
+            ndk = ndkThuongTruField.getValue().format(dateTimeFormatter);
         else
-            ndk="";
+            ndk = "";
 
-        GiaoTiep.themNhanKhau(new NhanKhau(Integer.parseInt(soHoKhauChoice.getValue()),quanHeCHField.getText(),hoTenField.getText(),gioi,ngaySinhPick.getValue().format(dateTimeFormatter),
-                noiSinhField.getText(),noiSinhField.getText(),danTocField.getText(),ngheNghiepField.getText(),noiLamViecField.getText(),
-                CMNDField.getText(),nc,noiCapField.getText(),ndk,
-                diaChiThuongTrutruocField.getText(),"" ));
+        GiaoTiep.themNhanKhau(new NhanKhau(Integer.parseInt(soHoKhauChoice.getValue()), quanHeCHField.getText(), hoTenField.getText(), gioi, ngaySinhPick.getValue().format(dateTimeFormatter),
+                noiSinhField.getText(), noiSinhField.getText(), danTocField.getText(), ngheNghiepField.getText(), noiLamViecField.getText(),
+                CMNDField.getText(), nc, noiCapField.getText(), ndk,
+                diaChiThuongTrutruocField.getText(), ""));
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();
@@ -119,8 +123,8 @@ public class Change131 implements Initializable {
         alert1.setScene(sc1);
         sc1.setFill(Color.TRANSPARENT);
         alert1.initStyle(StageStyle.TRANSPARENT);
-        alert1.setX(themButton.getScene().getWindow().getX()+430);
-        alert1.setY(themButton.getScene().getWindow().getY()+400);
+        alert1.setX(themButton.getScene().getWindow().getX() + 430);
+        alert1.setY(themButton.getScene().getWindow().getY() + 400);
         alert1.setAlwaysOnTop(true);
         alert1.show();
         PauseTransition delay = new PauseTransition(Duration.seconds(2));

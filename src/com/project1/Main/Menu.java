@@ -1,7 +1,6 @@
 package com.project1.Main;
 
 import com.project1.Case1.Change1;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,15 +8,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -34,6 +30,7 @@ public class Menu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //khởi tạo kiểu button khi hover và hiển thị người dùng
         hoKhau.setOnMouseEntered(e -> hoKhau.setStyle("-fx-background-color: white; -fx-text-fill: #27c73c;"));
         hoKhau.setOnMouseExited(e -> hoKhau.setStyle("-fx-background-color: #1a6dd7; -fx-text-fill: white;"));
         thuPhi.setOnMouseEntered(e -> thuPhi.setStyle("-fx-background-color: white; -fx-text-fill: #27c73c; "));
@@ -50,7 +47,15 @@ public class Menu implements Initializable {
         }
     }
 
+    /**
+     * chức năng 1:quản lý nhân khẩu, hộ khẩu
+     *
+     * @throws IOException
+     */
     public void change1() throws IOException {
+        /**
+         * nạp file design, set controler vào contentRoot và truyền Menu trước vì FXMLLoader tĩnh
+         */
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Case1/change1.fxml"));
         Parent pr = loader.load();
         Change1 controller = loader.getController();
@@ -68,6 +73,11 @@ public class Menu implements Initializable {
     public void change4() {
     }
 
+    /**
+     * đăng xuất
+     *
+     * @throws IOException
+     */
     public void logOut() throws IOException {
         Stage st1 = (Stage) name.getScene().getWindow();
         st1.close();
