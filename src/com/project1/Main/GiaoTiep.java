@@ -111,4 +111,31 @@ public class GiaoTiep {
         Statement stmt = con.createStatement();
         stmt.execute("UPDATE nhankhau SET ghichu = '"+getGhiChuNhanKhau(id)+"\n"+ghiChu+"' WHERE ID = "+id+";");
     }
+    public static int tachHo(ArrayList<String> listName,String diachi,int idho,int idhoMoi) throws SQLException {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT hotenchu FROM hokhau WHERE idho = "+idho+";");
+        rs.next();
+        if(listName.get(listName.size()-1).equals(rs.getString(1)))
+            return 0;
+        for(int i=0;i<listName.size()-1;i++){
+            if(listName.get(i).equals(rs.getString(1)))
+                return 3;
+        }
+        if(idho==idhoMoi){
+            stmt.execute("UPDATE hokhau SET hotenchu = '"+listName.get(listName.size()-1)+"' WHERE idho = "+idho+";");
+            stmt.execute("UPDATE nhankhau SET quanhech = 'Người thân' WHERE idho = "+idho+";");
+            stmt.execute("UPDATE nhankhau SET quanhech = 'Chủ' WHERE hoten = '"+listName.get(listName.size()-1)+"';");
+            return 1;
+        }
+        stmt.execute("INSERT INTO hokhau (idho,hotenchu,diachi) VALUES ("+idhoMoi+", '"+listName.get(listName.size()-1)+"', '"+diachi+"')");
+        String s = new String();
+        s="'"+listName.get(0)+"'";
+        for (int i=1;i<listName.size();i++){
+            s+=", '"+listName.get(i)+"'";
+        }
+        stmt.execute("UPDATE nhankhau SET idho = '"+idhoMoi+"' WHERE hoten IN ("+s+");");
+        stmt.execute("UPDATE nhankhau SET quanhech = 'Người thân' WHERE idho = "+idhoMoi+";");
+        stmt.execute("UPDATE nhankhau SET quanhech = 'Chủ' WHERE hoten = '"+listName.get(listName.size()-1)+"';");
+        return 2;
+    }
 }

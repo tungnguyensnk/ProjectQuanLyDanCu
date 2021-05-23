@@ -1,18 +1,22 @@
 package com.project1.Case1;
 
-import com.project1.Main.GiaoTiep;
-import com.project1.Main.HoKhau;
-import com.project1.Main.Menu;
-import com.project1.Main.NhanKhau;
+import com.project1.Main.*;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,11 +31,15 @@ public class Change133 implements Initializable {
     public ChoiceBox nguoiChoice;
     public Label nguoiLabel;
     public Button xacNhanButton;
+    public TextField soHoKhauMoi;
+    public TextField diaChiMoi;
     int dem=0;
     String s;
     ArrayList<String> nhanKhau1= new ArrayList<>();
     ArrayList<String> nhanKhau2= new ArrayList<>();
+    ArrayList<String> listName = new ArrayList<>();
     public void setS(String s) {
+        listName.add(s);
         if(dem==0){
             this.s=s;
         }
@@ -114,6 +122,32 @@ public class Change133 implements Initializable {
             }
         }
     }
-    public void xacNhan(ActionEvent actionEvent) {
+    public void xacNhan(ActionEvent actionEvent) throws SQLException, IOException {
+        listName.add(hoTenChoice.getValue().toString());
+        int n = GiaoTiep.tachHo(listName,diaChiMoi.getText(),Integer.parseInt(soHoKhauChoice.getValue().toString()),Integer.parseInt(soHoKhauMoi.getText()));
+        Stage alert1 = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
+        Parent pr = loader.load();
+        Alert controller = loader.getController();
+        if(n==0)
+            controller.setTextAlert("Đang là chủ hộ!");
+        else if(n==1)
+            controller.setTextAlert("Đổi chủ hộ thành công!");
+        else if(n==2)
+            controller.setTextAlert("Tách hộ thành công!");
+        else
+            controller.setTextAlert("Không thể tách cùng chủ hộ!");
+        Scene sc1 = new Scene(pr);
+        alert1.setScene(sc1);
+        sc1.setFill(Color.TRANSPARENT);
+        alert1.initStyle(StageStyle.TRANSPARENT);
+        alert1.setX(troVe.getScene().getWindow().getX()+430);
+        alert1.setY(troVe.getScene().getWindow().getY()+200);
+        alert1.setAlwaysOnTop(true);
+        alert1.show();
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> alert1.close());
+        delay.play();
+        s="";
     }
 }
