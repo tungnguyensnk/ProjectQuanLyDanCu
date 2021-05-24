@@ -58,8 +58,14 @@ public class Change131 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * tạo 2 RadioButton nam nữ, đồng bộ nó với Group sex
+         */
         namRadioButton.setToggleGroup(sex);
         nuRadioButton.setToggleGroup(sex);
+        /**
+         * tạo 1 ArrayList chứa tất cả số hộ khẩu
+         */
         ArrayList<String> arrayList = new ArrayList<>();
         try {
             ArrayList<HoKhau> hoKhauArrayList = GiaoTiep.getHoKhau();
@@ -69,8 +75,16 @@ public class Change131 implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        /**
+         * gán list vào ChoiceBox
+         */
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhauChoice.setItems(idList);
+        /**
+         * binding
+         * disable themButton nếu 1 trong các Field sau chưa có data
+         */
         BooleanBinding hoTenVaid = Bindings.createBooleanBinding(() ->
                 !hoTenField.getText().trim().isEmpty(), hoTenField.textProperty());
         BooleanBinding soHoKhauValid = Bindings.createBooleanBinding(() ->
@@ -94,26 +108,35 @@ public class Change131 implements Initializable {
     }
 
     public void them(ActionEvent actionEvent) throws SQLException, IOException {
+
+        // có thể dùng sex.getSelectedToggle() để lấy data giới tính, ko hiểu sao dùng cách này :))
         String gioi;
         if (namRadioButton.isSelected())
             gioi = "Nam";
         else
             gioi = "Nữ";
         String nc, ndk;
+
+        //tránh getValue trả về null
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         if (ngayCapPick.getValue() != null)
             nc = ngayCapPick.getValue().format(dateTimeFormatter);
         else
             nc = "";
+
+        //tránh getValue trả về null
         if (ndkThuongTruField.getValue() != null)
             ndk = ndkThuongTruField.getValue().format(dateTimeFormatter);
         else
             ndk = "";
 
+        //gửi lệnh thêm nhân khẩu với DB
         GiaoTiep.themNhanKhau(new NhanKhau(Integer.parseInt(soHoKhauChoice.getValue()), quanHeCHField.getText(), hoTenField.getText(), gioi, ngaySinhPick.getValue().format(dateTimeFormatter),
                 noiSinhField.getText(), noiSinhField.getText(), danTocField.getText(), ngheNghiepField.getText(), noiLamViecField.getText(),
                 CMNDField.getText(), nc, noiCapField.getText(), ndk,
                 diaChiThuongTrutruocField.getText(), ""));
+
+        //thông báo thêm thành công
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();

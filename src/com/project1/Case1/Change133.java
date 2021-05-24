@@ -42,6 +42,11 @@ public class Change133 implements Initializable {
     ArrayList<String> nhanKhau2 = new ArrayList<>();
     ArrayList<String> listName = new ArrayList<>();
 
+    /**
+     * Danh sách tên sẽ hiển thị trên Label
+     *
+     * @param s
+     */
     public void setS(String s) {
         listName.add(s);
         if (dem == 0) {
@@ -67,6 +72,9 @@ public class Change133 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * tạo ArrayList chứa danh sách số hộ khẩu
+         */
         ArrayList<String> arrayList = new ArrayList<>();
         try {
             ArrayList<HoKhau> hoKhauArrayList = GiaoTiep.getHoKhau();
@@ -76,7 +84,13 @@ public class Change133 implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        //biến này để đếm xem có phải là tên đầu tiên được thêm không
         dem = 0;
+        /**
+         * lắng nghe
+         * tạo list thành viên nhân khẩu theo số hộ khẩu đã chọn, truyền vào hoTenChoice
+         */
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhauChoice.setItems(idList);
         soHoKhauChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
@@ -91,6 +105,11 @@ public class Change133 implements Initializable {
                 throwables.printStackTrace();
             }
         });
+        /**
+         * lắng nghe
+         * tạo danh sách những nhân khẩu còn lại sau khi đã chọn chủ
+         * xóa dữ liệu trong String s và nguoiLabel khi chọn chủ khác
+         */
         hoTenChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             dem = 0;
             this.s = "";
@@ -104,6 +123,12 @@ public class Change133 implements Initializable {
             nguoiChoice.setItems(idList);
             nguoiChoice.setItems(FXCollections.observableList(nhanKhau2));
         });
+
+        /**
+         * lắng nghe
+         * chọn nhân khẩu nào thì thêm nó vào String s và hiển thị ra màn hình qua nguoiLabel
+         * xóa nhân khẩu đã thêm khỏi list
+         */
         nguoiChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             if (t1 != null) {
                 setS(t1.toString());
@@ -116,6 +141,12 @@ public class Change133 implements Initializable {
         });
     }
 
+    /**
+     * lấy dữ liệu nhân khẩu cùng số hộ khẩu
+     *
+     * @param id số hộ khẩu
+     * @throws SQLException
+     */
     void getHoTenNhanKhau(String id) throws SQLException {
         nhanKhau1.clear();
         nhanKhau2.clear();
@@ -129,8 +160,13 @@ public class Change133 implements Initializable {
     }
 
     public void xacNhan(ActionEvent actionEvent) throws SQLException, IOException {
+        //thêm chủ là dữ liệu cuối của listName
         listName.add(hoTenChoice.getValue().toString());
+
+        //truyền dữ liệu lên DB
         int n = GiaoTiep.tachHo(listName, diaChiMoi.getText(), Integer.parseInt(soHoKhauChoice.getValue().toString()), Integer.parseInt(soHoKhauMoi.getText()));
+
+        //đưa thông báo tùy biến trả về
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();

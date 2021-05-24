@@ -47,6 +47,9 @@ public class Change132 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * tạo ArrayList chứa thông tin số hộ khẩu
+         */
         ArrayList<String> arrayList = new ArrayList<>();
         try {
             ArrayList<HoKhau> hoKhauArrayList = GiaoTiep.getHoKhau();
@@ -56,9 +59,17 @@ public class Change132 implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+        /**
+         * thêm list vào ChoiceBox
+         */
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhau1Choice.setItems(idList);
         soHoKhau2Choice.setItems(idList);
+
+        /**
+         * lắng nghe, tạo list danh sánh thành viên nhân khẩu theo số hộ khẩu chọn ở ChoiceBox trên
+         */
         ArrayList<String> nhanKhau1 = new ArrayList<>();
         soHoKhau1Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             try {
@@ -69,12 +80,16 @@ public class Change132 implements Initializable {
                         nhanKhau1.add(nhanKhau.getHoten());
                     }
                 }
-                hoTen1Choice.setItems(idList);
-                hoTen1Choice.setItems(FXCollections.observableList(nhanKhau1));
+                //lẽ ra có mỗi dòng 2, nhưng nó không thay đổi mục trong ChoiceBox mặc dù nó vẫn không ấn được
+                hoTen1Choice.setItems(idList);                                  //1
+                hoTen1Choice.setItems(FXCollections.observableList(nhanKhau1)); //2
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
         });
+        /**
+         * tương tự thằng trên, do có 2 chức năng như nhau
+         */
         ArrayList<String> nhanKhau2 = new ArrayList<>();
         soHoKhau2Choice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             try {
@@ -93,7 +108,7 @@ public class Change132 implements Initializable {
         });
     }
 
-    public void troVe(ActionEvent actionEvent) throws IOException {
+    public void troVe() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change13.fxml"));
         Parent pr = loader.load();
         Change13 controller = loader.getController();
@@ -102,7 +117,13 @@ public class Change132 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void xacNhan1(ActionEvent actionEvent) throws SQLException, IOException {
+    /**
+     * gửi ghi chú 1 lên DB
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
+    public void xacNhan1() throws SQLException, IOException {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         for (NhanKhau nhanKhau : GiaoTiep.getNhanKhau()) {
             if (hoTen1Choice.getValue().equals(nhanKhau.getHoten())) {
@@ -110,6 +131,8 @@ public class Change132 implements Initializable {
                         ngayDiPick.getValue().format(dateTimeFormatter));
             }
         }
+
+        //thông báo thành công, đáng ra phải viết 1 hàm mà lười quá
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();
@@ -128,13 +151,21 @@ public class Change132 implements Initializable {
         delay.play();
     }
 
-    public void xacNhan2(ActionEvent actionEvent) throws SQLException, IOException {
+    /**
+     * gửi ghi chú 2 lên DB
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
+    public void xacNhan2() throws SQLException, IOException {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         for (NhanKhau nhanKhau : GiaoTiep.getNhanKhau()) {
             if (hoTen2Choice.getValue().equals(nhanKhau.getHoten())) {
                 GiaoTiep.setGhiChuNhanKhau(nhanKhau.getId(), "Qua đời ngày " + LocalDate.now().format(dateTimeFormatter));
             }
         }
+
+        //thông báo
         Stage alert1 = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
         Parent pr = loader.load();
