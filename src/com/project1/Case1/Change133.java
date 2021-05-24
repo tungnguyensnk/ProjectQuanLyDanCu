@@ -159,7 +159,7 @@ public class Change133 implements Initializable {
         }
     }
 
-    public void xacNhan(ActionEvent actionEvent) throws SQLException, IOException {
+    public void xacNhan() throws SQLException, IOException {
         //thêm chủ là dữ liệu cuối của listName
         listName.add(hoTenChoice.getValue().toString());
 
