@@ -97,6 +97,7 @@ public class Change133 implements Initializable {
             try {
                 dem = 0;
                 this.s = "";
+                listName.clear();
                 nguoiLabel.setText(s);
                 getHoTenNhanKhau(t1.toString());
                 hoTenChoice.setItems(idList);
@@ -113,6 +114,7 @@ public class Change133 implements Initializable {
         hoTenChoice.getSelectionModel().selectedItemProperty().addListener((observableValue, o, t1) -> {
             dem = 0;
             this.s = "";
+            listName.clear();
             nguoiLabel.setText(s);
             try {
                 getHoTenNhanKhau(soHoKhauChoice.getValue().toString());
@@ -191,5 +193,7 @@ public class Change133 implements Initializable {
         delay.setOnFinished(event -> alert1.close());
         delay.play();
         s = "";
+        dem=0;
+        listName.clear();
     }
 }
