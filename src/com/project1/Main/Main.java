@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 import java.util.Objects;
 
 /**
- * @author tungn
+ * @author tungn,huy
  */
 public class Main extends Application {
 
