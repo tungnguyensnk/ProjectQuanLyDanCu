@@ -8,6 +8,7 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,6 +51,27 @@ public class Change131 implements Initializable {
     public TextField diaChiThuongTrutruocField;
     public Button themButton;
     public ToggleGroup sex = new ToggleGroup();
+    public Label tlabel;
+
+    public ArrayList getArr() {
+        return arr;
+    }
+
+    public void setArr(ArrayList<String> arr) {
+        this.arr = arr;
+    }
+
+    ArrayList<String> arr = new ArrayList<>();
+
+    public String getTmp() {
+        return tmp;
+    }
+
+    public void setTmp(String tmp) {
+        this.tmp = tmp;
+    }
+
+    String tmp = "";
     com.project1.Main.Menu menu;
 
     public void setMenu(Menu controller) {
@@ -58,14 +80,10 @@ public class Change131 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /**
-         * tạo 2 RadioButton nam nữ, đồng bộ nó với Group sex
-         */
+        // tạo 2 RadioButton nam nữ, đồng bộ nó với Group sex
         namRadioButton.setToggleGroup(sex);
         nuRadioButton.setToggleGroup(sex);
-        /**
-         * tạo 1 ArrayList chứa tất cả số hộ khẩu
-         */
+        //tạo 1 ArrayList chứa tất cả số hộ khẩu
         ArrayList<String> arrayList = new ArrayList<>();
         try {
             ArrayList<HoKhau> hoKhauArrayList = GiaoTiep.getHoKhau();
@@ -76,9 +94,7 @@ public class Change131 implements Initializable {
             throwables.printStackTrace();
         }
 
-        /**
-         * gán list vào ChoiceBox
-         */
+        // gán list vào ChoiceBox
         ObservableList<String> idList = FXCollections.observableList(arrayList);
         soHoKhauChoice.setItems(idList);
         /**
@@ -96,9 +112,41 @@ public class Change131 implements Initializable {
                 !noiSinhField.getText().trim().isEmpty(), noiSinhField.textProperty());
         themButton.disableProperty().bind(soHoKhauValid.not().or(ngaySinhValid.not().
                 or(noiSinhValid).not().or(hoTenVaid.not())));
+
+        //tạo 1 luồng để gợi ý địa điểm
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() throws InterruptedException {
+                for (int i = 0; i < 1000000; i++) {
+                    Thread.sleep(1000);
+                    if (!noiSinhField.getText().isEmpty() && !noiSinhField.getText().equals(getTmp())) {
+                        setArr(GiaoTiep.getDanhSachViTri(noiSinhField.getText()));
+                        setTmp(noiSinhField.getText());
+                    }
+                }
+                return null;
+            }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
+
+        //lắng nghe nội dung của noiSinhField, hiển thị gợi ý sau 2s
+        noiSinhField.textProperty().addListener((observableValue, s, t1) -> {
+            if (getArr().size() != 0 && !tlabel.getText().replaceAll("Gợi ý: ","").equals(noiSinhField.getText())) {
+                PauseTransition delay = new PauseTransition(Duration.seconds(2));
+                delay.setOnFinished(event -> tlabel.setText("Gợi ý: "+ getArr().get(0)));
+                delay.play();
+            }
+        });
+
+        //nhấn vào Label thì seo điền vào noiSinhField
+        tlabel.setOnMouseClicked(mouseEvent -> {
+            noiSinhField.setText(tlabel.getText().substring(7));
+            tlabel.setText("");
+        });
     }
 
-    public void troVe(ActionEvent actionEvent) throws IOException {
+    public void troVe() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("change13.fxml"));
         Parent pr = loader.load();
         Change13 controller = loader.getController();
@@ -154,4 +202,5 @@ public class Change131 implements Initializable {
         delay.setOnFinished(event -> alert1.close());
         delay.play();
     }
+
 }

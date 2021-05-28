@@ -4,6 +4,7 @@ import com.project1.Main.*;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,11 +37,28 @@ public class Change133 implements Initializable {
     public Button xacNhanButton;
     public TextField soHoKhauMoi;
     public TextField diaChiMoi;
+    public Label tlabel;
     int dem = 0;
     String s;
     ArrayList<String> nhanKhau1 = new ArrayList<>();
     ArrayList<String> nhanKhau2 = new ArrayList<>();
     ArrayList<String> listName = new ArrayList<>();
+
+    public ArrayList getArr() {
+        return arr;
+    }
+    public void setArr(ArrayList<String> arr) {
+        this.arr = arr;
+    }
+    ArrayList<String> arr = new ArrayList<>();
+
+    public String getTmp() {
+        return tmp;
+    }
+    public void setTmp(String tmp) {
+        this.tmp = tmp;
+    }
+    String tmp = "";
 
     /**
      * Danh sách tên sẽ hiển thị trên Label
@@ -141,6 +159,38 @@ public class Change133 implements Initializable {
                 nguoiChoice.setItems(FXCollections.observableList(nhanKhau2));
             }
         });
+
+        //tạo 1 luồng để gợi ý địa điểm
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() throws InterruptedException {
+                for (int i = 0; i < 1000000; i++) {
+                    Thread.sleep(1000);
+                    if (!diaChiMoi.getText().isEmpty() && !diaChiMoi.getText().equals(getTmp())) {
+                        setArr(GiaoTiep.getDanhSachViTri(diaChiMoi.getText()));
+                        setTmp(diaChiMoi.getText());
+                    }
+                }
+                return null;
+            }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
+
+        //lắng nghe nội dung của noiSinhField, hiển thị gợi ý sau 2s
+        diaChiMoi.textProperty().addListener((observableValue, s, t1) -> {
+            if (getArr().size() != 0 && !tlabel.getText().replaceAll("Gợi ý: ","").equals(diaChiMoi.getText())) {
+                PauseTransition delay = new PauseTransition(Duration.seconds(2));
+                delay.setOnFinished(event -> tlabel.setText("Gợi ý: "+ getArr().get(0)));
+                delay.play();
+            }
+        });
+
+        //nhấn vào Label thì seo điền vào noiSinhField
+        tlabel.setOnMouseClicked(mouseEvent -> {
+            diaChiMoi.setText(tlabel.getText().substring(7));
+            tlabel.setText("");
+        });
     }
 
     /**
@@ -166,7 +216,7 @@ public class Change133 implements Initializable {
         listName.add(hoTenChoice.getValue().toString());
 
         //truyền dữ liệu lên DB
-        int n = GiaoTiep.tachHo(listName, diaChiMoi.getText(), Integer.parseInt(soHoKhauChoice.getValue().toString()), Integer.parseInt(soHoKhauMoi.getText()));
+        int n = GiaoTiep.tachHo(listName, diaChiMoi.getText(),getArr().get(1)+"", Integer.parseInt(soHoKhauChoice.getValue().toString()), Integer.parseInt(soHoKhauMoi.getText()));
 
         //đưa thông báo tùy biến trả về
         Stage alert1 = new Stage();

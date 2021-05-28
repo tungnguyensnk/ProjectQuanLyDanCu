@@ -17,22 +17,22 @@
                <TableColumn fx:id="diaChiCol" editable="false" prefWidth="384.0" resizable="false" text="Địa chỉ" />
            </columns>
        </TableView>
-       <Button fx:id="troVe" layoutX="26.0" layoutY="26.0" mnemonicParsing="false" onAction="#troVe" prefHeight="32.0" prefWidth="71.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
+       <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
            <font>
                <Font name="Comic Sans MS" size="15.0" />
            </font>
        </Button>
-       <Button layoutX="517.0" layoutY="26.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="In file pdf">
+       <Button layoutX="501.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="In bản Excel">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font></Button>
-       <TextField fx:id="filterField" layoutX="221.0" layoutY="28.0" promptText="Bạn muốn tìm gì?" style="-fx-background-radius: 10; -fx-background-radius: 10;" />
-      <ImageView fitHeight="32.0" fitWidth="24.0" layoutX="197.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+       <TextField fx:id="filterField" layoutX="221.0" layoutY="30.0" promptText="Bạn muốn tìm gì?" style="-fx-background-radius: 10; -fx-background-radius: 10;" />
+      <ImageView fitHeight="32.0" fitWidth="24.0" layoutX="197.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/btn_search.png" />
          </image>
       </ImageView>
-      <Button layoutX="617.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="Đổi dạng xem">
+      <Button layoutX="617.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="Đổi dạng xem">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>

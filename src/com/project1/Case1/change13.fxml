@@ -65,7 +65,7 @@
               <Image url="@../img/btn_save.png" />
           </image>
        </ImageView>
-      <Button fx:id="troVe" layoutX="27.0" layoutY="24.0" mnemonicParsing="false" onAction="#troVe" prefHeight="32.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="Trở về">
+      <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-background-radius: 10;" text="Trở về">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>

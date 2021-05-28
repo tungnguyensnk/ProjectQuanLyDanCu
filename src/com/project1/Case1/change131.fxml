@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.Change131">
    <children>
-      <Button fx:id="troVe" layoutX="36.0" layoutY="32.0" mnemonicParsing="false" onAction="#troVe" prefHeight="31.0" prefWidth="72.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #90eeed;" text="Trở về">
+      <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #90eeed;" text="Trở về">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font></Button>
@@ -91,5 +91,9 @@
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Button>
+      <Label fx:id="tlabel" layoutX="67.0" layoutY="170.0" prefHeight="25.0" prefWidth="373.0">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>

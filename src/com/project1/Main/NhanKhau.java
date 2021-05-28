@@ -201,6 +201,25 @@ public class NhanKhau {
         this.ghichu = ghichu;
     }
 
+    public NhanKhau(int idho, String hoten, String gioitinh, String ngaysinh, String noisinh, String cmnd, String ghichu) {
+        this.idho = idho;
+        this.hoten = hoten;
+        this.gioitinh = gioitinh;
+        this.ngaysinh = ngaysinh;
+        this.noisinh = noisinh;
+        this.cmnd = cmnd;
+        this.ghichu = ghichu;
+        this.nguyenquan = "";
+        this.dantoc = "";
+        this.nghenghiep = "";
+        this.noilamviec = "";
+        this.ngaycap = "";
+        this.noicap = "";
+        this.ndkthuongtru = "";
+        this.dcthuongtrutrc = "";
+        this.quanhech = "";
+    }
+
     @Override
     public String toString() {
         return "NhanKhau{" +

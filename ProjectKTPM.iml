@@ -9,5 +9,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="application" />
     <orderEntry type="library" name="mysql-connector-java-8.0.22" level="application" />
+    <orderEntry type="library" name="javax.json-api-1.1.4" level="application" />
+    <orderEntry type="library" name="javax.json-1.1" level="application" />
+    <orderEntry type="library" name="poi-5.0" level="project" />
+    <orderEntry type="library" name="ooxml-lib" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="auxiliary" level="project" />
   </component>
 </module>

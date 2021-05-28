@@ -8,7 +8,15 @@ public class HoKhau {
     String hotenchu;
     String diachi;
     String ghichu;
+    String placeid;
 
+    public String getPlaceid() {
+        return placeid;
+    }
+
+    public void setPlaceid(String placeid) {
+        this.placeid = placeid;
+    }
     public String getGhichu() {
         return ghichu;
     }
@@ -41,11 +49,12 @@ public class HoKhau {
         this.idho = idho;
     }
 
-    public HoKhau(int idho, String hotenchu, String diachi, String ghichu) {
+    public HoKhau(int idho, String hotenchu, String diachi, String ghichu, String placeid) {
         this.idho = idho;
         this.hotenchu = hotenchu;
         this.diachi = diachi;
         this.ghichu = ghichu;
+        this.placeid = placeid;
     }
 
     @Override
@@ -55,6 +64,7 @@ public class HoKhau {
                 ", hotenchu='" + hotenchu + '\'' +
                 ", diachi='" + diachi + '\'' +
                 ", ghichu='" + ghichu + '\'' +
+                ", placeid='" + placeid + '\'' +
                 '}';
     }
 }

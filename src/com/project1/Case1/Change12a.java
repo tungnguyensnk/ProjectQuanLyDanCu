@@ -54,7 +54,7 @@ public class Change12a implements Initializable {
         soHoKhauCol.setStyle("-fx-alignment: CENTER;");
         hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoten"));
         hoTenCol.setStyle("-fx-alignment: CENTER;");
-        diaChiCol.setCellValueFactory(new PropertyValueFactory<>("nguyenquan"));
+        diaChiCol.setCellValueFactory(new PropertyValueFactory<>("noisinh"));
         diaChiCol.setStyle("-fx-alignment: CENTER;");
         table.setItems(nhanKhauList);
 

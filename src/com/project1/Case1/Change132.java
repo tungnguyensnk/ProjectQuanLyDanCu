@@ -1,18 +1,18 @@
 package com.project1.Case1;
 
 import com.project1.Main.*;
+import com.project1.Main.Alert;
+import com.project1.Main.Menu;
 import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -39,11 +39,28 @@ public class Change132 implements Initializable {
     public ChoiceBox<String> hoTen2Choice;
     public Button xacNhan2Button;
     public Button xacNhan1Button;
+    public Label tlabel;
     Menu menu;
 
     public void setMenu(Menu controller) {
         this.menu = controller;
     }
+
+    public ArrayList getArr() {
+        return arr;
+    }
+    public void setArr(ArrayList<String> arr) {
+        this.arr = arr;
+    }
+    ArrayList<String> arr = new ArrayList<>();
+
+    public String getTmp() {
+        return tmp;
+    }
+    public void setTmp(String tmp) {
+        this.tmp = tmp;
+    }
+    String tmp = "";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,6 +122,37 @@ public class Change132 implements Initializable {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+        });
+        //tạo 1 luồng để gợi ý địa điểm
+        Task task = new Task<Void>() {
+            @Override
+            public Void call() throws InterruptedException {
+                for (int i = 0; i < 1000000; i++) {
+                    Thread.sleep(1000);
+                    if (!noiDiPick.getText().isEmpty() && !noiDiPick.getText().equals(getTmp())) {
+                        setArr(GiaoTiep.getDanhSachViTri(noiDiPick.getText()));
+                        setTmp(noiDiPick.getText());
+                    }
+                }
+                return null;
+            }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
+
+        //lắng nghe nội dung của noiDiPick, hiển thị gợi ý sau 2s
+        noiDiPick.textProperty().addListener((observableValue, s, t1) -> {
+            if (getArr().size() != 0 && !tlabel.getText().replaceAll("Gợi ý: ","").equals(noiDiPick.getText())) {
+                PauseTransition delay = new PauseTransition(Duration.seconds(2));
+                delay.setOnFinished(event -> tlabel.setText("Gợi ý: "+ getArr().get(0)));
+                delay.play();
+            }
+        });
+
+        //nhấn vào Label thì seo điền vào noiSinhField
+        tlabel.setOnMouseClicked(mouseEvent -> {
+            noiDiPick.setText(tlabel.getText().substring(7));
+            tlabel.setText("");
         });
     }
 

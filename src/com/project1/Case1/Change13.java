@@ -94,7 +94,13 @@ public class Change13 implements Initializable {
     /**
      * chức năng 1-3-4: tạm trú tạm vắng
      */
-    public void change134() {
+    public void change134() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("change134.fxml"));
+        Parent pr = loader.load();
+        Change134 controller = loader.getController();
+        controller.setMenu(menu);
+        menu.contentRoot.getChildren().clear();
+        menu.contentRoot.getChildren().add(pr);
     }
 
     public void troVe() throws IOException {

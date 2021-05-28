@@ -13,8 +13,8 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.Change14">
    <children>
-       <PieChart fx:id="tkGioi" layoutX="50.0" layoutY="140.0" legendVisible="false" prefHeight="400.0" prefWidth="295.0" title="Thống kê giới tính" />
-       <BarChart fx:id="barChart" layoutX="359.0" layoutY="140.0" legendVisible="false" prefHeight="400.0" prefWidth="364.0" title="Thống kê tuổi">
+       <PieChart fx:id="tkGioi" layoutX="48.0" layoutY="98.0" legendVisible="false" prefHeight="400.0" prefWidth="295.0" title="Thống kê giới tính" />
+       <BarChart fx:id="barChart" layoutX="358.0" layoutY="98.0" legendVisible="false" prefHeight="400.0" prefWidth="364.0" title="Thống kê tuổi">
            <xAxis>
                <CategoryAxis label="Nhóm tuổi" prefHeight="44.0" prefWidth="287.0" side="BOTTOM" fx:id="xAxis" />
            </xAxis>
@@ -22,7 +22,7 @@
                <NumberAxis fx:id="yAxis" autoRanging="false" label="Phần trăm" prefHeight="295.0" prefWidth="44.0" side="LEFT" />
            </yAxis>
        </BarChart>
-      <Button fx:id="troVe" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#troVe" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Trở về" textAlignment="CENTER">
+      <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Trở về" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>

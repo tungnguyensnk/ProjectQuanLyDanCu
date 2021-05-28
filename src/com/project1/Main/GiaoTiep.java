@@ -1,5 +1,8 @@
 package com.project1.Main;
 
+import javax.json.*;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -9,7 +12,6 @@ import java.util.ArrayList;
 public class GiaoTiep {
     private static String USER_NAME = "";
     private static Connection con;
-
     public static void setUserName(String userName) {
         USER_NAME = userName;
     }
@@ -51,7 +53,7 @@ public class GiaoTiep {
         ResultSet rs = stmt.executeQuery("select * from hokhau");
         ArrayList<HoKhau> arrayList = new ArrayList<>();
         while (rs.next()) {
-            arrayList.add(new HoKhau(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            arrayList.add(new HoKhau(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
         }
         return arrayList;
     }
@@ -167,7 +169,7 @@ public class GiaoTiep {
      * @return 0:đang là chủ hộ, 1:thay chủ hộ, 2:tách hộ, 3: tách hộ cùng 1 chủ hộ
      * @throws SQLException
      */
-    public static int tachHo(ArrayList<String> listName, String diachi, int idho, int idhoMoi) throws SQLException {
+    public static int tachHo(ArrayList<String> listName, String diachi, String placeid, int idho, int idhoMoi) throws SQLException {
         Statement stmt = con.createStatement();
         /**
          * kiểm tra xem người tách hộ có đang là chủ hộ không
@@ -202,7 +204,7 @@ public class GiaoTiep {
          * đổi tất cả thành viên cùng tách có quan hệ thành người thân
          * đặt quan hệ là chủ với chủ hộ
          */
-        stmt.execute("INSERT INTO hokhau (idho,hotenchu,diachi) VALUES (" + idhoMoi + ", '" + listName.get(listName.size() - 1) + "', '" + diachi + "')");
+        stmt.execute("INSERT INTO hokhau (idho,hotenchu,diachi,placeid) VALUES (" + idhoMoi + ", '" + listName.get(listName.size() - 1) + "', '" + diachi + "', '"+placeid+"')");
         String s = new String();
         s = "'" + listName.get(0) + "'";
         for (int i = 1; i < listName.size(); i++) {
@@ -212,5 +214,46 @@ public class GiaoTiep {
         stmt.execute("UPDATE nhankhau SET quanhech = 'Người thân' WHERE idho = " + idhoMoi + ";");
         stmt.execute("UPDATE nhankhau SET quanhech = 'Chủ' WHERE hoten = '" + listName.get(listName.size() - 1) + "';");
         return 2;
+    }
+
+    /**
+     * lấy vị trí và id vị trí
+     * @param data
+     * @return
+     */
+    public static ArrayList<String> getDanhSachViTri(String data) {
+        try {
+            ArrayList<String> arrayList = new ArrayList<>();
+            URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")+"&key=AIzaSyBK4D6x08r7OlzeS5xkkiVsfE8HO9g-q-w");
+            InputStream inputStream = url.openStream();
+            JsonReader jsonReader = Json.createReader(inputStream);
+            JsonObject jsonObject = jsonReader.readObject();
+            JsonArray jsonArray = jsonObject.getJsonArray("predictions");
+            arrayList.add(jsonArray.get(0).asJsonObject().getString("description"));
+            arrayList.add(jsonArray.get(0).asJsonObject().getString("place_id"));
+            return arrayList;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+    public static void setTamTruTamVang(String hoTen, String ngaySinh, String gioiTinh, String noiThuongTru, String cmnd, String quocTich,
+    String hoChieu, String tuNgay, String denNgay, String lyDo, int mode) throws SQLException {
+        String ghichu="";
+        if(quocTich.trim().length()!=0)
+            ghichu+="Quốc tịch: "+quocTich+". ";
+        if(hoChieu.trim().length()!=0)
+            ghichu+="Hộ chiếu: "+hoChieu+". ";
+        if(mode==0)
+            ghichu+="Tạm vắng ";
+        else
+            ghichu+="Tạm trú ";
+        if(tuNgay.trim().length()!=0)
+            ghichu+="từ ngày "+tuNgay+" ";
+        if(denNgay.trim().length()!=0)
+            ghichu+="đến ngày "+tuNgay+" ";
+        ghichu+=lyDo;
+        themNhanKhau(new NhanKhau(0,hoTen,gioiTinh,ngaySinh,noiThuongTru,cmnd,ghichu));
     }
 }
