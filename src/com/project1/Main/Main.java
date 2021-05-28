@@ -27,6 +27,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(sc);
         primaryStage.show();
+        //test commit
 
     }
 
