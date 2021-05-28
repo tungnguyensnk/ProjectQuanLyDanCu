@@ -27,7 +27,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(sc);
         primaryStage.show();
-        //test commit
+        //test commit, giả sử t thay đổi ở máy t
 
     }
 
