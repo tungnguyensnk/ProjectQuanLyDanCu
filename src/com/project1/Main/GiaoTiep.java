@@ -297,4 +297,7 @@ public class GiaoTiep {
         ghichu+=lyDo;
         themNhanKhau(new NhanKhau(0,hoTen,gioiTinh,ngaySinh,noiThuongTru,cmnd,ghichu));
     }
+    public  static void getXY(String placeid){
+
+    }
 }

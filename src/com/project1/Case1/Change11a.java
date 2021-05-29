@@ -24,6 +24,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -100,6 +101,7 @@ public class Change11a implements Initializable {
                 cm.hide();
             }
         });
+
         chiTiet.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("change12a.fxml"));
             Parent pr = null;
@@ -113,6 +115,7 @@ public class Change11a implements Initializable {
             menu.contentRoot.getChildren().clear();
             menu.contentRoot.getChildren().add(pr);
         });
+
         chinhSua.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chinhSua.fxml"));
             Parent pr = null;
@@ -132,6 +135,27 @@ public class Change11a implements Initializable {
             mini.setX(cm.getX());
             mini.setY(cm.getY());
             mini.show();
+        });
+
+        map.setOnAction(actionEvent -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("map.fxml"));
+            Parent pr;
+            try {
+                pr = loader.load();
+                Mapht controller = loader.getController();
+                controller.setXY(1,1);
+                Scene sc = new Scene(pr,450,350);
+                sc.setFill(Color.TRANSPARENT);
+                Stage mini = new Stage();
+                mini.initStyle(StageStyle.TRANSPARENT);
+                mini.setScene(sc);
+                mini.initModality(Modality.APPLICATION_MODAL);
+                mini.setX(cm.getX());
+                mini.setY(cm.getY());
+                mini.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 
