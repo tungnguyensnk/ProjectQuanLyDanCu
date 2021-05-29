@@ -297,4 +297,25 @@ public class GiaoTiep {
         ghichu+=lyDo;
         themNhanKhau(new NhanKhau(0,hoTen,gioiTinh,ngaySinh,noiThuongTru,cmnd,ghichu));
     }
+    public  static ArrayList<Double> getXY(String placeid){
+        try {
+            ArrayList<Double> arrayList = new ArrayList<>();
+            URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?place_id=" +
+                    placeid +
+                    "&key=AIzaSyC4IQWtwB" +
+                    "PMTTWxY82Qohy5C-" +
+                    "ddKnSBuwM");
+            InputStream inputStream = url.openStream();
+            JsonReader jsonReader = Json.createReader(inputStream);
+            JsonObject jsonObject = jsonReader.readObject();
+            JsonArray jsonArray = jsonObject.getJsonArray("results");
+            arrayList.add(Double.parseDouble(jsonArray.get(0).asJsonObject().getJsonObject("geometry").getJsonObject("location").get("lat").toString()));
+            arrayList.add(Double.parseDouble(jsonArray.get(0).asJsonObject().getJsonObject("geometry").getJsonObject("location").get("lng").toString()));
+            return arrayList;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
 }
