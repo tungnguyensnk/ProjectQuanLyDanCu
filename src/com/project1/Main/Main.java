@@ -14,6 +14,8 @@ import java.util.Objects;
  * @author tungn,huy
  */
 public class Main extends Application {
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -23,6 +25,14 @@ public class Main extends Application {
         /**
          * set màu và kiểu trong suốt để lấy bo góc tuyệt đối
          */
+        root.setOnMousePressed(mouseEvent -> {
+            xOffset = mouseEvent.getSceneX();
+            yOffset = mouseEvent.getSceneY();
+        });
+        root.setOnMouseDragged(mouseEvent -> {
+            primaryStage.setX(mouseEvent.getScreenX() - xOffset);
+            primaryStage.setY(mouseEvent.getScreenY() - yOffset);
+        });
         sc.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(sc);

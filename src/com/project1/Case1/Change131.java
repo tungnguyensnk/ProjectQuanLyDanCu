@@ -114,11 +114,11 @@ public class Change131 implements Initializable {
                 or(noiSinhValid).not().or(hoTenVaid.not())));
 
         //tạo 1 luồng để gợi ý địa điểm
-        Task task = new Task<Void>() {
+        Task<Void> task = new Task<>() {
             @Override
             public Void call() throws InterruptedException {
                 for (int i = 0; i < 1000000; i++) {
-                    Thread.sleep(1000);
+                    Thread.sleep(1500);
                     if (!noiSinhField.getText().isEmpty() && !noiSinhField.getText().equals(getTmp())) {
                         setArr(GiaoTiep.getDanhSachViTri(noiSinhField.getText()));
                         setTmp(noiSinhField.getText());

@@ -22,20 +22,15 @@
                <Font name="Comic Sans MS" size="15.0" />
            </font>
        </Button>
-       <Button layoutX="502.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="In bản Excel">
+       <Button layoutX="623.0" layoutY="30.0" mnemonicParsing="false" onAction="#inExcel" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="In bản Excel">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font></Button>
-       <TextField fx:id="filterField" layoutX="233.0" layoutY="30.0" promptText="Bạn muốn tìm gì?" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-      <ImageView fitHeight="32.0" fitWidth="25.0" layoutX="208.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+       <TextField fx:id="filterField" layoutX="287.0" layoutY="30.0" promptText="Bạn muốn tìm gì?" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <ImageView fitHeight="32.0" fitWidth="25.0" layoutX="262.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/btn_search.png" />
          </image>
       </ImageView>
-      <Button layoutX="617.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Đổi dạng xem">
-         <font>
-            <Font name="Comic Sans MS" size="15.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

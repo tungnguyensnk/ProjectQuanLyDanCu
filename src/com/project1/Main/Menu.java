@@ -28,6 +28,9 @@ public class Menu implements Initializable {
     public Button lichSinhHoat;
     public Button logOut;
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //khởi tạo kiểu button khi hover và hiển thị người dùng
@@ -45,6 +48,15 @@ public class Menu implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //làm cho stage movable
+        root.setOnMousePressed(mouseEvent -> {
+            xOffset = mouseEvent.getSceneX();
+            yOffset = mouseEvent.getSceneY();
+        });
+        root.setOnMouseDragged(mouseEvent -> {
+            contentRoot.getScene().getWindow().setX(mouseEvent.getScreenX() - xOffset);
+            contentRoot.getScene().getWindow().setY(mouseEvent.getScreenY() - yOffset);
+        });
     }
 
     /**

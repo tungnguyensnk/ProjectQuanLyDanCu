@@ -59,6 +59,26 @@ public class GiaoTiep {
     }
 
     /**
+     * lấy thông tin 1 hộ khẩu
+     * @param idho
+     * @return
+     * @throws SQLException
+     */
+    public static HoKhau getHoKhau(int idho) throws SQLException {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from hokhau where idho = "+idho+";");
+        HoKhau hoKhau = null;
+        while (rs.next()) {
+            hoKhau = new HoKhau(rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6));
+        }
+        return hoKhau;
+    }
+
+    public static void setHoKhau(HoKhau hoKhau) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("UPDATE hokhau SET diachi = '"+hoKhau.getDiachi()+"', ghichu ='"+hoKhau.getGhichu()+"', placeid = '"+hoKhau.getPlaceid()+"' WHERE idho = " + hoKhau.getIdho() + ";");
+    }
+    /**
      * lấy thông tin tất cả nhân khẩu, trả kết quả dạng ArrayList
      *
      * @return ArrayList NhanKhau
@@ -75,6 +95,25 @@ public class GiaoTiep {
                     rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17)));
         }
         return arrayList;
+    }
+
+    /**
+     * lấy thông tin 1 nhân khẩu
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+    public static NhanKhau getNhanKhau(int id) throws SQLException {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from nhankhau where id = "+id+";");
+        NhanKhau nhanKhau = null;
+        while (rs.next()) {
+            nhanKhau = new NhanKhau(rs.getInt(2), rs.getInt(1), rs.getString(3), rs.getString(4),
+                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
+                    rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13),
+                    rs.getString(14), rs.getString(15), rs.getString(16), rs.getString(17));
+        }
+        return nhanKhau;
     }
 
     /**
@@ -224,7 +263,9 @@ public class GiaoTiep {
     public static ArrayList<String> getDanhSachViTri(String data) {
         try {
             ArrayList<String> arrayList = new ArrayList<>();
-            URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")+"&key=AIzaSyBK4D6x08r7OlzeS5xkkiVsfE8HO9g-q-w");
+            URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")+"&key=AIzaSyC4I" +
+                    "QWtwBPMTTWxY82Qohy5C" +
+                    "-ddKnSBuwM");
             InputStream inputStream = url.openStream();
             JsonReader jsonReader = Json.createReader(inputStream);
             JsonObject jsonObject = jsonReader.readObject();

@@ -7,14 +7,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="root" onMousePressed="#changeMode" prefHeight="400.0" prefWidth="300.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.ChinhSua">
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="300.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.ChinhSua">
    <children>
       <Label alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="30.0" prefWidth="200.0" text="Số hộ khẩu" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="soHoKhauLabel" alignment="CENTER" layoutX="50.0" layoutY="44.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+      <Label fx:id="soHoKhauLabel" alignment="CENTER" layoutX="50.0" layoutY="44.0" prefHeight="30.0" prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="hoTenChuLabel" alignment="CENTER" layoutX="50.0" layoutY="120.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+      <Label fx:id="hoTenChuLabel" alignment="CENTER" layoutX="50.0" layoutY="120.0" prefHeight="30.0" prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-border-radius: 10; -fx-background-radius: 10;" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="diaChiLabel" alignment="CENTER" layoutX="50.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+      <Label fx:id="diaChiLabel" alignment="CENTER" layoutX="50.0" layoutY="200.0" prefHeight="30.0" prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" textAlignment="CENTER">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>
@@ -44,15 +44,27 @@
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="ghiChuLabel" alignment="CENTER" layoutX="50.0" layoutY="273.0" prefHeight="126.0" prefWidth="200.0" textAlignment="CENTER">
+      <Label fx:id="ghiChuLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="274.0" prefHeight="102.0" prefWidth="200.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;">
          <font>
             <Font name="Comic Sans MS" size="15.0" />
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#tat" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="x" fx:id="xButton" />
-      <TextField fx:id="soHoKhauField" layoutX="50.0" layoutY="44.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-      <TextField fx:id="hoTenChuField" layoutX="50.0" layoutY="120.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-      <TextField fx:id="diaChiField" layoutX="50.0" layoutY="200.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
-      <TextArea fx:id="ghiChiField" layoutX="50.0" layoutY="274.0" prefHeight="126.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <TextField fx:id="soHoKhauField" layoutX="50.0" layoutY="44.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-alignment: center;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="hoTenChuField" layoutX="50.0" layoutY="120.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-alignment: center;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="diaChiField" layoutX="50.0" layoutY="200.0" maxHeight="0.0" minHeight="30.0" minWidth="200.0" prefHeight="30.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></TextField>
+      <TextArea fx:id="ghiChiField" layoutX="50.0" layoutY="274.0" prefHeight="102.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font></TextArea>
    </children>
 </AnchorPane>

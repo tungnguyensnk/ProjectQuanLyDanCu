@@ -165,7 +165,7 @@ public class Change133 implements Initializable {
             @Override
             public Void call() throws InterruptedException {
                 for (int i = 0; i < 1000000; i++) {
-                    Thread.sleep(1000);
+                    Thread.sleep(1500);
                     if (!diaChiMoi.getText().isEmpty() && !diaChiMoi.getText().equals(getTmp())) {
                         setArr(GiaoTiep.getDanhSachViTri(diaChiMoi.getText()));
                         setTmp(diaChiMoi.getText());

@@ -128,7 +128,7 @@ public class Change132 implements Initializable {
             @Override
             public Void call() throws InterruptedException {
                 for (int i = 0; i < 1000000; i++) {
-                    Thread.sleep(1000);
+                    Thread.sleep(1500);
                     if (!noiDiPick.getText().isEmpty() && !noiDiPick.getText().equals(getTmp())) {
                         setArr(GiaoTiep.getDanhSachViTri(noiDiPick.getText()));
                         setTmp(noiDiPick.getText());

@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -106,5 +107,8 @@ public class Change12a implements Initializable {
         controller.setMenu(menu);
         menu.contentRoot.getChildren().clear();
         menu.contentRoot.getChildren().add(pr);
+    }
+
+    public void inExcel(ActionEvent actionEvent) {
     }
 }
