@@ -15,11 +15,11 @@ import java.util.ResourceBundle;
 public class Mapht implements Initializable {
     public WebView webView;
     public AnchorPane root;
-    int x,y;
+    double x,y;
     private double xOffset = 0;
     private double yOffset = 0;
 
-    public void setXY(int x,int y) {
+    public void setXY(double x,double y) {
         this.x = x;
         this.y = y;
     }
@@ -38,7 +38,7 @@ public class Mapht implements Initializable {
         WebEngine webEngine = webView.getEngine();
         webEngine.setJavaScriptEnabled(true);
         webEngine.load(file.toURI().toString());
-        PauseTransition delay = new PauseTransition(Duration.millis(1000));
+        PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.setOnFinished(actionEvent -> webEngine.executeScript("initMap("+x+","+y+");"));
         delay.play();
         root.setOnKeyPressed(keyEvent -> {

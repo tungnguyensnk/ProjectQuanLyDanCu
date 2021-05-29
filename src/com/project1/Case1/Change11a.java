@@ -24,6 +24,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -143,7 +144,8 @@ public class Change11a implements Initializable {
             try {
                 pr = loader.load();
                 Mapht controller = loader.getController();
-                controller.setXY(1,1);
+                ArrayList<Double> arrayList = GiaoTiep.getXY(table.getSelectionModel().getSelectedItems().get(0).getPlaceid());
+                controller.setXY(arrayList.get(0),arrayList.get(1));
                 Scene sc = new Scene(pr,450,350);
                 sc.setFill(Color.TRANSPARENT);
                 Stage mini = new Stage();
