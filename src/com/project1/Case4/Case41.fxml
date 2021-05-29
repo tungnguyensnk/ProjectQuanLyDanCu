@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case4.Case41Controller">
+   <children>
+      <Label layoutX="316.0" layoutY="14.0" prefHeight="21.0" prefWidth="129.0" text="SỞ Y TẾ TP.HÀ NỘI" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="35.0" prefHeight="30.0" prefWidth="272.0" text="TỔ DÂN PHỐ 4, PHƯỜNG LA KHÊ" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="58.0" prefHeight="71.0" prefWidth="256.0" style="-fx-font-weight: bold" text="TỜ KHAI Y TẾ HẰNG NGÀY">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="130.0" prefHeight="14.0" prefWidth="65.0" text="Họ và tên:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="174.0" text="ID nhân khẩu:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="hoVaTenTF" layoutX="123.0" layoutY="125.0" prefHeight="30.0" prefWidth="569.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="idNhanKhauTF" layoutX="145.0" layoutY="169.0" prefHeight="25.0" prefWidth="390.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="46.0" layoutY="213.0" text="Số điện thoại:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="soDienThoaiTF" layoutX="145.0" layoutY="208.0" prefHeight="25.0" prefWidth="390.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="43.0" layoutY="250.0" text="Có đến nơi dịch lưu hành:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="283.0" text="Có tiếp xúc với người được xác định hoặc nghi nhiễm Covid-19:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="yesDenNoiCoDichRB" layoutX="239.0" layoutY="250.0" mnemonicParsing="false" text="Có">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="noDenNoiCoDichRB" layoutX="369.0" layoutY="250.0" mnemonicParsing="false" text="Không">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="yesTiepXucRB" layoutX="466.0" layoutY="283.0" mnemonicParsing="false" text="Có">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="noTiepXucRB" layoutX="601.0" layoutY="283.0" mnemonicParsing="false" text="Không">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="46.0" layoutY="318.0" text="Có triệu chứng:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="hoCB" layoutX="193.0" layoutY="318.0" mnemonicParsing="false" text="Ho">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="sotCB" layoutX="346.0" layoutY="318.0" mnemonicParsing="false" text="Sốt">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="khoThoCB" layoutX="346.0" layoutY="358.0" mnemonicParsing="false" text="Khó thở">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="dauHongCB" layoutX="194.0" layoutY="358.0" mnemonicParsing="false" text="Đau họng">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="khacCB" layoutX="194.0" layoutY="399.0" mnemonicParsing="false" text="Khác:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="282.0" layoutY="468.0" mnemonicParsing="false" onAction="#guiButtonHandler" prefHeight="30.0" prefWidth="69.0" text="Gửi">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="401.0" layoutY="468.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" text="Quay lại">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="khacTF" layoutX="274.0" layoutY="394.0" prefHeight="30.0" prefWidth="419.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
