@@ -72,7 +72,7 @@ public class Change12a implements Initializable {
                 return true;
             } else if (e.getHoten().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
-            } else return e.getNguyenquan().toLowerCase().contains(lowerCaseFilter);
+            } else return e.getNoisinh().toLowerCase().contains(lowerCaseFilter);
         }));
 
         //đồng bộ nó với bảng

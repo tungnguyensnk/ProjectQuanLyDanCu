@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -46,7 +47,9 @@ public class Change134 implements Initializable {
     public Button pdfButton;
     public Label texttmp;
     public Button xacNhanButton;
+    public ToggleGroup sex = new ToggleGroup();
     int mode = 0;
+    String ns = "", tn = "", dn = "", gioi = "";
 
     public int getMode() {
         return mode;
@@ -72,7 +75,6 @@ public class Change134 implements Initializable {
     }
 
     public void xacNhan() throws SQLException, IOException {
-        String ns = "", tn = "", dn = "", gioi = "";
         if (namRadioButton.isSelected())
             gioi = "Nam";
         else
@@ -157,19 +159,19 @@ public class Change134 implements Initializable {
             XWPFRun r5 = p2.createRun();
             r5.setFontSize(14);
             r5.setFontFamily("Times New Roman");
-            r5.setText("Họ và tên: ");
+            r5.setText("Họ và tên: "+hoTenField.getText());
             r5.addBreak();
-            r5.setText("Ngày, tháng, năm sinh: " + " Giới tính: " + " Quốc tịch: ");
+            r5.setText("Ngày, tháng, năm sinh: " +ns+ "    Giới tính: " +gioi+ "  Quốc tịch: "+quocTichField.getText());
             r5.addBreak();
-            r5.setText("CMND số: " + " Hộ chiếu số: ");
+            r5.setText("CMND số: " +CMNDField.getText()+ " Hộ chiếu số: "+hoChieuField.getText());
             r5.addBreak();
-            r5.setText("Nơi thường trú, tạm trú: ");
+            r5.setText("Nơi thường trú, tạm trú: "+noiThuongTruField.getText());
             r5.addBreak();
-            r5.setText("Tạm vắng từ ngày, tháng, năm: " + " đến ngày ");
+            r5.setText("Tạm vắng từ ngày, tháng, năm: " +tn+ " đến ngày "+dn);
             r5.addBreak();
             r5.setText("Lý do tạm vắng và nơi đến:");
             r5.addBreak();
-            r5.setText("");
+            r5.setText(lyDoField.getText());
             r5.addBreak();
             r5.addBreak();
 
@@ -180,7 +182,7 @@ public class Change134 implements Initializable {
             r6.setItalic(true);
             r6.setFontFamily("Times New Roman");
             r6.addTab();
-            r6.setText("ngày " + " tháng " + " năm ");
+            r6.setText("ngày " + LocalDate.now().getDayOfMonth()+" tháng " +LocalDate.now().getMonth().getValue()+ " năm "+LocalDate.now().getYear());
 
             XWPFParagraph p4 = doc.createParagraph();
             p4.setAlignment(ParagraphAlignment.LEFT);
@@ -208,7 +210,7 @@ public class Change134 implements Initializable {
             r8.addTab();
             r8.addTab();
             r8.setText("(Ký, ghi rõ họ tên)");
-            try (OutputStream os = new FileOutputStream("E:\\text.docx")) {
+            try (OutputStream os = new FileOutputStream(System.getProperty("user.dir")+"\\text.docx")) {
                 doc.write(os);
             }
         }
@@ -231,5 +233,9 @@ public class Change134 implements Initializable {
                 lyDoField.setPromptText("Lý do tạm vắng và nơi đến");
             }
         });
+
+        namRadioButton.setToggleGroup(sex);
+        nuRadioButton.setToggleGroup(sex);
+        namRadioButton.setSelected(true);
     }
 }

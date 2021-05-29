@@ -10,10 +10,15 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,7 +65,6 @@ public class Change11a implements Initializable {
 
         //set style cho bảng
         table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
-
         //lắng nghe dữ liệu từ filterField và check dữ liệu hợp lệ
         FilteredList<HoKhau> filteredList = new FilteredList<>(hoKhauList, b -> true);
         filterField.textProperty().addListener((observableValue, oldValue, newValue) -> filteredList.setPredicate(e -> {
@@ -83,19 +87,49 @@ public class Change11a implements Initializable {
         //menu chuột phải
         ContextMenu cm = new ContextMenu();
         MenuItem chiTiet = new MenuItem("Chi tiết");
-        MenuItem ghiChu = new MenuItem("Ghi chú");
-        cm.getItems().addAll(chiTiet, ghiChu);
+        MenuItem chinhSua = new MenuItem("Chỉnh sửa");
+        MenuItem map = new MenuItem("Map");
+        cm.getItems().addAll(chiTiet, chinhSua,map);
 
-        table.addEventHandler(MouseEvent.MOUSE_CLICKED, t -> {
-            if (t.getButton() == MouseButton.SECONDARY) {
-                cm.show(table, t.getScreenX(), t.getScreenY());
+        table.addEventHandler(MouseEvent.MOUSE_CLICKED, context -> {
+            if (context.getButton() == MouseButton.SECONDARY) {
+                cm.show(table, context.getScreenX(), context.getScreenY());
             }
-            if (t.getButton() == MouseButton.PRIMARY) {
+            if (context.getButton() == MouseButton.PRIMARY) {
                 cm.hide();
             }
         });
         chiTiet.setOnAction(actionEvent -> {
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("change12a.fxml"));
+            Parent pr = null;
+            try {
+                pr = loader.load();
+            } catch (IOException e) {
+            }
+            Change12a controller = loader.getController();
+            controller.setMenu(menu);
+            controller.filterField.setText(table.getSelectionModel().getSelectedItems().get(0).getIdho()+"");
+            menu.contentRoot.getChildren().clear();
+            menu.contentRoot.getChildren().add(pr);
+        });
+        chinhSua.setOnAction(actionEvent -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chinhSua.fxml"));
+            Parent pr = null;
+            try {
+                pr = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ChinhSua controller = loader.getController();
+            Scene sc = new Scene(pr,300,400);
+            sc.setFill(Color.TRANSPARENT);
+            Stage mini = new Stage();
+            mini.initStyle(StageStyle.TRANSPARENT);
+            mini.setScene(sc);
+            mini.initModality(Modality.APPLICATION_MODAL);
+            mini.setX(cm.getX());
+            mini.setY(cm.getY());
+            mini.show();
         });
     }
 
