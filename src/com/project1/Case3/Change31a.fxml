@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="panel31" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change31a">
+   <children>
+      <TableView fx:id="lichsh_table" layoutX="13.0" layoutY="87.0" onMouseClicked="#Show" prefHeight="430.0" prefWidth="733.0">
+        <columns>
+          <TableColumn fx:id="stt" prefWidth="44.39999580383301" text="Stt" />
+          <TableColumn fx:id="NgayThang" prefWidth="111.00002670288086" text="Ngày Tháng" />
+            <TableColumn fx:id="DiaDiem" prefWidth="207.0" text="Địa điểm" />
+            <TableColumn fx:id="NoiDung" prefWidth="370.60003662109375" text="Nội Dung" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="14.0" prefHeight="52.0" prefWidth="498.0" text="Lịch sinh hoạt họp tổ dân phố" textFill="#ff0606">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="Back" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#getBack" prefHeight="32.0" prefWidth="58.0" text="Trở về" textAlignment="CENTER" wrapText="true" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="540.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change31b">
+   <children>
+      <Button fx:id="TroVe" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="49.0" prefWidth="75.0" text="Trở về" />
+      <TextField fx:id="TieuDe" alignment="CENTER" layoutX="135.0" layoutY="14.0" prefHeight="72.0" prefWidth="603.0" promptText="Tiêu đề">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></TextField>
+      <TextField fx:id="Content" alignment="TOP_LEFT" layoutX="89.0" layoutY="131.0" prefHeight="380.0" prefWidth="651.0" promptText="Nội dung Thông báo" />
+   </children>
+</AnchorPane>

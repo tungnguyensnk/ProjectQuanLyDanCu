@@ -214,6 +214,23 @@ public class Change134 implements Initializable {
                 doc.write(os);
             }
         }
+        //thông báo thêm thành công
+        Stage alert1 = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
+        Parent pr = loader.load();
+        Alert controller = loader.getController();
+        controller.setTextAlert("Tạo File thành công");
+        Scene sc1 = new Scene(pr);
+        alert1.setScene(sc1);
+        sc1.setFill(Color.TRANSPARENT);
+        alert1.initStyle(StageStyle.TRANSPARENT);
+        alert1.setX(troVe.getScene().getWindow().getX() + 430);
+        alert1.setY(troVe.getScene().getWindow().getY() + 400);
+        alert1.setAlwaysOnTop(true);
+        alert1.show();
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> alert1.close());
+        delay.play();
     }
 
     @Override

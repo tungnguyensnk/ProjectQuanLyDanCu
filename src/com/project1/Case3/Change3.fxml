@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="pane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="760.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change3">
+   <children>
+      <Button fx:id="button_watch" layoutX="63.0" layoutY="121.0" mnemonicParsing="false" onAction="#PressButtonWatch" prefHeight="115.0" prefWidth="290.0" text="Xem lịch sinh hoạt" textAlignment="CENTER" textFill="#2559f5">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Button>
+      <Button fx:id="button_make" layoutX="63.0" layoutY="329.0" mnemonicParsing="false" onAction="#PressButtonMake" prefHeight="115.0" prefWidth="290.0" text="Lên lịch sinh hoạt" textAlignment="CENTER" textFill="#ff0a10">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

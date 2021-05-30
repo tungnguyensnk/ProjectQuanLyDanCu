@@ -1,8 +1,10 @@
 package com.project1.Case1;
 
+import com.project1.Main.Alert;
 import com.project1.Main.GiaoTiep;
 import com.project1.Main.HoKhau;
 import com.project1.Main.Menu;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -20,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -180,7 +183,7 @@ public class Change11a implements Initializable {
     /**
      * in file Excel
      */
-    public void inExcel() {
+    public void inExcel() throws IOException {
         try (XSSFWorkbook workbook = new XSSFWorkbook()) {
             XSSFSheet xssfSheet = workbook.createSheet("Danh Sách Hộ Khẩu");
             List<HoKhau> list = GiaoTiep.getHoKhau();
@@ -248,12 +251,29 @@ public class Change11a implements Initializable {
                 cell.setCellValue(hoKhau.getGhichu());
                 cell.setCellStyle(border);
             }
-            File file = new File(System.getProperty("user.dir") + "//text.xlsx");
+            File file = new File(System.getProperty("user.dir") + "//hokhau.xlsx");
             try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
                 workbook.write(fileOutputStream);
             }
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
+        //thông báo thêm thành công
+        Stage alert1 = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
+        Parent pr = loader.load();
+        Alert controller = loader.getController();
+        controller.setTextAlert("Tạo File thành công");
+        Scene sc1 = new Scene(pr);
+        alert1.setScene(sc1);
+        sc1.setFill(Color.TRANSPARENT);
+        alert1.initStyle(StageStyle.TRANSPARENT);
+        alert1.setX(troVe.getScene().getWindow().getX() + 430);
+        alert1.setY(troVe.getScene().getWindow().getY() + 400);
+        alert1.setAlwaysOnTop(true);
+        alert1.show();
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> alert1.close());
+        delay.play();
     }
 }

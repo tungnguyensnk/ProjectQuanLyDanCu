@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="save" prefHeight="98.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change32b">
+   <children>
+      <Button fx:id="ok" layoutX="160.0" layoutY="68.0" mnemonicParsing="false" onAction="#Back" text="OK" />
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="54.0" prefWidth="325.0" text="Lưu thông báo thành công" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

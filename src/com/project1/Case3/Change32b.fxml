@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="panel32b" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change32b">
+   <children>
+      <TextField fx:id="TieuDe" editable="false" layoutX="106.0" layoutY="31.0" prefHeight="56.0" prefWidth="640.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </TextField>
+      <Button fx:id="QuayLai" layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#pressQuayLai" prefHeight="39.0" prefWidth="66.0" text="Quay lại" />
+      <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" text="Xuất ra file PDF" />
+      <Button fx:id="Save" layoutX="14.0" layoutY="468.0" mnemonicParsing="false" onAction="#pressSave" prefHeight="39.0" prefWidth="87.0" text="Lưu lại" textFill="RED">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="114.0" text="Xuất ra file Word" />
+      <Label fx:id="dong1" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="94.0" prefHeight="33.0" prefWidth="622.0" text="Cộng hòa Xã hội Chủ nghĩa Việt Nam" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <Label fx:id="dong2" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="120.0" prefHeight="34.0" prefWidth="622.0" text="Độc lập - Tự do - Hạnh phúc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="time" layoutX="407.0" layoutY="172.0" prefHeight="26.0" prefWidth="308.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="dong3" alignment="CENTER" contentDisplay="CENTER" layoutX="93.0" layoutY="143.0" prefHeight="39.0" prefWidth="622.0" text="THÔNG BÁO">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="dong4" alignment="TOP_LEFT" layoutX="139.0" layoutY="197.0" prefHeight="153.0" prefWidth="392.0" promptText="Nhập vào thông báo" />
+      <TextField fx:id="dong5" layoutX="139.0" layoutY="351.0" onAction="#ShowThoiGian" prefHeight="26.0" prefWidth="392.0" promptText="Nhập giờ (Enter)" />
+      <TextField fx:id="dong6" layoutX="139.0" layoutY="377.0" onAction="#ShowDiaDiem" prefHeight="26.0" prefWidth="392.0" promptText="Địa điểm" />
+      <Label fx:id="dong7" layoutX="139.0" layoutY="403.0" prefHeight="26.0" prefWidth="392.0" text="Kính mong các ông (bà) đến đầy đủ và đúng giờ." />
+      <Label fx:id="dong8" layoutX="139.0" layoutY="429.0" prefHeight="26.0" prefWidth="392.0" text="Thông báo này thay cho giấy mời." />
+      <Label fx:id="dong9" layoutX="568.0" layoutY="442.0" prefHeight="26.0" prefWidth="152.0" text="T/M Ban quản lí tổ dân phố" />
+      <Label fx:id="dong10" alignment="CENTER" contentDisplay="CENTER" layoutX="611.0" layoutY="462.0" prefHeight="26.0" prefWidth="66.0" text="Tổ trưởng" />
+   </children>
+</AnchorPane>
