@@ -20,14 +20,18 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * chức năng 1-1a: hiển thị dạng bảng
@@ -92,7 +96,7 @@ public class Change11a implements Initializable {
         MenuItem chiTiet = new MenuItem("Chi tiết");
         MenuItem chinhSua = new MenuItem("Chỉnh sửa");
         MenuItem map = new MenuItem("Map");
-        cm.getItems().addAll(chiTiet, chinhSua,map);
+        cm.getItems().addAll(chiTiet, chinhSua, map);
 
         table.addEventHandler(MouseEvent.MOUSE_CLICKED, context -> {
             if (context.getButton() == MouseButton.SECONDARY) {
@@ -103,20 +107,22 @@ public class Change11a implements Initializable {
             }
         });
 
+        //chức năng chi tiết chuột phải
         chiTiet.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("change12a.fxml"));
             Parent pr = null;
             try {
                 pr = loader.load();
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
             Change12a controller = loader.getController();
             controller.setMenu(menu);
-            controller.filterField.setText(table.getSelectionModel().getSelectedItems().get(0).getIdho()+"");
+            controller.filterField.setText(table.getSelectionModel().getSelectedItems().get(0).getIdho() + "");
             menu.contentRoot.getChildren().clear();
             menu.contentRoot.getChildren().add(pr);
         });
 
+        //chức năng chỉnh sửa chuột phải
         chinhSua.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chinhSua.fxml"));
             Parent pr = null;
@@ -127,7 +133,7 @@ public class Change11a implements Initializable {
             }
             ChinhSua controller = loader.getController();
             controller.setIdho(table.getSelectionModel().getSelectedItems().get(0).getIdho());
-            Scene sc = new Scene(pr,300,400);
+            Scene sc = new Scene(pr, 300, 400);
             sc.setFill(Color.TRANSPARENT);
             Stage mini = new Stage();
             mini.initStyle(StageStyle.TRANSPARENT);
@@ -138,6 +144,7 @@ public class Change11a implements Initializable {
             mini.show();
         });
 
+        //chức năng hiển thị map chuột phải
         map.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("map.fxml"));
             Parent pr;
@@ -145,8 +152,8 @@ public class Change11a implements Initializable {
                 pr = loader.load();
                 Mapht controller = loader.getController();
                 ArrayList<Double> arrayList = GiaoTiep.getXY(table.getSelectionModel().getSelectedItems().get(0).getPlaceid());
-                controller.setXY(arrayList.get(0),arrayList.get(1));
-                Scene sc = new Scene(pr,450,350);
+                controller.setXY(arrayList.get(0), arrayList.get(1));
+                Scene sc = new Scene(pr, 450, 350);
                 sc.setFill(Color.TRANSPARENT);
                 Stage mini = new Stage();
                 mini.initStyle(StageStyle.TRANSPARENT);
@@ -170,6 +177,83 @@ public class Change11a implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void inExcel(ActionEvent actionEvent) {
+    /**
+     * in file Excel
+     */
+    public void inExcel() {
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            XSSFSheet xssfSheet = workbook.createSheet("Danh Sách Hộ Khẩu");
+            List<HoKhau> list = GiaoTiep.getHoKhau();
+
+            int rownum = 0;
+            Cell cell;
+            Row row;
+
+            XSSFCellStyle border = workbook.createCellStyle();
+            border.setBorderTop(BorderStyle.THIN);
+            border.setBorderBottom(BorderStyle.THIN);
+            border.setBorderLeft(BorderStyle.THIN);
+            border.setBorderRight(BorderStyle.THIN);
+            border.setAlignment(HorizontalAlignment.CENTER);
+            border.setVerticalAlignment(VerticalAlignment.CENTER);
+
+            XSSFCellStyle headerStyle = workbook.createCellStyle();
+            headerStyle.cloneStyleFrom(border);
+
+            headerStyle.setAlignment(HorizontalAlignment.CENTER);
+            headerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+            headerStyle.setFillBackgroundColor(IndexedColors.SEA_GREEN.getIndex());
+            headerStyle.setFillPattern(FillPatternType.FINE_DOTS);
+
+            row = xssfSheet.createRow(rownum);
+
+            cell = row.createCell(0, CellType.STRING);
+            cell.setCellValue("Số hộ khẩu");
+            cell.setCellStyle(headerStyle);
+
+            cell = row.createCell(1, CellType.STRING);
+            cell.setCellValue("Họ tên chủ hộ");
+            cell.setCellStyle(headerStyle);
+
+            cell = row.createCell(2, CellType.STRING);
+            cell.setCellValue("Địa chỉ");
+            cell.setCellStyle(headerStyle);
+
+            cell = row.createCell(3, CellType.STRING);
+            cell.setCellValue("Ghi chú");
+            cell.setCellStyle(headerStyle);
+
+            xssfSheet.setColumnWidth(0,3000);
+            xssfSheet.setColumnWidth(1,7000);
+            xssfSheet.setColumnWidth(2,15000);
+            xssfSheet.setColumnWidth(3,10000);
+
+            for (HoKhau hoKhau : list) {
+                rownum++;
+                row = xssfSheet.createRow(rownum);
+
+                cell = row.createCell(0, CellType.STRING);
+                cell.setCellValue(hoKhau.getIdho());
+                cell.setCellStyle(border);
+
+                cell = row.createCell(1, CellType.STRING);
+                cell.setCellValue(hoKhau.getHotenchu());
+                cell.setCellStyle(border);
+
+                cell = row.createCell(2, CellType.STRING);
+                cell.setCellValue(hoKhau.getDiachi());
+                cell.setCellStyle(border);
+
+                cell = row.createCell(3, CellType.STRING);
+                cell.setCellValue(hoKhau.getGhichu());
+                cell.setCellStyle(border);
+            }
+            File file = new File(System.getProperty("user.dir") + "//text.xlsx");
+            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                workbook.write(fileOutputStream);
+            }
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

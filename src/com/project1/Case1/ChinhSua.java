@@ -18,6 +18,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * hiển thị stage chỉnh sửa hộ khẩu
+ */
 public class ChinhSua implements Initializable {
     public AnchorPane root;
     public Label soHoKhauLabel;
@@ -47,6 +50,7 @@ public class ChinhSua implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //thiết lập movable cho root
         root.setOnMousePressed(mouseEvent -> {
             xOffset = mouseEvent.getSceneX();
             yOffset = mouseEvent.getSceneY();
@@ -55,6 +59,8 @@ public class ChinhSua implements Initializable {
             root.getScene().getWindow().setX(mouseEvent.getScreenX() - xOffset);
             root.getScene().getWindow().setY(mouseEvent.getScreenY() - yOffset);
         });
+
+        //hẹn giờ 10ms cho việc hiển thị dữ liệu, do FXML đang load nên idho = 0
         PauseTransition delay = new PauseTransition(Duration.millis(10));
         delay.setOnFinished(event -> {
             try {
@@ -69,6 +75,7 @@ public class ChinhSua implements Initializable {
                 diaChiField.setText(hoKhau.getDiachi());
                 ghiChiField.setText(hoKhau.getGhichu());
 
+                //tooltip hiển thị chi tiết mục quá dài
                 Tooltip tooltip1 = new Tooltip(diaChiLabel.getText());
                 tooltip1.setShowDelay(Duration.millis(300));
                 Tooltip.install(diaChiLabel,tooltip1);
@@ -80,6 +87,7 @@ public class ChinhSua implements Initializable {
             }
         });
         delay.play();
+
         soHoKhauField.setDisable(true);
         hoTenChuField.setDisable(true);
         soHoKhauField.setVisible(false);
@@ -87,7 +95,10 @@ public class ChinhSua implements Initializable {
         hoTenChuField.setVisible(false);
         ghiChiField.setVisible(false);
 
+        //tạo phím tắt
         root.addEventFilter(KeyEvent.KEY_PRESSED,keyEvent -> {
+
+            //Ctrl+E để edit
             if(KeyCombination.keyCombination("Ctrl+E").match(keyEvent)){
                 soHoKhauLabel.setVisible(false);
                 hoTenChuLabel.setVisible(false);
@@ -99,6 +110,8 @@ public class ChinhSua implements Initializable {
                 hoTenChuField.setVisible(true);
                 ghiChiField.setVisible(true);
             }
+
+            //Ctrl+S để lưu và update dữ liệu lên DB
             if(KeyCombination.keyCombination("Ctrl+S").match(keyEvent)){
                 soHoKhauLabel.setText(soHoKhauField.getText());
                 hoTenChuLabel.setText(hoTenChuField.getText());

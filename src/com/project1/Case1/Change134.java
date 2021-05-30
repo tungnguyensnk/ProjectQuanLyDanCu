@@ -210,7 +210,7 @@ public class Change134 implements Initializable {
             r8.addTab();
             r8.addTab();
             r8.setText("(Ký, ghi rõ họ tên)");
-            try (OutputStream os = new FileOutputStream(System.getProperty("user.dir")+"\\text.docx")) {
+            try (OutputStream os = new FileOutputStream(System.getProperty("user.dir")+"//text.docx")) {
                 doc.write(os);
             }
         }
