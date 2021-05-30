@@ -33,7 +33,6 @@ public class Case41Controller implements Initializable {
     @FXML private TextField hoVaTenTF;
     @FXML private TextField idNhanKhauTF;
     @FXML private TextField soDienThoaiTF;
-    @FXML private TextField khacTF;
 
     @FXML private RadioButton yesDenNoiCoDichRB;
     @FXML private RadioButton noDenNoiCoDichRB;
@@ -47,6 +46,8 @@ public class Case41Controller implements Initializable {
     @FXML private CheckBox khoThoCB;
     @FXML private CheckBox khacCB;
 
+    @FXML private TextArea khacTA;
+
     private ToggleGroup denNoiCoDichTG = new ToggleGroup();
     private ToggleGroup tiepXucTG = new ToggleGroup();
 
@@ -56,6 +57,12 @@ public class Case41Controller implements Initializable {
         noDenNoiCoDichRB.setToggleGroup(denNoiCoDichTG);
         yesTiepXucRB.setToggleGroup(tiepXucTG);
         noTiepXucRB.setToggleGroup(tiepXucTG);
+
+        khacTA.setDisable(true);
+        khacCB.selectedProperty().addListener((observableValue, oldBoolean, newBoolean) -> {
+            Boolean booleanVal = (1 - (newBoolean ? 1 : 0)) > 0;
+            khacTA.setDisable(booleanVal);
+        });
     }
 
     /**
@@ -80,35 +87,20 @@ public class Case41Controller implements Initializable {
 
         String trieuChung = "";
 
-        if (hoCB.isSelected()) {
-            if (trieuChung.length() > 0)
-                trieuChung += ", ";
-            trieuChung += "ho";
-        }
+        if (hoCB.isSelected())
+            trieuChung += "ho\n";
 
-        if (sotCB.isSelected()) {
-            if (trieuChung.length() > 0)
-                trieuChung += ", ";
-            trieuChung += "sốt";
-        }
+        if (sotCB.isSelected())
+            trieuChung += "sốt\n";
 
-        if (dauHongCB.isSelected()) {
-            if (trieuChung.length() > 0)
-                trieuChung += ", ";
-            trieuChung += "đau họng";
-        }
+        if (dauHongCB.isSelected())
+            trieuChung += "đau họng\n";
 
-        if (khoThoCB.isSelected()) {
-            if (trieuChung.length() > 0)
-                trieuChung += ", ";
-            trieuChung += "khó thở";
-        }
+        if (khoThoCB.isSelected())
+            trieuChung += "khó thở\n";
 
-        if (khacCB.isSelected()) {
-            if (trieuChung.length() > 0)
-                trieuChung += ", ";
-            trieuChung += khacTF.getText();
-        }
+        if (khacCB.isSelected())
+            trieuChung += khacTA.getText();
 
         toKhai.setTrieuChung(trieuChung);
 

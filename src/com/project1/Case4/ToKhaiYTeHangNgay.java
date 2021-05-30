@@ -10,7 +10,8 @@ public class ToKhaiYTeHangNgay {
     private String trieuChung;
     private Boolean daXem;
 
-    public ToKhaiYTeHangNgay(String ngayNop, String hoVaTen, String idNhanKhau, String soDienThoai, Boolean denNoiCoDich, Boolean tiepXuc, String trieuChung, Boolean daXem) {
+    public ToKhaiYTeHangNgay(String ngayNop, String hoVaTen, String idNhanKhau, String soDienThoai,
+                             Boolean denNoiCoDich, Boolean tiepXuc, String trieuChung, Boolean daXem) {
         this.ngayNop = ngayNop;
         this.hoVaTen = hoVaTen;
         this.idNhanKhau = idNhanKhau;

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case4.Case43aController">
+   <children>
+      <Label layoutX="175.0" layoutY="14.0" style="-fx-font-weight: bold" text="CHỈNH SỬA THÔNG TIN SỨC KHỎE NGƯỜI DÂN" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="56.0" text="Họ và tên: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="hoVaTenLabel" layoutX="113.0" layoutY="56.0" prefHeight="20.0" prefWidth="590.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="88.0" text="Giới tính: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="88.0" text="Ngày sinh: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="gioiTinhLabel" layoutX="104.0" layoutY="88.0" prefHeight="20.0" prefWidth="107.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="ngaySinhLabel" layoutX="380.0" layoutY="88.0" prefHeight="20.0" prefWidth="212.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="119.0" text="ID hộ khẩu: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="298.0" layoutY="119.0" text="ID nhân khẩu">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="idHoKhauLabel" layoutX="125.0" layoutY="119.0" prefHeight="20.0" prefWidth="156.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="idNhanKhauLabel" layoutX="399.0" layoutY="119.0" prefHeight="20.0" prefWidth="191.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="175.0" layoutY="154.0" prefHeight="20.0" prefWidth="411.0" text="------------------------------------------------------------------------">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="186.0" text="Tình trạng: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="tinhTrangCBB" layoutX="128.0" layoutY="184.0" prefWidth="150.0" />
+      <Label layoutX="39.0" layoutY="229.0" text="Nguồn lây: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="270.0" text="Nơi cách ly: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="309.0" text="Nơi điều trị: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="309.0" text="Ngày bắt đầu điều trị: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="426.0" layoutY="270.0" text="Ngày bắt đầu cách ly: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="ngayBatDauCachLyDP" layoutX="576.0" layoutY="268.0" prefHeight="25.0" prefWidth="137.0" />
+      <DatePicker fx:id="ngayBatDauDieuTriDP" layoutX="576.0" layoutY="307.0" prefHeight="25.0" prefWidth="137.0" />
+      <TextField fx:id="nguonLayTF" layoutX="128.0" layoutY="227.0" prefHeight="25.0" prefWidth="583.0" />
+      <TextField fx:id="noiCachLyTF" layoutX="128.0" layoutY="268.0" prefHeight="25.0" prefWidth="280.0" />
+      <TextField fx:id="noiDieuTriTF" layoutX="128.0" layoutY="307.0" prefHeight="25.0" prefWidth="280.0" />
+      <Label layoutX="41.0" layoutY="352.0" text="Kết quả các lần xét nghiệm Covid-19: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="381.0" text="Lần 1: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="410.0" text="Lần 2: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="440.0" text="Lần 3: ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="lan1AmRB" layoutX="181.0" layoutY="381.0" mnemonicParsing="false" text="Âm tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan1DuongRB" layoutX="298.0" layoutY="381.0" mnemonicParsing="false" text="Dương tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan2AmRB" layoutX="181.0" layoutY="410.0" mnemonicParsing="false" text="Âm tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan2DuongRB" layoutX="298.0" layoutY="410.0" mnemonicParsing="false" text="Dương tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan3AmRB" layoutX="181.0" layoutY="440.0" mnemonicParsing="false" text="Âm tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan3DuongRB" layoutX="298.0" layoutY="440.0" mnemonicParsing="false" text="Dương tính">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan1ChuaRB" layoutX="434.0" layoutY="381.0" mnemonicParsing="false" text="Chưa xét nghiệm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan2ChuaRB" layoutX="434.0" layoutY="410.0" mnemonicParsing="false" text="Chưa xét nghiệm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="lan3ChuaRB" layoutX="434.0" layoutY="440.0" mnemonicParsing="false" text="Chưa xét nghiệm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Button layoutX="261.0" layoutY="487.0" mnemonicParsing="false" onAction="#xacNhanButtonHandler" text="Xác nhận">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="400.0" layoutY="487.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" text="Quay lại">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="719.0" layoutY="270.0" mnemonicParsing="false" onAction="#x1ButtonHandler" text="X">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="719.0" layoutY="309.0" mnemonicParsing="false" onAction="#x2ButtonHandler" text="X">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

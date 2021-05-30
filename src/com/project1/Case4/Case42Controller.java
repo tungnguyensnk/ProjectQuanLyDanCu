@@ -90,6 +90,8 @@ public class Case42Controller implements Initializable {
          */
         Dialog<Void> chiTietDialog = new Dialog<>();
         chiTietDialog.setTitle("Chi tiết tờ khai y tế");
+        chiTietDialog.getDialogPane().setMinHeight(350);
+        chiTietDialog.getDialogPane().setMinWidth(450);
         chiTietDialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
 
         /**
@@ -99,13 +101,13 @@ public class Case42Controller implements Initializable {
         chiTietGrid.setHgap(10);
         chiTietGrid.setVgap(10);
 
-        Label hoVaTenLabel = new Label("Họ và tên: ");
-        Label ngayNopLabel = new Label("Ngày nộp tờ khai: ");
-        Label idNhanKhauLabel = new Label("ID nhân khẩu: ");
-        Label soDienThoaiLabel = new Label("Số điện thoại: ");
-        Label denNoiCoDichLabel = new Label("Đến nới có dịch lưu hành: ");
-        Label tiepXucLabel = new Label("Tiếp xúc với người xác định hoặc nghi nhiễm Covid-19: ");
-        Label trieuChungLabel = new Label("Triệu chứng: ");
+        Label hoVaTenLabel = new Label("- Họ và tên: ");
+        Label ngayNopLabel = new Label("- Ngày nộp tờ khai: ");
+        Label idNhanKhauLabel = new Label("- ID nhân khẩu: ");
+        Label soDienThoaiLabel = new Label("- Số điện thoại: ");
+        Label denNoiCoDichLabel = new Label("- Đến nới có dịch lưu hành: ");
+        Label tiepXucLabel = new Label("- Tiếp xúc với người xác định hoặc nghi nhiễm Covid-19: ");
+        Label trieuChungLabel = new Label("- Triệu chứng: ");
 
         Label hoVaTenNoiDungLabel = new Label(toKhai.getHoVaTen());
         Label ngayNopNoiDungLabel = new Label(toKhai.getNgayNop());
@@ -135,6 +137,7 @@ public class Case42Controller implements Initializable {
         chiTietGrid.add(denNoiCoDichLabel, 0, 4);
         chiTietGrid.add(tiepXucLabel, 0, 5);
         chiTietGrid.add(trieuChungLabel, 0, 6);
+        chiTietGrid.add(trieuChungNoiDungLabel, 0, 7);
 
         chiTietGrid.add(hoVaTenNoiDungLabel, 1, 0);
         chiTietGrid.add(ngayNopNoiDungLabel, 1, 1);
@@ -142,7 +145,6 @@ public class Case42Controller implements Initializable {
         chiTietGrid.add(soDienThoaiNoiDungLabel, 1, 3);
         chiTietGrid.add(denNoiCoDichNoiDungLabel, 1, 4);
         chiTietGrid.add(tiepXucNoiDungLabel, 1, 5);
-        chiTietGrid.add(trieuChungNoiDungLabel, 1, 6);
 
         chiTietDialog.getDialogPane().setContent(chiTietGrid);
 

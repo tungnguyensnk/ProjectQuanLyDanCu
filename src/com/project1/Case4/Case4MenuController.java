@@ -60,8 +60,23 @@ public class Case4MenuController {
         menu.contentRoot.getChildren().add(parent);
     }
 
-    public void case43ButtonHandler(ActionEvent clickCase43Button) {
+    /**
+     * Chuyển sang chức năng 4.3: Bảng theo dõi sức khỏe người dân
+     * @param clickCase43Button
+     * @throws IOException
+     */
+    public void case43ButtonHandler(ActionEvent clickCase43Button) throws IOException {
+        FXMLLoader case43Loader = new FXMLLoader();
+        URL url = Objects.requireNonNull(getClass().getResource("Case43.fxml"));
+        case43Loader.setLocation(url);
 
+        Parent parent = case43Loader.load();
+
+        Case43Controller controller = case43Loader.getController();
+        controller.setMenu(menu);
+
+        menu.contentRoot.getChildren().clear();
+        menu.contentRoot.getChildren().add(parent);
     }
 
     /**

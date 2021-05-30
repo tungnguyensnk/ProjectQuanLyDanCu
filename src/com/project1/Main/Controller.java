@@ -1,5 +1,6 @@
 package com.project1.Main;
 
+import com.project1.Case4.SucKhoeNguoiDanGiaoTiep;
 import com.project1.Case4.ToKhaiYTeHangNgayGiaoTiep;
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
@@ -47,6 +48,10 @@ public class Controller implements Initializable {
          */
         ToKhaiYTeHangNgayGiaoTiep.setConnection(con);
 
+        /**
+         * Lấy kết nối cho lớp SucKhoeNguoiDanGiaoTiep
+         */
+        SucKhoeNguoiDanGiaoTiep.setConnection(con);
         /**
          * nếu kq không rỗng,tạo hiệu ứng thu nhỏ màn hình đăng nhập rồi phóng to màn hình menu
          */

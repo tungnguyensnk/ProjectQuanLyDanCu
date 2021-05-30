@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case4.Case43Controller">
+   <children>
+      <TableView fx:id="table" layoutX="27.0" layoutY="30.0" prefHeight="477.0" prefWidth="612.0">
+        <columns>
+          <TableColumn fx:id="idHoKhauColumn" prefWidth="94.0" text="ID hộ khẩu" />
+          <TableColumn fx:id="idNhanKhauColumn" prefWidth="84.0" text="ID nhân khẩu" />
+            <TableColumn fx:id="hoVaTenColumn" prefWidth="187.0" text="Họ và tên" />
+            <TableColumn fx:id="gioiTinhColumn" prefWidth="57.0" text="Giới tính" />
+            <TableColumn fx:id="ngaySinhColumn" prefWidth="93.0" text="Ngày sinh" />
+            <TableColumn fx:id="tinhTrangColumn" prefWidth="96.0" text="Tình trạng" />
+        </columns>
+      </TableView>
+      <Button layoutX="657.0" layoutY="30.0" mnemonicParsing="false" onAction="#chiTietButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Chi tiết">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="657.0" layoutY="75.0" mnemonicParsing="false" onAction="#chinhSuaButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Chỉnh sửa">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="657.0" layoutY="121.0" mnemonicParsing="false" onAction="#timKienButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Tìm kiếm">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="657.0" layoutY="477.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Quay lại">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

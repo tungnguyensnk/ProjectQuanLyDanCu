@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -115,20 +116,20 @@
             <Font size="14.0" />
          </font>
       </CheckBox>
-      <Button layoutX="282.0" layoutY="468.0" mnemonicParsing="false" onAction="#guiButtonHandler" prefHeight="30.0" prefWidth="69.0" text="Gửi">
+      <Button layoutX="282.0" layoutY="489.0" mnemonicParsing="false" onAction="#guiButtonHandler" prefHeight="30.0" prefWidth="69.0" text="Gửi">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="401.0" layoutY="468.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" text="Quay lại">
+      <Button layoutX="401.0" layoutY="489.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" text="Quay lại">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="khacTF" layoutX="274.0" layoutY="394.0" prefHeight="30.0" prefWidth="419.0">
+      <TextArea fx:id="khacTA" layoutX="274.0" layoutY="399.0" prefHeight="71.0" prefWidth="423.0">
          <font>
             <Font size="14.0" />
          </font>
-      </TextField>
+      </TextArea>
    </children>
 </AnchorPane>
