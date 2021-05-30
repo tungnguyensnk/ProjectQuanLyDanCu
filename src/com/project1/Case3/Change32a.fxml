@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="panel32a" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change32a">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="133.0" layoutY="14.0" prefHeight="73.0" prefWidth="594.0" text="Lên lịch sinh hoạt, họp tổ dân phố" textAlignment="CENTER" textFill="#f80101">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_return" layoutX="24.0" layoutY="32.0" mnemonicParsing="false" onAction="#setButton_return" prefHeight="37.0" prefWidth="72.0" text="Trở về" />
+      <TextField fx:id="Place" layoutX="255.0" layoutY="244.0" prefHeight="51.0" prefWidth="386.0" promptText="Địa điểm">
+         <font>
+            <Font size="17.0" />
+         </font></TextField>
+      <DatePicker fx:id="Date" layoutX="39.0" layoutY="141.0" onAction="#getDate" prefHeight="51.0" prefWidth="216.0" promptText="Thời gian" />
+      <ComboBox fx:id="Content" layoutX="39.0" layoutY="344.0" onAction="#getContent" prefHeight="51.0" prefWidth="304.0" promptText="Nội Dung" />
+      <Button fx:id="next" layoutX="538.0" layoutY="447.0" mnemonicParsing="false" onAction="#button_next" prefHeight="51.0" prefWidth="103.0" text="Tiếp theo">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

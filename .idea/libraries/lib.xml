@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-15.0.1/lib" />
+      <root url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-16/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-15.0.1/lib" />
+      <root url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-16/lib" />
     </SOURCES>
-    <jarDirectory url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-16/lib" recursive="false" />
+    <jarDirectory url="file://C:/thuvien/thuvien/JavaFX/javafx-sdk-16/lib" recursive="false" type="SOURCES" />
   </library>
 </component>

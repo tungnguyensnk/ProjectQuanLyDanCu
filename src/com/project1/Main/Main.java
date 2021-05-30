@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -25,6 +24,7 @@ public class Main extends Application {
         Scene sc = new Scene(root, 711, 400);
         /**
          * set màu và kiểu trong suốt để lấy bo góc tuyệt đối
+         * tạo khả năng movable
          */
         root.setOnMousePressed(mouseEvent -> {
             xOffset = mouseEvent.getSceneX();
