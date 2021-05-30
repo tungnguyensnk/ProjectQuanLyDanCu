@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case4.Case4MenuController">
+   <children>
+      <Button layoutX="289.0" layoutY="116.0" mnemonicParsing="false" onAction="#case41ButtonHandler" prefHeight="73.0" prefWidth="183.0" text="Tờ khai y tế">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="289.0" layoutY="233.0" mnemonicParsing="false" onAction="#case42ButtonHandler" prefHeight="73.0" prefWidth="183.0" text="Danh sách&#10;tờ khai y tế" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="289.0" layoutY="351.0" mnemonicParsing="false" onAction="#case43ButtonHandler" prefHeight="73.0" prefWidth="183.0" text="Thông tin Covid-19&#10;của người dân" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="626.0" layoutY="460.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" text="Quay lại">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,6 +1,7 @@
 package com.project1.Main;
 
 import com.project1.Case1.Change1;
+import com.project1.Case4.Case4MenuController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,7 +83,21 @@ public class Menu implements Initializable {
     public void change3() {
     }
 
-    public void change4() {
+    /**
+     * chức năng 4: quản lí thông tin phòng tránh Covid-19
+     */
+    public void change4() throws IOException {
+        FXMLLoader case4MenuLoader = new FXMLLoader();
+        URL url = Objects.requireNonNull(getClass().getResource("../Case4/Case4Menu.fxml"));
+        case4MenuLoader.setLocation(url);
+
+        Parent parent = case4MenuLoader.load();
+
+        Case4MenuController controller = case4MenuLoader.getController();
+        controller.setMenu(this);
+
+        contentRoot.getChildren().clear();
+        contentRoot.getChildren().add(parent);
     }
 
     /**

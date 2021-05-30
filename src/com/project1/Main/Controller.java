@@ -1,5 +1,6 @@
 package com.project1.Main;
 
+import com.project1.Case4.ToKhaiYTeHangNgayGiaoTiep;
 import javafx.animation.PauseTransition;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,12 @@ public class Controller implements Initializable {
      */
     public void loginCheck() throws IOException {
         Connection con = GiaoTiep.connect(userName.getText(), passWord.getText());
+
+        /**
+         * Lấy kết nối cho lớp ToKhaiYTeHangNgayGiaoTiep
+         */
+        ToKhaiYTeHangNgayGiaoTiep.setConnection(con);
+
         /**
          * nếu kq không rỗng,tạo hiệu ứng thu nhỏ màn hình đăng nhập rồi phóng to màn hình menu
          */
