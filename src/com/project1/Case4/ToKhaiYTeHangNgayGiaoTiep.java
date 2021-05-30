@@ -64,4 +64,12 @@ public class ToKhaiYTeHangNgayGiaoTiep {
         Statement updateSTM = connection.createStatement();
         updateSTM.executeUpdate(sql);
     }
+
+    public static void updateDaXem(ToKhaiYTeHangNgay toKhai) throws SQLException {
+        String sql = "update tokhaiytehangngay set daXem = true where idNhanKhau = '" + toKhai.getIdNhanKhau() + "'";
+
+        Statement updateSTM = connection.createStatement();
+
+        updateSTM.executeUpdate(sql);
+    }
 }
