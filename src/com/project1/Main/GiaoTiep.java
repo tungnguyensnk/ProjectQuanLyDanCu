@@ -263,8 +263,9 @@ public class GiaoTiep {
     public static ArrayList<String> getDanhSachViTri(String data) {
         try {
             ArrayList<String> arrayList = new ArrayList<>();
-            URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")+"&key=AIzaSyCXDvtmIuGqe" +
-                    "jjqL75Q1-9_83MQ3k_difg");
+            URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")
+                    +"&key=AIzaSyCmbwQ1Q8IjG" +
+                    "DUEnTZu-LctYi5zWL88Tjs");
             InputStream inputStream = url.openStream();
             JsonReader jsonReader = Json.createReader(inputStream);
             JsonObject jsonObject = jsonReader.readObject();
@@ -301,7 +302,8 @@ public class GiaoTiep {
             ArrayList<Double> arrayList = new ArrayList<>();
             URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?place_id=" +
                     placeid +
-                    "&key=AIzaSyCXDvtmIuGqejjqL75Q1-9_83MQ3k_difg");
+                    "&key=AIzaSyCmbwQ1Q8IjG" +
+                    "DUEnTZu-LctYi5zWL88Tjs");
             InputStream inputStream = url.openStream();
             JsonReader jsonReader = Json.createReader(inputStream);
             JsonObject jsonObject = jsonReader.readObject();
