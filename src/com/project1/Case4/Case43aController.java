@@ -98,13 +98,13 @@ public class Case43aController implements Initializable {
         if (selectedRecord.getNoiCachLy() != null)
             noiCachLyTF.setText(selectedRecord.getNoiCachLy());
 
-        if (selectedRecord.getNgayBatDauCachLy() != null && !selectedRecord.getNgayBatDauCachLy().equals(""))
+        if (selectedRecord.getNgayBatDauCachLy() != null && !selectedRecord.getNgayBatDauCachLy().isEmpty())
         ngayBatDauCachLyDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauCachLy()));
 
         if (selectedRecord.getNoiDieuTri() != null)
             noiDieuTriTF.setText(selectedRecord.getNoiDieuTri());
 
-        if (selectedRecord.getNgayBatDauDieuTri() != null && !selectedRecord.getNgayBatDauDieuTri().equals(""))
+        if (selectedRecord.getNgayBatDauDieuTri() != null && !selectedRecord.getNgayBatDauDieuTri().isEmpty())
         ngayBatDauDieuTriDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauDieuTri()));
 
         lan1TG = new ToggleGroup();
@@ -133,20 +133,27 @@ public class Case43aController implements Initializable {
     }
 
     /**
-     * Xóa DatePicker ngayBatDauCachLy
+     * Mấy nút xóa thông tin
      *
-     * @param clickX1Button
+     * @param actionEvent
      */
-    public void x1ButtonHandler(ActionEvent clickX1Button) {
+    public void xNguonLayButtonHandler(ActionEvent actionEvent) {
+        nguonLayTF.setText("");
+    }
+
+    public void xNoiCachLyButtonHandler(ActionEvent actionEvent) {
+        noiCachLyTF.setText("");
+    }
+
+    public void xNoiDieuTriButtonHandler(ActionEvent actionEvent) {
+        noiDieuTriTF.setText("");
+    }
+
+    public void xNgayCachLyButtonHandler(ActionEvent actionEvent) {
         ngayBatDauCachLyDP.setValue(null);
     }
 
-    /**
-     * Xóa DatePicker ngayBatDauDieuTri
-     *
-     * @param clickX2Button
-     */
-    public void x2ButtonHandler(ActionEvent clickX2Button) {
+    public void xNgayDieuTriButtonHandler(ActionEvent actionEvent) {
         ngayBatDauDieuTriDP.setValue(null);
     }
 

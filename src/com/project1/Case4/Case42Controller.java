@@ -5,11 +5,15 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
@@ -40,6 +44,8 @@ public class Case42Controller implements Initializable {
     @FXML private TableColumn<ToKhaiYTeHangNgay, String> idNhanKhauColumn;
     @FXML private TableColumn<ToKhaiYTeHangNgay, String> soDienThoaiColumn;
     @FXML private TableColumn<ToKhaiYTeHangNgay, String> trangThaiColumn;
+
+    @FXML private TextField timKiemTF;
 
     ObservableList<ToKhaiYTeHangNgay> toKhaiList;
 
@@ -74,9 +80,56 @@ public class Case42Controller implements Initializable {
             return new ReadOnlyStringWrapper(showedString);
         });
 
-        table.setItems(toKhaiList);
+        /**
+         * Tìm kiếm
+         */
+        FilteredList<ToKhaiYTeHangNgay> filteredList = new FilteredList<>(toKhaiList, predicate -> true);
+
+        timKiemTF.textProperty().addListener((observableValue, oldString, newString) -> {
+            filteredList.setPredicate(toKhai -> {
+                if (newString == null || newString.isEmpty()) {
+                    return true;
+                }
+
+                if (toKhai.getNgayNop().toLowerCase().contains(newString.toLowerCase())) {
+                    return true;
+                } else if (toKhai.getHoVaTen().toLowerCase().contains(newString.toLowerCase())) {
+                    return true;
+                } else if (toKhai.getIdNhanKhau().toLowerCase().contains(newString.toLowerCase())) {
+                    return true;
+                }
+
+                if (toKhai.getDaXem()) {
+                    if ("Đã xem".toLowerCase().contains(newString.toLowerCase())) {
+                        return true;
+                    }
+                } else {
+                    if ("Chưa xem".toLowerCase().contains(newString.toLowerCase())) {
+                        return true;
+                    }
+                }
+
+                return false;
+            });
+        });
+
+        SortedList<ToKhaiYTeHangNgay> sortedList = new SortedList<>(filteredList);
+
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+
+        table.setItems(sortedList);
+
         ngayNopColumn.setSortType(TableColumn.SortType.DESCENDING);
         table.getSortOrder().addAll(ngayNopColumn, trangThaiColumn);
+    }
+
+    /**
+     * Xóa trong thanh tìm kiếm
+     *
+     * @param actionEvent
+     */
+    public void xTimKiemButtonHandler(ActionEvent actionEvent) {
+        timKiemTF.setText(null);
     }
 
     public void chiTietButtonHandler(ActionEvent clickChiTietButton) {

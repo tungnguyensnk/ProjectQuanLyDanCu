@@ -6,6 +6,8 @@ import com.project1.Main.Menu;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,8 @@ public class Case43Controller implements Initializable {
     public void setMenu(Menu mainMenu) {
         this.menu = mainMenu;
     }
+
+    @FXML private TextField timKiemTF;
 
     @FXML private TableView<SucKhoeNguoiDan> table;
 
@@ -137,11 +141,91 @@ public class Case43Controller implements Initializable {
             return new ReadOnlyStringWrapper(showedString);
         });
 
-        table.setItems(tableContentList);
+        /**
+         * Chức năng tìm kiếm
+         */
+        FilteredList<SucKhoeNguoiDan> filteredList = new FilteredList<>(tableContentList, predicate -> true);
 
-        tinhTrangColumn.setSortType(TableColumn.SortType.ASCENDING);
+        timKiemTF.textProperty().addListener((observableValue, oldString, newString) -> {
+            /**
+             * Với mỗi bản ghi, xét xem có được hiện hay không
+             */
+            filteredList.setPredicate(sucKhoeRecord -> {
+                /**
+                 * Không nhập gì
+                 */
+                if (newString == null || newString.isEmpty()) {
+                    return true;
+                }
 
-        table.getSortOrder().addAll(idHoKhauColumn, tinhTrangColumn);
+                /**
+                 * Có nhập
+                 */
+                if (Integer.toString(sucKhoeRecord.getIdHoKhau()).toLowerCase().contains(newString.toLowerCase())) {
+                    return true; // Trùng ID hộ khẩu
+                } else if (Integer.toString(sucKhoeRecord.getIdNhanKhau()).toLowerCase().contains(newString.toLowerCase())) {
+                    return true; // Trùng ID nhân khẩu
+                } else if (sucKhoeRecord.getHoVaTen().toLowerCase().contains(newString.toLowerCase())) {
+                    return true; // Trùng họ và tên
+                }
+
+                // Kiểm tra trùng cho cột Tình trạng
+                if (sucKhoeRecord.getTinhTrang() == 0) {
+                    if ("F0".toLowerCase().contains(newString.toLowerCase())){
+                        return true;
+                    }
+                }
+
+                if (sucKhoeRecord.getTinhTrang() == 1) {
+                    if ("F1".toLowerCase().contains(newString.toLowerCase())){
+                        return true;
+                    }
+                }
+
+                if (sucKhoeRecord.getTinhTrang() == 2) {
+                    if ("F2".toLowerCase().contains(newString.toLowerCase())){
+                        return true;
+                    }
+                }
+
+                if (sucKhoeRecord.getTinhTrang() == 3) {
+                    if ("F3".toLowerCase().contains(newString.toLowerCase())){
+                        return true;
+                    }
+                }
+
+                if (sucKhoeRecord.getTinhTrang() == 4) {
+                    if ("Bình thường".toLowerCase().contains(newString.toLowerCase())){
+                        return true;
+                    }
+                }
+
+                /**
+                 * Không cột vào trùng
+                 */
+                return false;
+            });
+        });
+
+        /**
+         * Sau khi lọc qua thanh tìm kiếm, cho danh sách vào bảng
+         */
+        SortedList<SucKhoeNguoiDan> sortedList = new SortedList<>(filteredList);
+
+        sortedList.comparatorProperty().bind(table.comparatorProperty());
+
+        table.setItems(sortedList);
+
+        table.getSortOrder().add(idHoKhauColumn);
+    }
+
+    /**
+     * Nút xóa thông tin trong thanh tìm kiếm
+     *
+     * @param actionEvent
+     */
+    public void xTimKiemButtonHandler(ActionEvent actionEvent) {
+        timKiemTF.setText(null);
     }
 
     /**
@@ -306,15 +390,6 @@ public class Case43Controller implements Initializable {
 
         menu.contentRoot.getChildren().clear();
         menu.contentRoot.getChildren().add(parent);
-    }
-
-    /**
-     * Tìm kiếm trong bảng
-     *
-     * @param clickTimKiemButton
-     */
-    public void timKienButtonHandler(ActionEvent clickTimKiemButton) {
-
     }
 
     /**
