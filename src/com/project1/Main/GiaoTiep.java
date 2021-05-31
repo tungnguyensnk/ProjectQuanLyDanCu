@@ -256,6 +256,47 @@ public class GiaoTiep {
     }
 
     /**
+     * lấy thông tin lịch sinh hoạt, trả kết quả dạng ArrayList
+     *
+     * @return ArrayList LichSH
+     * @throws SQLException
+     */
+    public static int Index = 0;
+    public static ArrayList<LichSH> getLich() throws SQLException {
+        int i = 0;
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from lichsh");    /// Lấy data từ lichsh.sql
+        ArrayList<LichSH> arrayList = new ArrayList<>();
+        while (rs.next()) {
+            i++;
+            arrayList.add(new LichSH(rs.getInt("stt"), rs.getString("NgayThang"),rs.getString("DiaDiem") ,rs.getString("NoiDung"), rs.getString("ThongBao")));
+        }
+        System.out.print(i);
+        Index = i;
+        return arrayList;
+    }
+
+
+    public static int Count() throws SQLException {    /// Lấy số thứ tự
+        getLich();
+        return Index;
+
+    }
+
+    /**
+     * Thêm 1 lịch sinh hoạt
+     * @param New
+     * @throws SQLException
+     */
+    public static void addLichSH(LichSH New) throws SQLException{    ///
+        Statement stmt = con.createStatement();
+        String sql1 = "INSERT INTO lichsh(stt, NgayThang, DiaDiem, NoiDung, ThongBao";
+        String sql2 = ") VALUES('" + New.getStt() + "', '" + New.getNgayThang() + "', '" + New.getDiaDiem() + "', '" +
+                New.getNoiDung() + "', '" + New.getThongBao() + "'";
+        stmt.execute(sql1 + sql2 + ");");
+    }
+
+    /**
      * lấy vị trí và id vị trí
      * @param data
      * @return

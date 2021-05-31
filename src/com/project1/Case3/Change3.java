@@ -1,7 +1,5 @@
 package com.project1.Case3;
 
-import com.project1.Main.GiaoTiep;
-import com.project1.Main.LichSH;
 import com.project1.Main.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +10,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 

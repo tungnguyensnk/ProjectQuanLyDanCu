@@ -1,6 +1,7 @@
 package com.project1.Main;
 
 import com.project1.Case1.Change1;
+import com.project1.Case3.Change3;
 import com.project1.Case4.Case4MenuController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,7 +81,13 @@ public class Menu implements Initializable {
     public void change2() {
     }
 
-    public void change3() {
+    public void change3() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Case3/Change3.fxml"));
+        Parent pr = loader.load();
+        Change3 controller = loader.getController();
+        controller.setMenu(this);
+        contentRoot.getChildren().clear();
+        contentRoot.getChildren().add(pr);
     }
 
     /**
