@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -93,7 +94,7 @@ public class Change31a implements  Initializable{
         lichsh_table.setItems(lichSH_list);
 
         //set style cho bảng
-        //lichsh_table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
+        lichsh_table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
 
 //        //lắng nghe dữ liệu từ filterField và check dữ liệu hợp lệ
 //        FilteredList<LichSH> filteredList = new FilteredList<>(lichSH_list, b -> true);

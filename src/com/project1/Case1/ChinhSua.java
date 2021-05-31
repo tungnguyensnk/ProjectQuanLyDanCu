@@ -31,7 +31,13 @@ public class ChinhSua implements Initializable {
     public TextField hoTenChuField;
     public TextField diaChiField;
     public TextArea ghiChiField;
-    int idho=0;
+    Change11a change11a;
+
+    public void setChange11a(Change11a change11a) {
+        this.change11a = change11a;
+    }
+
+    int idho = 0;
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -44,8 +50,9 @@ public class ChinhSua implements Initializable {
         this.idho = idho;
     }
 
-    public void tat(ActionEvent actionEvent) {
+    public void tat() {
         root.getScene().getWindow().hide();
+        change11a.setItems();
     }
 
     @Override
@@ -65,12 +72,12 @@ public class ChinhSua implements Initializable {
         delay.setOnFinished(event -> {
             try {
                 HoKhau hoKhau = GiaoTiep.getHoKhau(getIdho());
-                soHoKhauLabel.setText(hoKhau.getIdho()+"");
+                soHoKhauLabel.setText(hoKhau.getIdho() + "");
                 hoTenChuLabel.setText(hoKhau.getHotenchu());
                 diaChiLabel.setText(hoKhau.getDiachi());
                 ghiChuLabel.setText(hoKhau.getGhichu());
 
-                soHoKhauField.setText(hoKhau.getIdho()+"");
+                soHoKhauField.setText(hoKhau.getIdho() + "");
                 hoTenChuField.setText(hoKhau.getHotenchu());
                 diaChiField.setText(hoKhau.getDiachi());
                 ghiChiField.setText(hoKhau.getGhichu());
@@ -78,10 +85,10 @@ public class ChinhSua implements Initializable {
                 //tooltip hiển thị chi tiết mục quá dài
                 Tooltip tooltip1 = new Tooltip(diaChiLabel.getText());
                 tooltip1.setShowDelay(Duration.millis(300));
-                Tooltip.install(diaChiLabel,tooltip1);
+                Tooltip.install(diaChiLabel, tooltip1);
                 Tooltip tooltip2 = new Tooltip(ghiChuLabel.getText());
                 tooltip2.setShowDelay(Duration.millis(300));
-                Tooltip.install(ghiChuLabel,tooltip2);
+                Tooltip.install(ghiChuLabel, tooltip2);
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -96,10 +103,10 @@ public class ChinhSua implements Initializable {
         ghiChiField.setVisible(false);
 
         //tạo phím tắt
-        root.addEventFilter(KeyEvent.KEY_PRESSED,keyEvent -> {
+        root.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
 
             //Ctrl+E để edit
-            if(KeyCombination.keyCombination("Ctrl+E").match(keyEvent)){
+            if (KeyCombination.keyCombination("Ctrl+E").match(keyEvent)) {
                 soHoKhauLabel.setVisible(false);
                 hoTenChuLabel.setVisible(false);
                 diaChiLabel.setVisible(false);
@@ -112,13 +119,13 @@ public class ChinhSua implements Initializable {
             }
 
             //Ctrl+S để lưu và update dữ liệu lên DB
-            if(KeyCombination.keyCombination("Ctrl+S").match(keyEvent)){
+            if (KeyCombination.keyCombination("Ctrl+S").match(keyEvent)) {
                 soHoKhauLabel.setText(soHoKhauField.getText());
                 hoTenChuLabel.setText(hoTenChuField.getText());
                 diaChiLabel.setText(diaChiField.getText());
                 ghiChuLabel.setText(ghiChiField.getText());
                 try {
-                    GiaoTiep.setHoKhau(new HoKhau(Integer.parseInt(soHoKhauLabel.getText()),"",diaChiLabel.getText(),ghiChuLabel.getText(),
+                    GiaoTiep.setHoKhau(new HoKhau(Integer.parseInt(soHoKhauLabel.getText()), "", diaChiLabel.getText(), ghiChuLabel.getText(),
                             GiaoTiep.getDanhSachViTri(diaChiLabel.getText()).get(1)));
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();

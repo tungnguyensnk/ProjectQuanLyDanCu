@@ -17,9 +17,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -49,17 +51,23 @@ public class Change12a implements Initializable {
     public TableColumn<NhanKhau, String> diaChiCol;
     public ObservableList<NhanKhau> nhanKhauList;
     public TextField filterField;
+    int dem = 0;
+
+    public int getDem() {
+        return dem;
+    }
+
+    public void setDem(int dem) {
+        this.dem = dem;
+    }
+
     Menu menu;
 
     public void setMenu(Menu controller) {
         this.menu = controller;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        /**
-         * lấy dữ liệu nhân khẩu và tạo bảng
-         */
+    void setItems() {
         try {
             nhanKhauList = FXCollections.observableArrayList(GiaoTiep.getNhanKhau());
         } catch (SQLException throwables) {
@@ -96,12 +104,21 @@ public class Change12a implements Initializable {
         SortedList<NhanKhau> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
+         * lấy dữ liệu nhân khẩu và tạo bảng
+         */
+        setItems();
 
         //menu chuột phải
         ContextMenu cm = new ContextMenu();
         MenuItem chiTiet = new MenuItem("Chi tiết");
         MenuItem ghiChu = new MenuItem("Ghi chú");
-        cm.getItems().addAll(chiTiet, ghiChu);
+        MenuItem xoa = new MenuItem("Xóa");
+        cm.getItems().addAll(chiTiet, ghiChu, xoa);
 
         table.addEventHandler(MouseEvent.MOUSE_CLICKED, t -> {
             if (t.getButton() == MouseButton.SECONDARY) {
@@ -111,8 +128,87 @@ public class Change12a implements Initializable {
                 cm.hide();
             }
         });
+        //chức năng chi tiết chuột phải
         chiTiet.setOnAction(actionEvent -> {
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("chinhSuaNhanKhau.fxml"));
+            Parent pr = null;
+            try {
+                pr = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ChinhSuaNhanKhau controller = loader.getController();
+            controller.setId(table.getSelectionModel().getSelectedItems().get(0).getId());
+            controller.setChange12a(this);
+            Scene sc = new Scene(pr, 800, 450);
+            sc.setFill(Color.TRANSPARENT);
+            Stage mini = new Stage();
+            mini.initStyle(StageStyle.TRANSPARENT);
+            mini.setScene(sc);
+            mini.initModality(Modality.APPLICATION_MODAL);
+            mini.setX(cm.getX());
+            mini.setY(cm.getY());
+            mini.show();
+        });
+        //chức năng ghi chú chuột phải
+        ghiChu.setOnAction(actionEvent -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ghiChuNhanKhau.fxml"));
+            Parent pr = null;
+            try {
+                pr = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            GhiChuNhanKhau controller = loader.getController();
+            controller.setId(table.getSelectionModel().getSelectedItems().get(0).getId());
+            Scene sc = new Scene(pr, 300, 400);
+            sc.setFill(Color.TRANSPARENT);
+            Stage mini = new Stage();
+            mini.initStyle(StageStyle.TRANSPARENT);
+            mini.setScene(sc);
+            mini.initModality(Modality.APPLICATION_MODAL);
+            mini.setX(cm.getX());
+            mini.setY(cm.getY());
+            mini.show();
+        });
+        //chức năng xóa chuột phải
+        xoa.setOnAction(actionEvent -> {
+            //thông báo thêm thành công
+            Stage alert1 = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
+            Parent pr = null;
+            try {
+                pr = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Alert controller = loader.getController();
+            controller.setTextAlert("Xóa trong 3...");
+            Scene sc1 = new Scene(pr);
+            alert1.setScene(sc1);
+            sc1.setFill(Color.TRANSPARENT);
+            alert1.initStyle(StageStyle.TRANSPARENT);
+            alert1.setX(troVe.getScene().getWindow().getX() + 430);
+            alert1.setY(troVe.getScene().getWindow().getY() + 400);
+            alert1.setAlwaysOnTop(true);
+            alert1.show();
+            for (int i = 0; i < 3; i++) {
+                PauseTransition delay = new PauseTransition(Duration.seconds(i));
+                int finalI = 3 - i;
+                delay.setOnFinished(event -> controller.setTextAlert("Xóa trong " + finalI + "..."));
+                delay.play();
+            }
+            PauseTransition delay = new PauseTransition(Duration.seconds(3));
+            delay.setOnFinished(event -> {
+                try {
+                    GiaoTiep.xoaNhanKhau(table.getSelectionModel().getSelectedItems().get(0).getId());
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                setItems();
+                alert1.close();
+            });
+            delay.play();
         });
     }
 
@@ -217,22 +313,22 @@ public class Change12a implements Initializable {
             cell.setCellStyle(headerStyle);
 
 
-            xssfSheet.setColumnWidth(0,2000);
-            xssfSheet.setColumnWidth(1,3000);
-            xssfSheet.setColumnWidth(2,7000);
-            xssfSheet.setColumnWidth(3,3000);
-            xssfSheet.setColumnWidth(4,5000);
-            xssfSheet.setColumnWidth(5,15000);
-            xssfSheet.setColumnWidth(6,15000);
-            xssfSheet.setColumnWidth(7,5000);
-            xssfSheet.setColumnWidth(8,7000);
-            xssfSheet.setColumnWidth(9,15000);
-            xssfSheet.setColumnWidth(10,5000);
-            xssfSheet.setColumnWidth(11,5000);
-            xssfSheet.setColumnWidth(12,15000);
-            xssfSheet.setColumnWidth(13,5000);
-            xssfSheet.setColumnWidth(14,14000);
-            xssfSheet.setColumnWidth(15,10000);
+            xssfSheet.setColumnWidth(0, 2000);
+            xssfSheet.setColumnWidth(1, 3000);
+            xssfSheet.setColumnWidth(2, 7000);
+            xssfSheet.setColumnWidth(3, 3000);
+            xssfSheet.setColumnWidth(4, 5000);
+            xssfSheet.setColumnWidth(5, 15000);
+            xssfSheet.setColumnWidth(6, 15000);
+            xssfSheet.setColumnWidth(7, 5000);
+            xssfSheet.setColumnWidth(8, 7000);
+            xssfSheet.setColumnWidth(9, 15000);
+            xssfSheet.setColumnWidth(10, 5000);
+            xssfSheet.setColumnWidth(11, 5000);
+            xssfSheet.setColumnWidth(12, 15000);
+            xssfSheet.setColumnWidth(13, 5000);
+            xssfSheet.setColumnWidth(14, 14000);
+            xssfSheet.setColumnWidth(15, 10000);
 
             for (NhanKhau nhanKhau : list) {
                 rownum++;

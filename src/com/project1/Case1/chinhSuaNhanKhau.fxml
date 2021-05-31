@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" prefHeight="450.0" prefWidth="800.0" style="-fx-background-radius: 10; -fx-border-radius: 10;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.project1.Case1.ChinhSuaNhanKhau">
+    <children>
+        <Label alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="30.0" prefWidth="200.0" text="Số hộ khẩu"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="soHoKhauLabel" alignment="CENTER" layoutX="50.0" layoutY="45.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="50.0" layoutY="82.0" prefHeight="30.0" prefWidth="200.0" text="Giới tính"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="gioiTinhLabel" alignment="CENTER" layoutX="50.0" layoutY="120.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-border-radius: 10; -fx-background-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="50.0" layoutY="160.0" prefHeight="30.0" prefWidth="200.0" text="Nguyên quán"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="nguyenQuanLabel" alignment="CENTER" layoutX="50.0" layoutY="200.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="50.0" layoutY="237.0" prefHeight="30.0" prefWidth="200.0" text="Nơi làm việc"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#tat" prefHeight="31.0" prefWidth="34.0"
+                style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="x"
+                fx:id="xButton"/>
+        <Label alignment="CENTER" layoutX="289.0" layoutY="161.0" prefHeight="30.0" prefWidth="200.0" text="Dân tộc"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="289.0" layoutY="83.0" prefHeight="30.0" prefWidth="200.0" text="Ngày Sinh"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="danTocLabel" alignment="CENTER" layoutX="289.0" layoutY="200.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="ngaySinhLabel" alignment="CENTER" layoutX="289.0" layoutY="120.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-border-radius: 10; -fx-background-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="289.0" layoutY="238.0" prefHeight="30.0" prefWidth="200.0" text="CMND"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="hoTenLabel" alignment="CENTER" layoutX="289.0" layoutY="45.0" prefHeight="30.0" prefWidth="206.0"
+               style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="289.0" layoutY="14.0" prefHeight="30.0" prefWidth="200.0" text="Họ tên"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="548.0" layoutY="14.0" prefHeight="30.0" prefWidth="200.0"
+               text="Quan hệ chủ hộ" textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="548.0" layoutY="237.0" prefHeight="30.0" prefWidth="200.0"
+               text="Ngày cấp CMND" textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="ngheNghiepLabel" alignment="CENTER" layoutX="548.0" layoutY="200.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="548.0" layoutY="160.0" prefHeight="30.0" prefWidth="200.0" text="Nghề nghiệp"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="548.0" layoutY="82.0" prefHeight="30.0" prefWidth="200.0" text="Nơi Sinh"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="noiSinhLabel" alignment="CENTER" layoutX="548.0" layoutY="120.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-border-radius: 10; -fx-background-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="quanheCHLabel" alignment="CENTER" layoutX="548.0" layoutY="44.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="noiLamViecLabel" alignment="CENTER" layoutX="50.0" layoutY="277.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="CMNDLabel" alignment="CENTER" layoutX="289.0" layoutY="277.0" prefHeight="30.0" prefWidth="206.0"
+               style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="ngayCapLabel" alignment="CENTER" layoutX="548.0" layoutY="277.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="noiCapLabel" alignment="CENTER" layoutX="47.0" layoutY="370.0" prefHeight="30.0" prefWidth="206.0"
+               style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="ndkThuongTruLabel" alignment="CENTER" layoutX="287.0" layoutY="370.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="287.0" layoutY="331.0" prefHeight="30.0" prefWidth="200.0"
+               text="Ngày đăng kí thường trú" textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="546.0" layoutY="330.0" prefHeight="30.0" prefWidth="200.0"
+               text="Địa chỉ thường trú trước" textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="48.0" layoutY="330.0" prefHeight="30.0" prefWidth="200.0" text="Nơi cấp CMND"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <Label fx:id="dcThuongTrutrcLabel" alignment="CENTER" layoutX="546.0" layoutY="370.0" prefHeight="30.0"
+               prefWidth="206.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;"
+               textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="soHoKhauField" alignment="CENTER" layoutX="50.0" layoutY="45.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="hoTenField" alignment="CENTER" layoutX="289.0" layoutY="45.0" maxHeight="30.0" minHeight="0.0"
+                   minWidth="206.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10; ">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="quanHeCHField" alignment="CENTER" layoutX="548.0" layoutY="44.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="gioiTinhField" alignment="CENTER" layoutX="50.0" layoutY="120.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="ngaySinhField" alignment="CENTER" layoutX="289.0" layoutY="120.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="noiSinhField" alignment="CENTER_LEFT" layoutX="548.0" layoutY="120.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="nguyenQuanField" alignment="CENTER_LEFT" layoutX="50.0" layoutY="200.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="noiLamViecField" alignment="CENTER_LEFT" layoutX="50.0" layoutY="277.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="noiCapField" alignment="CENTER_LEFT" layoutX="47.0" layoutY="370.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="danTocField" alignment="CENTER" layoutX="289.0" layoutY="200.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="CMNDField" alignment="CENTER" layoutX="289.0" layoutY="277.0" maxHeight="30.0" minHeight="0.0"
+                   minWidth="206.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="ndkThuongTruField" alignment="CENTER" layoutX="287.0" layoutY="370.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="ngheNghiepField" alignment="CENTER" layoutX="548.0" layoutY="200.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="ngayCapField" alignment="CENTER" layoutX="548.0" layoutY="277.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+        <TextField fx:id="dcThuongTrutrcField" alignment="CENTER_LEFT" layoutX="546.0" layoutY="370.0" maxHeight="30.0"
+                   minHeight="0.0" minWidth="206.0" prefWidth="200.0"
+                   style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0"/>
+            </font>
+        </TextField>
+    </children>
+</AnchorPane>

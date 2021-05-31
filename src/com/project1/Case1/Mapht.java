@@ -18,11 +18,11 @@ import java.util.ResourceBundle;
 public class Mapht implements Initializable {
     public WebView webView;
     public AnchorPane root;
-    double x,y;
+    double x, y;
     private double xOffset = 0;
     private double yOffset = 0;
 
-    public void setXY(double x,double y) {
+    public void setXY(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -39,19 +39,19 @@ public class Mapht implements Initializable {
             root.getScene().getWindow().setY(mouseEvent.getScreenY() - yOffset);
         });
         //load test.html cho webView
-        File file = new File(System.getProperty("user.dir")+"//test.html");
+        File file = new File(System.getProperty("user.dir") + "//test.html");
         WebEngine webEngine = webView.getEngine();
         webEngine.setJavaScriptEnabled(true);
         webEngine.load(file.toURI().toString());
 
         //hẹn giờ 1,5s để chạy hàm initMap do test.html chưa load
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
-        delay.setOnFinished(actionEvent -> webEngine.executeScript("initMap("+x+","+y+");"));
+        delay.setOnFinished(actionEvent -> webEngine.executeScript("initMap(" + x + "," + y + ");"));
         delay.play();
 
         //ấn enter để thoát
         root.setOnKeyPressed(keyEvent -> {
-            if(keyEvent.getCode()== KeyCode.ENTER)
+            if (keyEvent.getCode() == KeyCode.ENTER)
                 root.getScene().getWindow().hide();
         });
     }

@@ -121,5 +121,4 @@ public class Menu implements Initializable {
         sc2.initStyle(StageStyle.TRANSPARENT);
         sc2.show();
     }
-
 }

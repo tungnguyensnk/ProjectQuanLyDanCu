@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="300.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case1.GhiChuNhanKhau">
+    <children>
+        <Label alignment="CENTER" layoutX="50.0" layoutY="15.0" prefHeight="30.0" prefWidth="200.0" text="Ghi chú" textAlignment="CENTER">
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font>
+        </Label>
+        <Label fx:id="ghiChuLabel" alignment="TOP_LEFT" layoutX="32.0" layoutY="56.0" prefHeight="320.0" prefWidth="236.0" style="-fx-border-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font>
+        </Label>
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#tat" prefHeight="31.0" prefWidth="34.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="x" fx:id="xButton" />
+        <TextArea fx:id="ghiChuField" layoutX="32.0" layoutY="56.0" prefHeight="320.0" prefWidth="236.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+            <font>
+                <Font name="Comic Sans MS" size="15.0" />
+            </font></TextArea>
+    </children>
+</AnchorPane>

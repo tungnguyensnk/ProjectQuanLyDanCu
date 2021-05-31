@@ -170,6 +170,16 @@ public class GiaoTiep {
         stmt.execute(sql1 + sql2 + ");");
     }
 
+    public static void setNhanKhau(int id,NhanKhau nhanKhau) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("UPDATE nhankhau SET idho = '"+nhanKhau.getIdho()+"', quanhech = '"+nhanKhau.getQuanhech()
+                +"', hoten = '"+nhanKhau.getHoten()+"', gioitinh = '"+nhanKhau.getGioitinh()+"', ngaysinh = '"+nhanKhau.getNgaysinh()
+                +"', noisinh = '"+nhanKhau.getNoisinh()+"', nguyenquan = '"+nhanKhau.getNguyenquan()+"', dantoc = '"+nhanKhau.getDantoc()
+                +"', nghenghiep = '"+nhanKhau.getNghenghiep()+"', noilamviec = '"+nhanKhau.getNoilamviec()+"', cmnd = '"+nhanKhau.getCmnd()
+                +"', ngaycap = '"+nhanKhau.getNgaycap()+"', noicap = '"+nhanKhau.getNoicap()+"', ndkthuongtru = '"+nhanKhau.getNdkthuongtru()
+                +"', dcthuongtrutrc = '"+nhanKhau.getDcthuongtrutrc()+"'  WHERE id = " + id + ";");
+
+    }
     /**
      * lấy dữ liệu ghi chú của 1 nhân khẩu
      *
@@ -357,5 +367,11 @@ public class GiaoTiep {
             e.printStackTrace();
         }
         return new ArrayList<>();
+    }
+
+    public static void xoaNhanKhau(int id) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("DELETE FROM nhankhau "+ " WHERE ID = " + id + ";");
+
     }
 }

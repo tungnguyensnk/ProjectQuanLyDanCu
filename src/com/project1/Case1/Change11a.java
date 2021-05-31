@@ -53,8 +53,7 @@ public class Change11a implements Initializable {
         this.menu = controller;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    void setItems() {
         /**
          * lấy dữ liệu hộ khẩu và tạo bảng
          */
@@ -93,7 +92,11 @@ public class Change11a implements Initializable {
         SortedList<HoKhau> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedList);
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setItems();
         //menu chuột phải
         ContextMenu cm = new ContextMenu();
         MenuItem chiTiet = new MenuItem("Chi tiết");
@@ -136,6 +139,7 @@ public class Change11a implements Initializable {
             }
             ChinhSua controller = loader.getController();
             controller.setIdho(table.getSelectionModel().getSelectedItems().get(0).getIdho());
+            controller.setChange11a(this);
             Scene sc = new Scene(pr, 300, 400);
             sc.setFill(Color.TRANSPARENT);
             Stage mini = new Stage();
@@ -226,10 +230,10 @@ public class Change11a implements Initializable {
             cell.setCellValue("Ghi chú");
             cell.setCellStyle(headerStyle);
 
-            xssfSheet.setColumnWidth(0,3000);
-            xssfSheet.setColumnWidth(1,7000);
-            xssfSheet.setColumnWidth(2,15000);
-            xssfSheet.setColumnWidth(3,10000);
+            xssfSheet.setColumnWidth(0, 3000);
+            xssfSheet.setColumnWidth(1, 7000);
+            xssfSheet.setColumnWidth(2, 15000);
+            xssfSheet.setColumnWidth(3, 10000);
 
             for (HoKhau hoKhau : list) {
                 rownum++;
