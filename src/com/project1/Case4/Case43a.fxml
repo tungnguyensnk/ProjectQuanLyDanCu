@@ -102,11 +102,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <DatePicker fx:id="ngayBatDauCachLyDP" layoutX="576.0" layoutY="268.0" prefHeight="25.0" prefWidth="137.0" />
-      <DatePicker fx:id="ngayBatDauDieuTriDP" layoutX="576.0" layoutY="307.0" prefHeight="25.0" prefWidth="137.0" />
-      <TextField fx:id="nguonLayTF" layoutX="128.0" layoutY="227.0" prefHeight="25.0" prefWidth="583.0" />
-      <TextField fx:id="noiCachLyTF" layoutX="128.0" layoutY="268.0" prefHeight="25.0" prefWidth="280.0" />
-      <TextField fx:id="noiDieuTriTF" layoutX="128.0" layoutY="307.0" prefHeight="25.0" prefWidth="280.0" />
+      <DatePicker fx:id="ngayBatDauCachLyDP" layoutX="566.0" layoutY="268.0" prefHeight="25.0" prefWidth="124.0" />
+      <DatePicker fx:id="ngayBatDauDieuTriDP" layoutX="566.0" layoutY="307.0" prefHeight="25.0" prefWidth="124.0" />
+      <TextField fx:id="nguonLayTF" layoutX="128.0" layoutY="227.0" prefHeight="25.0" prefWidth="561.0" />
+      <TextField fx:id="noiCachLyTF" layoutX="128.0" layoutY="268.0" prefHeight="25.0" prefWidth="256.0" />
+      <TextField fx:id="noiDieuTriTF" layoutX="128.0" layoutY="307.0" prefHeight="25.0" prefWidth="256.0" />
       <Label layoutX="41.0" layoutY="352.0" text="Kết quả các lần xét nghiệm Covid-19: ">
          <font>
             <Font size="14.0" />
@@ -182,15 +182,10 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="719.0" layoutY="270.0" mnemonicParsing="false" onAction="#x1ButtonHandler" text="X">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
-      <Button layoutX="719.0" layoutY="309.0" mnemonicParsing="false" onAction="#x2ButtonHandler" text="X">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
+      <Button layoutX="689.0" layoutY="227.0" mnemonicParsing="false" onAction="#xNguonLayButtonHandler" text="X" />
+      <Button layoutX="382.0" layoutY="268.0" mnemonicParsing="false" onAction="#xNoiCachLyButtonHandler" text="X" />
+      <Button layoutX="689.0" layoutY="268.0" mnemonicParsing="false" onAction="#xNgayCachLyButtonHandler" text="X" />
+      <Button layoutX="382.0" layoutY="307.0" mnemonicParsing="false" onAction="#xNoiDieuTriButtonHandler" text="X" />
+      <Button layoutX="689.0" layoutY="307.0" mnemonicParsing="false" onAction="#xNgayDieuTriButtonHandler" text="X" />
    </children>
 </AnchorPane>
