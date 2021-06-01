@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane fx:id="panel32a" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change32a">
+<AnchorPane fx:id="panel32a" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change32a">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="133.0" layoutY="14.0" prefHeight="73.0" prefWidth="594.0" text="Lên lịch sinh hoạt, họp tổ dân phố" textAlignment="CENTER" textFill="#f80101">
+      <Label alignment="CENTER" layoutX="180.0" layoutY="34.0" prefWidth="400.0" text="Lên lịch sinh hoạt, họp tổ dân phố" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="Comic Sans MS" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="button_return" layoutX="24.0" layoutY="32.0" mnemonicParsing="false" onAction="#setButton_return" prefHeight="37.0" prefWidth="72.0" text="Trở về" />
-      <TextField fx:id="Place" layoutX="255.0" layoutY="244.0" prefHeight="51.0" prefWidth="386.0" promptText="Địa điểm">
+      <Line endX="100.0" layoutX="380.0" layoutY="62.0" startX="-100.0" />
+      <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
+         <font>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </Button><TextField fx:id="Place" layoutX="306.0" layoutY="192.0" prefHeight="43.0" prefWidth="386.0" promptText="Địa điểm" style="-fx-background-radius: 10; -fx-border-radius: 10;">
          <font>
             <Font size="17.0" />
          </font></TextField>
-      <DatePicker fx:id="Date" layoutX="39.0" layoutY="141.0" onAction="#getDate" prefHeight="51.0" prefWidth="216.0" promptText="Thời gian" />
-      <ComboBox fx:id="Content" layoutX="39.0" layoutY="344.0" onAction="#getContent" prefHeight="51.0" prefWidth="304.0" promptText="Nội Dung" />
-      <Button fx:id="next" layoutX="538.0" layoutY="447.0" mnemonicParsing="false" onAction="#button_next" prefHeight="51.0" prefWidth="103.0" text="Tiếp theo">
+      <DatePicker fx:id="Date" layoutX="54.0" layoutY="192.0" onAction="#getDate" prefHeight="43.0" prefWidth="216.0" promptText="Thời gian" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <ComboBox fx:id="Content" layoutX="228.0" layoutY="291.0" prefHeight="43.0" prefWidth="304.0" promptText="Nội Dung" style="-fx-background-radius: 10; -fx-border-radius: 10;" />
+      <Button fx:id="next" layoutX="330.0" layoutY="391.0" mnemonicParsing="false" onAction="#button_next" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Tiếp theo" textAlignment="CENTER">
          <font>
-            <Font size="15.0" />
-         </font></Button>
+            <Font name="Comic Sans MS" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

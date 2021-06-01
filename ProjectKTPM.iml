@@ -14,6 +14,6 @@
     <orderEntry type="library" name="auxiliary" level="project" />
     <orderEntry type="library" name="ooxml-lib" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="project" />
   </component>
 </module>

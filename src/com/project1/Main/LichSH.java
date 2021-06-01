@@ -3,11 +3,11 @@ package com.project1.Main;
 import java.util.Objects;
 
 public class LichSH {
-    private int stt;     /// Số thứ tự
-    private String NgayThang;    /// Thời gian
-    private String DiaDiem;    /// Địa điểm
-    private String NoiDung; //// Loại thông báo
-    private String ThongBao;   //// Nội dung thông báo
+    private int stt;
+    private String NgayThang;
+    private String DiaDiem;
+    private String NoiDung;
+    private String ThongBao;
 
 
     public int getStt() {

@@ -13,15 +13,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-/** ////////////
-Menu Lịch sinh hoạt
-
-*/////////////
+/**
+ * Menu lịch sinh hoạt
+ */
 public class Change3 implements Initializable {
     public Button button_watch;
     public Button button_make;
     public AnchorPane pane3;
-    //ArrayList<LichSH> Now;
     Menu menu;
 
 
@@ -30,8 +28,8 @@ public class Change3 implements Initializable {
     }
 
     /**
-
-    */
+     *
+     */
     public void Change31a() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Change31a.fxml"));
         Parent pr = loader.load();
@@ -50,11 +48,11 @@ public class Change3 implements Initializable {
         menu.contentRoot.getChildren().add(pr);
     }
 
-    public void PressButtonWatch(ActionEvent event) throws IOException {   /// Xem danh sách lịch sinh hoạt
+    public void PressButtonWatch() throws IOException {   /// Xem danh sách lịch sinh hoạt
         Change31a();
     }
 
-    public void PressButtonMake(ActionEvent event)  throws IOException{    /// Lên lịch sinh hoạt mới
+    public void PressButtonMake() throws IOException {    /// Lên lịch sinh hoạt mới
         Change32a();
     }
 
@@ -65,14 +63,14 @@ public class Change3 implements Initializable {
          * set style cho các button
          */
 
-        button_watch.setOnMouseEntered(e -> button_watch.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +
-                "-fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
-        button_watch.setOnMouseExited(e -> button_watch.setStyle("-fx-background-color: #fd8a4f; -fx-border-radius: 20px; " +
-                "-fx-background-radius: 20px;"));
-        button_make.setOnMouseEntered(e -> button_make.setStyle("-fx-background-color: #fa6373; -fx-border-radius: 20px; " +
-                "-fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
-        button_make.setOnMouseExited(e -> button_make.setStyle("-fx-background-color: #fa6373; -fx-border-radius: 20px; " +
-                "-fx-background-radius: 20px;"));
+        button_watch.setOnMouseEntered(e -> button_watch.setStyle("-fx-background-radius: 20;" +
+                " -fx-border-radius: 20; -fx-background-color: #fd8a4f; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
+        button_watch.setOnMouseExited(e -> button_watch.setStyle("-fx-background-radius: 20;" +
+                " -fx-border-radius: 20; -fx-background-color: #fd8a4f;"));
+        button_make.setOnMouseEntered(e -> button_make.setStyle("-fx-background-radius: 20;" +
+                " -fx-border-radius: 20; -fx-background-color: #32bfbe; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
+        button_make.setOnMouseExited(e -> button_make.setStyle("-fx-background-radius: 20;" +
+                " -fx-border-radius: 20; -fx-background-color: #32bfbe;"));
 
 
     }

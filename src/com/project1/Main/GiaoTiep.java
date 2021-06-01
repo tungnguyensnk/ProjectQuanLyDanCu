@@ -281,7 +281,6 @@ public class GiaoTiep {
             i++;
             arrayList.add(new LichSH(rs.getInt("stt"), rs.getString("NgayThang"),rs.getString("DiaDiem") ,rs.getString("NoiDung"), rs.getString("ThongBao")));
         }
-        System.out.print(i);
         Index = i;
         return arrayList;
     }
