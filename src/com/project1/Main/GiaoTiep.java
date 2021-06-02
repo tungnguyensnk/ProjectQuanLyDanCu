@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class GiaoTiep {
     private static String USER_NAME = "";
     private static Connection con;
-    private static String PLACE ="";
+    private static String PLACE ="AIzaSyBPONpma_xftTYQdbRD2VD4nFTbq9I6xGk";
     public static void setUserName(String userName) {
         USER_NAME = userName;
     }
