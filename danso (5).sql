@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 02, 2021 lúc 09:24 AM
+-- Thời gian đã tạo: Th6 02, 2021 lúc 11:14 AM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 8.0.6
 
@@ -42,9 +42,9 @@ CREATE TABLE `hokhau` (
 
 INSERT INTO `hokhau` (`id`, `idho`, `hotenchu`, `diachi`, `ghichu`, `placeid`) VALUES
 (1, 324234, 'Nguyễn Văn Trí', '4 La Khê, Hà Đông, Hà Nội, Việt Nam', 'null', 'ChIJRRba-d9SNDEROxGId9BXvQQ'),
-(2, 645564, 'Đặng Thai Mai', '7 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
-(3, 343423, 'Nguyễn Thành An', '67 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
-(4, 245343, 'Thái Linh Hương', '3 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
+(2, 645564, 'Đặng Thai Mai', '7 La Khê, Hà Đông, Hà Nội, Việt Nam', 'null', 'EjBOZ8O1IDcsIExhIEtow6osIEjDoCDEkMO0bmcsIEjDoCBO4buZaSwgVmlldCBOYW0iLiosChQKEgkHmOA63FI0MRF3qR2Re4ZVUBIUChIJRRba-d9SNDEROxGId9BXvQQ'),
+(3, 343423, 'Nguyễn Thành An', '67 La Khê, Hà Đông, Hà Nội, Việt Nam', 'null', 'ChIJRRba-d9SNDEROxGId9BXvQQ'),
+(4, 245343, 'Thái Linh Hương', '3 La Khê, Hà Đông, Hà Nội, Việt Nam', 'null', 'ChIJRRba-d9SNDEROxGId9BXvQQ'),
 (5, 435453, 'Nguyễn Kiều Anh', '34 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
 (6, 132332, 'Lê Văn Mạnh', '23 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
 (7, 234349, 'Đỗ Quốc Bảo', '45 La Khê, Hà Đông, Hà Nội, Việt Nam', NULL, ''),
@@ -124,16 +124,17 @@ CREATE TABLE `noidungphananh` (
   `diachi` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngay` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phanloai` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `noidung` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL
+  `noidung` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `daxem` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `noidungphananh`
 --
 
-INSERT INTO `noidungphananh` (`id`, `hoten`, `sdt`, `diachi`, `ngay`, `phanloai`, `noidung`) VALUES
-(1, 'Nguyễn Thị Ánh', '0349556546', 'Hà nội', '01/06/2021', 'Tố cáo', 'tố cáo hoài linh ăn chặn tiền '),
-(2, 'Lê Hoàng', '0345446565', 'Hà Nội', '02/06/2021', 'Khiếu nại', 'Hoài Linh vẫn chưa giải ngân tiền');
+INSERT INTO `noidungphananh` (`id`, `hoten`, `sdt`, `diachi`, `ngay`, `phanloai`, `noidung`, `daxem`) VALUES
+(1, 'Nguyễn Thị Ánh', '0349556546', 'Hà nội', '01/06/2021', 'Tố cáo', 'tố cáo hoài linh ăn chặn tiền ', 'Đã xem'),
+(2, 'Lê Hoàng', '0345446565', 'Hà Nội', '02/06/2021', 'Khiếu nại', 'Hoài Linh vẫn chưa giải ngân tiền', 'Chưa xem');
 
 -- --------------------------------------------------------
 
