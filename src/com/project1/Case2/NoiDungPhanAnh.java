@@ -16,6 +16,24 @@ public class NoiDungPhanAnh {
     String ngay;
     String phanLoai;
     String noiDung;
+    String diaChi;
+    String daXem;
+
+    public String getDaXem() {
+        return daXem;
+    }
+
+    public void setDaXem(String daXem) {
+        this.daXem = daXem;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
 
     public String getHoTen() {
         return hoTen;
@@ -57,20 +75,24 @@ public class NoiDungPhanAnh {
         this.noiDung = noiDung;
     }
 
-    public NoiDungPhanAnh(String hoTen, String soDienThoai, String ngay, String phanLoai, String noiDung) {
-        this.hoTen = hoTen;
-        this.soDienThoai = soDienThoai;
-        this.ngay = ngay;
-        this.phanLoai = phanLoai;
-        this.noiDung = noiDung;
-    }
-
-    public NoiDungPhanAnh(int id, String hoTen, String soDienThoai, String ngay, String phanLoai, String noiDung) {
+    public NoiDungPhanAnh(int id, String hoTen, String soDienThoai, String diaChi, String ngay, String phanLoai, String noiDung, String daXem) {
         this.id = id;
         this.hoTen = hoTen;
         this.soDienThoai = soDienThoai;
         this.ngay = ngay;
         this.phanLoai = phanLoai;
         this.noiDung = noiDung;
+        this.diaChi = diaChi;
+        this.daXem = daXem;
+    }
+
+    public NoiDungPhanAnh(String hoTen, String soDienThoai, String ngay, String phanLoai, String noiDung, String diaChi,String daXem) {
+        this.hoTen = hoTen;
+        this.soDienThoai = soDienThoai;
+        this.ngay = ngay;
+        this.phanLoai = phanLoai;
+        this.noiDung = noiDung;
+        this.diaChi = diaChi;
+        this.daXem=daXem;
     }
 }

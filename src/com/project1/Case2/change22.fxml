@@ -12,10 +12,11 @@
 <AnchorPane prefHeight="540.0" prefWidth="760.0" style="-fx-background-radius: 0 0 20 0; -fx-border-radius: 0 0 20 0;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case2.Change22">
     <TableView fx:id="table" layoutX="21.0" layoutY="73.0" prefHeight="460.0" prefWidth="717.0">
         <columns>
-            <TableColumn fx:id="hoTenCol" editable="false" prefWidth="201.60003662109375" resizable="false" text="Họ tên" />
-            <TableColumn fx:id="ngayCol" editable="false" minWidth="0.0" prefWidth="115.20001220703125" resizable="false" text="Ngày ghi nhận" />
-            <TableColumn fx:id="phanLoaiCol" editable="false" minWidth="0.0" prefWidth="120.79998779296875" resizable="false" text="Phân loại" />
-            <TableColumn fx:id="noiDungCol" editable="false" prefWidth="279.199951171875" resizable="false" text="Nội dung" />
+            <TableColumn fx:id="hoTenCol" editable="false" prefWidth="180" resizable="false" text="Họ tên" />
+            <TableColumn fx:id="ngayCol" editable="false" minWidth="0.0" prefWidth="100" resizable="false" text="Ngày ghi nhận" />
+            <TableColumn fx:id="phanLoaiCol" editable="false" minWidth="0.0" prefWidth="100" resizable="false" text="Phân loại" />
+            <TableColumn fx:id="noiDungCol" editable="false" prefWidth="230" resizable="false" text="Nội dung" />
+            <TableColumn fx:id="daXemCol" editable="false" prefWidth="106" resizable="false" text="Tình trạng" />
         </columns>
     </TableView>
     <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">

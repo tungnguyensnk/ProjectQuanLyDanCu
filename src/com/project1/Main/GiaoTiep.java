@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class GiaoTiep {
     private static String USER_NAME = "";
     private static Connection con;
+    private static String PLACE ="";
     public static void setUserName(String userName) {
         USER_NAME = userName;
     }
@@ -316,8 +317,7 @@ public class GiaoTiep {
         try {
             ArrayList<String> arrayList = new ArrayList<>();
             URL url = new URL("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+data.replaceAll(" ","%20")
-                    +"&key=AIzaSyCmbwQ1Q8IjG" +
-                    "DUEnTZu-LctYi5zWL88Tjs");
+                    +"&key="+PLACE);
             InputStream inputStream = url.openStream();
             JsonReader jsonReader = Json.createReader(inputStream);
             JsonObject jsonObject = jsonReader.readObject();
@@ -354,8 +354,7 @@ public class GiaoTiep {
             ArrayList<Double> arrayList = new ArrayList<>();
             URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?place_id=" +
                     placeid +
-                    "&key=AIzaSyCmbwQ1Q8IjG" +
-                    "DUEnTZu-LctYi5zWL88Tjs");
+                    "&key="+PLACE);
             InputStream inputStream = url.openStream();
             JsonReader jsonReader = Json.createReader(inputStream);
             JsonObject jsonObject = jsonReader.readObject();
@@ -376,9 +375,9 @@ public class GiaoTiep {
     }
     public static void setPhanAnh(NoiDungPhanAnh noiDung) throws SQLException {
         Statement stmt = con.createStatement();
-        String sql1 = "INSERT INTO noidungphananh(hoten, sdt, ngay, phanloai, noidung";
+        String sql1 = "INSERT INTO noidungphananh(hoten, sdt, ngay, phanloai, noidung, diachi, daxem";
         String sql2 = ") VALUES('" +  noiDung.getHoTen() + "', '" + noiDung.getSoDienThoai() + "', '" +
-                noiDung.getNgay() + "', '" + noiDung.getPhanLoai() +"', '"+noiDung.getNoiDung()+"'" ;
+                noiDung.getNgay() + "', '" + noiDung.getPhanLoai() +"', '"+noiDung.getNoiDung()+"', '"+noiDung.getDiaChi()+"', '"+noiDung.getDaXem()+"'" ;
         stmt.execute(sql1 + sql2 + ");");
     }
     public static ArrayList<NoiDungPhanAnh> getPhanAnh() throws SQLException {
@@ -387,8 +386,13 @@ public class GiaoTiep {
         ArrayList<NoiDungPhanAnh> arrayList = new ArrayList<>();
         while (rs.next()) {
             arrayList.add(new NoiDungPhanAnh(rs.getInt(1),rs.getString(2),rs.getString(3)
-                    ,rs.getString(4),rs.getString(5),rs.getString(6)));
+                    ,rs.getString(4),rs.getString(5),rs.getString(6), rs.getString(7), rs.getString(8)));
         }
         return arrayList;
+    }
+    public static void setTinhTrang(int id,String tinhTrang) throws SQLException {
+        Statement stmt = con.createStatement();
+        stmt.execute("UPDATE noidungphananh SET daxem = '"+tinhTrang + "' WHERE id = " + id + ";");
+
     }
 }

@@ -4,16 +4,17 @@ import com.project1.Main.GiaoTiep;
 import com.project1.Main.HoKhau;
 import com.project1.Main.Menu;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,61 +24,124 @@ import java.util.ResourceBundle;
 
 public class Change22 implements Initializable {
     public Button troVe;
-    public TableView table;
-    public TableColumn hoTenCol;
-    public TableColumn ngayCol;
-    public TableColumn phanLoaiCol;
-    public TableColumn noiDungCol;
+    public TableView<NoiDungPhanAnh> table;
+    public TableColumn<NoiDungPhanAnh, String> hoTenCol;
+    public TableColumn<NoiDungPhanAnh, String> ngayCol;
+    public TableColumn<NoiDungPhanAnh, String> phanLoaiCol;
+    public TableColumn<NoiDungPhanAnh, String> noiDungCol;
     public TextField filterField;
+    public ObservableList<NoiDungPhanAnh> list;
+    public TableColumn daXemCol;
     Menu menu;
 
     public void setMenu(Menu mainMenu) {
         this.menu = mainMenu;
     }
 
-    void setItems() {
+    void setItems() throws SQLException {
         /**
          * lấy dữ liệu hộ khẩu và tạo bảng
          */
-        //hoKhauList = FXCollections.observableArrayList(GiaoTiep.getHoKhau());
+        list = FXCollections.observableArrayList(GiaoTiep.getPhanAnh());
 
         //khai báo kiểu của column và set giá trị điền vào từ hoKhauList
-        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoten"));
+        hoTenCol.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         hoTenCol.setStyle("-fx-alignment: CENTER;");
         ngayCol.setCellValueFactory(new PropertyValueFactory<>("ngay"));
         ngayCol.setStyle("-fx-alignment: CENTER;");
-        phanLoaiCol.setCellValueFactory(new PropertyValueFactory<>("phanloai"));
+        phanLoaiCol.setCellValueFactory(new PropertyValueFactory<>("phanLoai"));
         phanLoaiCol.setStyle("-fx-alignment: CENTER;");
-        noiDungCol.setCellValueFactory(new PropertyValueFactory<>("noidung"));
+        noiDungCol.setCellValueFactory(new PropertyValueFactory<>("noiDung"));
         noiDungCol.setStyle("-fx-alignment: CENTER;");
-        //table.setItems(hoKhauList);
+        daXemCol.setCellValueFactory(new PropertyValueFactory<>("daXem"));
+        daXemCol.setStyle("-fx-alignment: CENTER;");
+        table.setItems(list);
 
         //set style cho bảng
         table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
         //lắng nghe dữ liệu từ filterField và check dữ liệu hợp lệ
-        /*FilteredList<HoKhau> filteredList = new FilteredList<>(hoKhauList, b -> true);
+        FilteredList<NoiDungPhanAnh> filteredList = new FilteredList<>(list, b -> true);
         filterField.textProperty().addListener((observableValue, oldValue, newValue) -> filteredList.setPredicate(e -> {
             if (newValue == null || newValue.isEmpty()) {
                 return true;
             }
             String lowerCaseFilter = newValue.toLowerCase();
-            if (String.valueOf(e.getIdho()).toLowerCase().contains(lowerCaseFilter)) {
+            if (e.getHoTen().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
-            } else if (e.getHotenchu().toLowerCase().contains(lowerCaseFilter)) {
+            } else if (e.getNgay().toLowerCase().contains(lowerCaseFilter)) {
                 return true;
-            } else return e.getDiachi().toLowerCase().contains(lowerCaseFilter);
+            } else if (e.getPhanLoai().toLowerCase().contains(lowerCaseFilter)) {
+                return true;
+            } else return e.getNoiDung().toLowerCase().contains(lowerCaseFilter);
         }));
 
         //đồng bộ nó với bảng
-        SortedList<HoKhau> sortedList = new SortedList<>(filteredList);
+        SortedList<NoiDungPhanAnh> sortedList = new SortedList<>(filteredList);
         sortedList.comparatorProperty().bind(table.comparatorProperty());
-        table.setItems(sortedList);*/
+        table.setItems(sortedList);
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setItems();
+        try {
+            setItems();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
+        //menu chuột phải
+        ContextMenu cm = new ContextMenu();
+        MenuItem daXem = new MenuItem("Đã xem");
+        MenuItem daGQ = new MenuItem("Đã giải quyết");
+        cm.getItems().addAll(daXem, daGQ);
+
+        table.addEventHandler(MouseEvent.MOUSE_CLICKED, context -> {
+            if (context.getButton() == MouseButton.SECONDARY) {
+                cm.show(table, context.getScreenX(), context.getScreenY());
+            }
+            if (context.getButton() == MouseButton.PRIMARY) {
+                cm.hide();
+            }
+        });
+
+        daXem.setOnAction(actionEvent -> {
+            try {
+                GiaoTiep.setTinhTrang(table.getSelectionModel().getSelectedItems().get(0).getId(), "Đã xem");
+                setItems();
+                table.refresh();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+
+        daGQ.setOnAction(actionEvent -> {
+            try {
+                GiaoTiep.setTinhTrang(table.getSelectionModel().getSelectedItems().get(0).getId(), "Đã giải quyết");
+                setItems();
+                table.refresh();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+
+        table.setRowFactory(noiDungPhanAnhTableView -> new TableRow<>() {
+            private Tooltip tooltip = new Tooltip();
+
+            @Override
+            protected void updateItem(NoiDungPhanAnh noiDungPhanAnh, boolean b) {
+                super.updateItem(noiDungPhanAnh, b);
+                tooltip.setShowDelay(Duration.millis(300));
+                tooltip.setHideDelay(Duration.millis(300));
+                if (noiDungPhanAnh == null)
+                    setTooltip(null);
+                else {
+                    tooltip.setText("SDT: " + noiDungPhanAnh.getSoDienThoai() + "\nDC: " + noiDungPhanAnh.getDiaChi() +
+                            "\nND: " + noiDungPhanAnh.getNoiDung());
+                    setTooltip(tooltip);
+                }
+            }
+        });
     }
 
     public void troVe() throws IOException {

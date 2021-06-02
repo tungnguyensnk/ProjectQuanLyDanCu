@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.project1.Case2.Change23"
-            prefHeight="540.0" prefWidth="760.0">
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case2.Change23">
+    <PieChart fx:id="thongKe" layoutX="90.0" layoutY="86.0" legendVisible="false" prefHeight="400.0" prefWidth="574.0" title="Thống kê Kiến nghị theo tình trạng" />
     <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
         <font>
             <Font name="Comic Sans MS" size="15.0" />
