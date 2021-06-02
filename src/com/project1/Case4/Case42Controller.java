@@ -2,26 +2,23 @@ package com.project1.Case4;
 
 import com.project1.Main.Menu;
 import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -29,23 +26,32 @@ import java.util.ResourceBundle;
  * Tạo bảng các tờ khai đã nộp để cán bộ y tế theo dõi
  */
 public class Case42Controller implements Initializable {
+    public Button troVe;
     /**
      * truyền Menu chính
      */
     Menu menu;
+
     public void setMenu(Menu mainMenu) {
         this.menu = mainMenu;
     }
 
-    @FXML private TableView table;
+    @FXML
+    private TableView table;
 
-    @FXML private TableColumn<ToKhaiYTeHangNgay, String> ngayNopColumn;
-    @FXML private TableColumn<ToKhaiYTeHangNgay, String> hoVaTenColumn;
-    @FXML private TableColumn<ToKhaiYTeHangNgay, String> idNhanKhauColumn;
-    @FXML private TableColumn<ToKhaiYTeHangNgay, String> soDienThoaiColumn;
-    @FXML private TableColumn<ToKhaiYTeHangNgay, String> trangThaiColumn;
+    @FXML
+    private TableColumn<ToKhaiYTeHangNgay, String> ngayNopColumn;
+    @FXML
+    private TableColumn<ToKhaiYTeHangNgay, String> hoVaTenColumn;
+    @FXML
+    private TableColumn<ToKhaiYTeHangNgay, String> idNhanKhauColumn;
+    @FXML
+    private TableColumn<ToKhaiYTeHangNgay, String> soDienThoaiColumn;
+    @FXML
+    private TableColumn<ToKhaiYTeHangNgay, String> trangThaiColumn;
 
-    @FXML private TextField timKiemTF;
+    @FXML
+    private TextField timKiemTF;
 
     ObservableList<ToKhaiYTeHangNgay> toKhaiList;
 
@@ -63,10 +69,10 @@ public class Case42Controller implements Initializable {
         /**
          * Chỉ định thông tin hiện trong mỗi ô của từng cột
          */
-        ngayNopColumn.setCellValueFactory(new PropertyValueFactory<ToKhaiYTeHangNgay, String>("ngayNop"));
-        hoVaTenColumn.setCellValueFactory(new PropertyValueFactory<ToKhaiYTeHangNgay, String>("hoVaTen"));
-        idNhanKhauColumn.setCellValueFactory(new PropertyValueFactory<ToKhaiYTeHangNgay, String>("idNhanKhau"));
-        soDienThoaiColumn.setCellValueFactory(new PropertyValueFactory<ToKhaiYTeHangNgay, String>("soDienThoai"));
+        ngayNopColumn.setCellValueFactory(new PropertyValueFactory<>("ngayNop"));
+        hoVaTenColumn.setCellValueFactory(new PropertyValueFactory<>("hoVaTen"));
+        idNhanKhauColumn.setCellValueFactory(new PropertyValueFactory<>("idNhanKhau"));
+        soDienThoaiColumn.setCellValueFactory(new PropertyValueFactory<>("soDienThoai"));
         trangThaiColumn.setCellValueFactory(cellData -> {
             boolean daXem = cellData.getValue().getDaXem();
 
@@ -119,20 +125,32 @@ public class Case42Controller implements Initializable {
 
         table.setItems(sortedList);
 
-        ngayNopColumn.setSortType(TableColumn.SortType.DESCENDING);
-        table.getSortOrder().addAll(ngayNopColumn, trangThaiColumn);
+        table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
+        //menu chuột phải
+        ContextMenu cm = new ContextMenu();
+        MenuItem chiTiet = new MenuItem("Chi tiết");
+        MenuItem daXem = new MenuItem("Đã xem");
+        cm.getItems().addAll(chiTiet, daXem);
+
+        table.addEventHandler(MouseEvent.MOUSE_CLICKED, context -> {
+            if (context.getButton() == MouseButton.SECONDARY) {
+                cm.show(table, context.getScreenX(), context.getScreenY());
+            }
+            if (context.getButton() == MouseButton.PRIMARY) {
+                cm.hide();
+            }
+        });
+        chiTiet.setOnAction(actionEvent -> chiTietButtonHandler());
+        daXem.setOnAction(actionEvent -> {
+            try {
+                daXemButtonHandler();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
     }
 
-    /**
-     * Xóa trong thanh tìm kiếm
-     *
-     * @param actionEvent
-     */
-    public void xTimKiemButtonHandler(ActionEvent actionEvent) {
-        timKiemTF.setText(null);
-    }
-
-    public void chiTietButtonHandler(ActionEvent clickChiTietButton) {
+    public void chiTietButtonHandler() {
         /**
          * Lấy tờ khai được chọn
          */
@@ -168,7 +186,7 @@ public class Case42Controller implements Initializable {
         Label soDienThoaiNoiDungLabel = new Label(toKhai.getSoDienThoai());
 
         Label denNoiCoDichNoiDungLabel = new Label();
-        if (toKhai.getDenNoiCoDich())  {
+        if (toKhai.getDenNoiCoDich()) {
             denNoiCoDichNoiDungLabel.setText("Có");
         } else {
             denNoiCoDichNoiDungLabel.setText("Không");
@@ -207,10 +225,9 @@ public class Case42Controller implements Initializable {
     /**
      * Đổi trạng thái của tờ khai đang được chọn thành đã xem
      *
-     * @param clickDaXemButton
      * @throws SQLException
      */
-    public void daXemButtonHandler(ActionEvent clickDaXemButton) throws SQLException {
+    public void daXemButtonHandler() throws SQLException {
         ToKhaiYTeHangNgay toKhai = (ToKhaiYTeHangNgay) table.getSelectionModel().getSelectedItem();
 
         toKhai.setDaXem(true);
@@ -219,7 +236,7 @@ public class Case42Controller implements Initializable {
         table.refresh();
     }
 
-    public void quayLaiButtonHandler(ActionEvent clickQuayLaiButton) throws IOException {
+    public void troVe() throws IOException {
         FXMLLoader case4MenuLoader = new FXMLLoader();
         URL url = Objects.requireNonNull(getClass().getResource("Case4Menu.fxml"));
         case4MenuLoader.setLocation(url);

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<AnchorPane fx:id="panel31" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change31a">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="panel31" prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case3.Change31a">
    <children>
-      <TableView fx:id="lichsh_table" layoutX="13.0" layoutY="87.0" onMouseClicked="#Show" prefHeight="430.0" prefWidth="733.0">
+      <TableView fx:id="lichsh_table" layoutX="29.0" layoutY="85.0" onMouseClicked="#Show" prefHeight="430.0" prefWidth="701.0">
         <columns>
           <TableColumn fx:id="stt" editable="false" prefWidth="44.39999580383301" text="STT" />
           <TableColumn fx:id="NgayThang" editable="false" prefWidth="111.00002670288086" text="Ngày Tháng" />
             <TableColumn fx:id="DiaDiem" editable="false" prefWidth="207.0" text="Địa điểm" />
-            <TableColumn fx:id="NoiDung" editable="false" prefWidth="370.60003662109375" text="Nội Dung" />
+            <TableColumn fx:id="NoiDung" editable="false" prefWidth="335.2000732421875" text="Nội Dung" />
         </columns>
       </TableView>
-       <Label text="Lịch sinh hoạt tổ dân phố" alignment="CENTER" layoutX="180.0" layoutY="34.0" prefWidth="400.0" textAlignment="CENTER">
+       <Label alignment="CENTER" layoutX="180.0" layoutY="34.0" prefWidth="400.0" text="Lịch sinh hoạt tổ dân phố" textAlignment="CENTER">
            <font>
                <Font name="Comic Sans MS" size="18.0" />
            </font>

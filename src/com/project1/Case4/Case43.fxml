@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -17,38 +18,23 @@
             <TableColumn fx:id="hoVaTenColumn" prefWidth="195.0" text="Họ và tên" />
             <TableColumn fx:id="gioiTinhColumn" prefWidth="67.0" text="Giới tính" />
             <TableColumn fx:id="ngaySinhColumn" prefWidth="131.0" text="Ngày sinh" />
-            <TableColumn fx:id="tinhTrangColumn" prefWidth="113.0" text="Tình trạng" />
+            <TableColumn fx:id="tinhTrangColumn" editable="false" prefWidth="96.8001708984375" text="Tình trạng" />
         </columns>
       </TableView>
-      <Button layoutX="27.0" layoutY="30.0" mnemonicParsing="false" onAction="#chiTietButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Chi tiết">
+      <TextField fx:id="timKiemTF" layoutX="246.0" layoutY="32.0" prefHeight="30.0" prefWidth="270.0" promptText="Tìm kiếm" style="-fx-background-radius: 10; -fx-border-radius: 10;">
          <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="130.0" layoutY="30.0" mnemonicParsing="false" onAction="#chinhSuaButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Chỉnh sửa">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="646.0" layoutY="30.0" mnemonicParsing="false" onAction="#quayLaiButtonHandler" prefHeight="30.0" prefWidth="88.0" text="Quay lại">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Label layoutX="239.0" layoutY="33.0" text="Tìm kiếm: ">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="timKiemTF" layoutX="318.0" layoutY="30.0" prefHeight="30.0" prefWidth="270.0">
-         <font>
-            <Font size="14.0" />
+            <Font name="Comic Sans MS" size="13.0" />
          </font>
       </TextField>
-      <Button layoutX="588.0" layoutY="30.0" mnemonicParsing="false" onAction="#xTimKiemButtonHandler" prefHeight="30.0" prefWidth="29.0" text="X">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
+      <ImageView fitHeight="30.0" fitWidth="52.0" layoutX="216.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/btn_search.png" />
+         </image>
+      </ImageView>
+       <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #90eeed;" text="Trở về">
+           <font>
+               <Font name="Comic Sans MS" size="15.0" />
+           </font>
+       </Button>
    </children>
 </AnchorPane>

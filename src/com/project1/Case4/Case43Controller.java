@@ -8,40 +8,49 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Case43Controller implements Initializable {
+    public Button troVe;
     Menu menu;
 
     public void setMenu(Menu mainMenu) {
         this.menu = mainMenu;
     }
 
-    @FXML private TextField timKiemTF;
+    @FXML
+    private TextField timKiemTF;
 
-    @FXML private TableView<SucKhoeNguoiDan> table;
+    @FXML
+    private TableView<SucKhoeNguoiDan> table;
 
-    @FXML private TableColumn<SucKhoeNguoiDan, Integer> idNhanKhauColumn;
-    @FXML private TableColumn<SucKhoeNguoiDan, Integer> idHoKhauColumn;
-    @FXML private TableColumn<SucKhoeNguoiDan, String> hoVaTenColumn;
-    @FXML private TableColumn<SucKhoeNguoiDan, String> gioiTinhColumn;
-    @FXML private TableColumn<SucKhoeNguoiDan, String> ngaySinhColumn;
-    @FXML private TableColumn<SucKhoeNguoiDan, String> tinhTrangColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, Integer> idNhanKhauColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, Integer> idHoKhauColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, String> hoVaTenColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, String> gioiTinhColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, String> ngaySinhColumn;
+    @FXML
+    private TableColumn<SucKhoeNguoiDan, String> tinhTrangColumn;
 
     ObservableList<SucKhoeNguoiDan> tableContentList;
 
@@ -66,10 +75,10 @@ public class Case43Controller implements Initializable {
             throwables.printStackTrace();
         }
 
-        for (NhanKhau curNhanKhau: nhanKhauList) {
+        for (NhanKhau curNhanKhau : nhanKhauList) {
             boolean found = false;
 
-            for (SucKhoeNguoiDan curSucKhoe: sucKhoeList) {
+            for (SucKhoeNguoiDan curSucKhoe : sucKhoeList) {
                 if (curNhanKhau.getId() == curSucKhoe.getIdNhanKhau()) {
                     found = true;
 
@@ -171,31 +180,31 @@ public class Case43Controller implements Initializable {
 
                 // Kiểm tra trùng cho cột Tình trạng
                 if (sucKhoeRecord.getTinhTrang() == 0) {
-                    if ("F0".toLowerCase().contains(newString.toLowerCase())){
+                    if ("F0".toLowerCase().contains(newString.toLowerCase())) {
                         return true;
                     }
                 }
 
                 if (sucKhoeRecord.getTinhTrang() == 1) {
-                    if ("F1".toLowerCase().contains(newString.toLowerCase())){
+                    if ("F1".toLowerCase().contains(newString.toLowerCase())) {
                         return true;
                     }
                 }
 
                 if (sucKhoeRecord.getTinhTrang() == 2) {
-                    if ("F2".toLowerCase().contains(newString.toLowerCase())){
+                    if ("F2".toLowerCase().contains(newString.toLowerCase())) {
                         return true;
                     }
                 }
 
                 if (sucKhoeRecord.getTinhTrang() == 3) {
-                    if ("F3".toLowerCase().contains(newString.toLowerCase())){
+                    if ("F3".toLowerCase().contains(newString.toLowerCase())) {
                         return true;
                     }
                 }
 
                 if (sucKhoeRecord.getTinhTrang() == 4) {
-                    if ("Bình thường".toLowerCase().contains(newString.toLowerCase())){
+                    if ("Bình thường".toLowerCase().contains(newString.toLowerCase())) {
                         return true;
                     }
                 }
@@ -216,28 +225,39 @@ public class Case43Controller implements Initializable {
 
         table.setItems(sortedList);
 
-        table.getSortOrder().add(idHoKhauColumn);
-    }
+        table.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../table.css")).toExternalForm());
+        //menu chuột phải
+        ContextMenu cm = new ContextMenu();
+        MenuItem chiTiet = new MenuItem("Chi tiết");
+        MenuItem chinhSua = new MenuItem("Chỉnh sửa");
+        cm.getItems().addAll(chiTiet, chinhSua);
 
-    /**
-     * Nút xóa thông tin trong thanh tìm kiếm
-     *
-     * @param actionEvent
-     */
-    public void xTimKiemButtonHandler(ActionEvent actionEvent) {
-        timKiemTF.setText(null);
+        table.addEventHandler(MouseEvent.MOUSE_CLICKED, context -> {
+            if (context.getButton() == MouseButton.SECONDARY) {
+                cm.show(table, context.getScreenX(), context.getScreenY());
+            }
+            if (context.getButton() == MouseButton.PRIMARY) {
+                cm.hide();
+            }
+        });
+        chiTiet.setOnAction(actionEvent -> chiTietButtonHandler());
+        chinhSua.setOnAction(actionEvent -> {
+            try {
+                chinhSuaButtonHandler();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     /**
      * Hiển thị chi tiết nội dung bản ghi trong bảng Sức khỏe người dân
-     *
-     * @param clickChiTietButton
      */
-    public void chiTietButtonHandler(ActionEvent clickChiTietButton) {
+    public void chiTietButtonHandler() {
         /**
          * Lấy bản ghi được chọn
          */
-        SucKhoeNguoiDan selected = (SucKhoeNguoiDan) table.getSelectionModel().getSelectedItem();
+        SucKhoeNguoiDan selected = table.getSelectionModel().getSelectedItem();
 
         /**
          * Tạo dialog
@@ -366,14 +386,12 @@ public class Case43Controller implements Initializable {
 
     /**
      * Chỉnh sửa bản ghi sức khỏe người dân
-     *
-     * @param clickChinhSuaButton
      */
-    public void chinhSuaButtonHandler(ActionEvent clickChinhSuaButton) throws IOException {
+    public void chinhSuaButtonHandler() throws IOException {
         /**
          * Lấy bản ghi đang được chọn
          */
-        SucKhoeNguoiDan selected = (SucKhoeNguoiDan) table.getSelectionModel().getSelectedItem();
+        SucKhoeNguoiDan selected = table.getSelectionModel().getSelectedItem();
         Case43aController.setSelectedRecord(selected);
 
         /**
@@ -395,10 +413,9 @@ public class Case43Controller implements Initializable {
     /**
      * Quay lại menu Case 4
      *
-     * @param clickQuayLaiButton
      * @throws IOException
      */
-    public void quayLaiButtonHandler(ActionEvent clickQuayLaiButton) throws IOException {
+    public void troVe() throws IOException {
         FXMLLoader case4MenuLoader = new FXMLLoader();
         URL url = Objects.requireNonNull(getClass().getResource("Case4Menu.fxml"));
         case4MenuLoader.setLocation(url);

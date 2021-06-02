@@ -29,34 +29,54 @@ public class Case43aController implements Initializable {
         this.menu = mainMenu;
     }
 
-    @FXML private Label hoVaTenLabel;
-    @FXML private Label gioiTinhLabel;
-    @FXML private Label ngaySinhLabel;
-    @FXML private Label idHoKhauLabel;
-    @FXML private Label idNhanKhauLabel;
+    @FXML
+    private Label hoVaTenLabel;
+    @FXML
+    private Label gioiTinhLabel;
+    @FXML
+    private Label ngaySinhLabel;
+    @FXML
+    private Label idHoKhauLabel;
+    @FXML
+    private Label idNhanKhauLabel;
 
-    @FXML private ComboBox<TinhTrangComboBoxItem> tinhTrangCBB;
-    @FXML private TextField nguonLayTF;
+    @FXML
+    private ComboBox<TinhTrangComboBoxItem> tinhTrangCBB;
+    @FXML
+    private TextField nguonLayTF;
 
-    @FXML private TextField noiCachLyTF;
-    @FXML private DatePicker ngayBatDauCachLyDP;
+    @FXML
+    private TextField noiCachLyTF;
+    @FXML
+    private DatePicker ngayBatDauCachLyDP;
 
-    @FXML private TextField noiDieuTriTF;
-    @FXML private DatePicker ngayBatDauDieuTriDP;
+    @FXML
+    private TextField noiDieuTriTF;
+    @FXML
+    private DatePicker ngayBatDauDieuTriDP;
 
-    @FXML private RadioButton lan1AmRB;
-    @FXML private RadioButton lan1DuongRB;
-    @FXML private RadioButton lan1ChuaRB;
+    @FXML
+    private RadioButton lan1AmRB;
+    @FXML
+    private RadioButton lan1DuongRB;
+    @FXML
+    private RadioButton lan1ChuaRB;
     private ToggleGroup lan1TG;
 
-    @FXML private RadioButton lan2AmRB;
-    @FXML private RadioButton lan2DuongRB;
-    @FXML private RadioButton lan2ChuaRB;
+    @FXML
+    private RadioButton lan2AmRB;
+    @FXML
+    private RadioButton lan2DuongRB;
+    @FXML
+    private RadioButton lan2ChuaRB;
     private ToggleGroup lan2TG;
 
-    @FXML private RadioButton lan3AmRB;
-    @FXML private RadioButton lan3DuongRB;
-    @FXML private RadioButton lan3ChuaRB;
+    @FXML
+    private RadioButton lan3AmRB;
+    @FXML
+    private RadioButton lan3DuongRB;
+    @FXML
+    private RadioButton lan3ChuaRB;
     private ToggleGroup lan3TG;
 
     private static SucKhoeNguoiDan selectedRecord;
@@ -85,8 +105,8 @@ public class Case43aController implements Initializable {
         tinhTrangCBB.getItems().add(new TinhTrangComboBoxItem("F3", 3));
         tinhTrangCBB.getItems().add(new TinhTrangComboBoxItem("Bình thường", 4));
 
-        for (TinhTrangComboBoxItem curItem: tinhTrangCBB.getItems()) {
-            if (curItem.getValue() == selectedRecord.getTinhTrang()){
+        for (TinhTrangComboBoxItem curItem : tinhTrangCBB.getItems()) {
+            if (curItem.getValue() == selectedRecord.getTinhTrang()) {
                 tinhTrangCBB.setValue(curItem);
                 break;
             }
@@ -99,13 +119,13 @@ public class Case43aController implements Initializable {
             noiCachLyTF.setText(selectedRecord.getNoiCachLy());
 
         if (selectedRecord.getNgayBatDauCachLy() != null && !selectedRecord.getNgayBatDauCachLy().isEmpty())
-        ngayBatDauCachLyDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauCachLy()));
+            ngayBatDauCachLyDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauCachLy()));
 
         if (selectedRecord.getNoiDieuTri() != null)
             noiDieuTriTF.setText(selectedRecord.getNoiDieuTri());
 
         if (selectedRecord.getNgayBatDauDieuTri() != null && !selectedRecord.getNgayBatDauDieuTri().isEmpty())
-        ngayBatDauDieuTriDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauDieuTri()));
+            ngayBatDauDieuTriDP.setValue(LocalDate.parse(selectedRecord.getNgayBatDauDieuTri()));
 
         lan1TG = new ToggleGroup();
         lan1AmRB.setToggleGroup(lan1TG);

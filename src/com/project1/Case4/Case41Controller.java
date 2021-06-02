@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 
@@ -30,26 +29,39 @@ public class Case41Controller implements Initializable {
         this.menu = mainMenu;
     }
 
-    @FXML private TextField hoVaTenTF;
-    @FXML private TextField idNhanKhauTF;
-    @FXML private TextField soDienThoaiTF;
+    @FXML
+    private TextField hoVaTenTF;
+    @FXML
+    private TextField idNhanKhauTF;
+    @FXML
+    private TextField soDienThoaiTF;
 
-    @FXML private RadioButton yesDenNoiCoDichRB;
-    @FXML private RadioButton noDenNoiCoDichRB;
+    @FXML
+    private RadioButton yesDenNoiCoDichRB;
+    @FXML
+    private RadioButton noDenNoiCoDichRB;
 
-    @FXML private RadioButton yesTiepXucRB;
-    @FXML private RadioButton noTiepXucRB;
+    @FXML
+    private RadioButton yesTiepXucRB;
+    @FXML
+    private RadioButton noTiepXucRB;
 
-    @FXML private CheckBox hoCB;
-    @FXML private CheckBox sotCB;
-    @FXML private CheckBox dauHongCB;
-    @FXML private CheckBox khoThoCB;
-    @FXML private CheckBox khacCB;
+    @FXML
+    private CheckBox hoCB;
+    @FXML
+    private CheckBox sotCB;
+    @FXML
+    private CheckBox dauHongCB;
+    @FXML
+    private CheckBox khoThoCB;
+    @FXML
+    private CheckBox khacCB;
 
-    @FXML private TextArea khacTA;
+    @FXML
+    private TextArea khacTA;
 
-    private ToggleGroup denNoiCoDichTG = new ToggleGroup();
-    private ToggleGroup tiepXucTG = new ToggleGroup();
+    private final ToggleGroup denNoiCoDichTG = new ToggleGroup();
+    private final ToggleGroup tiepXucTG = new ToggleGroup();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,17 +79,14 @@ public class Case41Controller implements Initializable {
 
     /**
      * Bắt sự kiện cho nút Gửi
-     *
-     * @param clickGuiButton
      */
-    public void guiButtonHandler(ActionEvent clickGuiButton) throws SQLException, IOException {
+    public void guiButtonHandler() throws SQLException, IOException {
         /**
          * Tổng hợp thông tin trong tờ khai vào đối tượng toKhai của lớp ToKhaiYTeHangNgay
          */
         ToKhaiYTeHangNgay toKhai = new ToKhaiYTeHangNgay();
 
         toKhai.setNgayNop(LocalDate.now().toString());
-
         toKhai.setHoVaTen(hoVaTenTF.getText());
         toKhai.setIdNhanKhau(idNhanKhauTF.getText());
         toKhai.setSoDienThoai(soDienThoaiTF.getText());
@@ -121,16 +130,15 @@ public class Case41Controller implements Initializable {
         /**
          * Quay lại menu case 4
          */
-        quayLaiButtonHandler(new ActionEvent());
+        quayLaiButtonHandler();
     }
 
     /**
      * Quay lại case 4 Menu
      *
-     * @param clickQuayLaiButton
      * @throws IOException
      */
-    public void quayLaiButtonHandler(ActionEvent clickQuayLaiButton) throws IOException {
+    public void quayLaiButtonHandler() throws IOException {
         FXMLLoader case4MenuLoader = new FXMLLoader();
         URL url = Objects.requireNonNull(getClass().getResource("Case4Menu.fxml"));
         case4MenuLoader.setLocation(url);

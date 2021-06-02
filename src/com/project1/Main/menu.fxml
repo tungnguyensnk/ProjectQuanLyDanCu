@@ -22,12 +22,12 @@
             <Font name="Comic Sans MS" size="15.0" />
         </font>
     </Button>
-    <Button fx:id="thuPhi" layoutY="283.0" mnemonicParsing="false" onAction="#change2" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Thu phí, đóng góp">
+    <Button fx:id="thuPhi" layoutY="283.0" mnemonicParsing="false" onAction="#change2" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Phản ánh, khuyến nghị">
         <font>
             <Font name="Comic Sans MS" size="15.0" />
         </font>
     </Button>
-    <Button fx:id="nhaVanHoa" layoutY="327.0" mnemonicParsing="false" onAction="#change3" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Sử dụng nhà văn hóa">
+    <Button fx:id="nhaVanHoa" layoutY="327.0" mnemonicParsing="false" onAction="#change3" prefHeight="44.0" prefWidth="200.0" style="-fx-background-color: #1a6dd7; -fx-text-fill: white;" text="Quản lý lịch sinh hoạt">
         <font>
             <Font name="Comic Sans MS" size="15.0" />
         </font>

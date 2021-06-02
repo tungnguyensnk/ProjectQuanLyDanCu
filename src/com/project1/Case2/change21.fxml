@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="540.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project1.Case2.Change21">
+    <Button fx:id="troVe" layoutX="35.0" layoutY="30.0" mnemonicParsing="false" onAction="#troVe" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Trở về" textAlignment="CENTER">
+        <font>
+            <Font name="Comic Sans MS" size="15.0" />
+        </font>
+    </Button>
+   <ComboBox fx:id="phanLoaiComboBox" layoutX="122.0" layoutY="270.0" prefHeight="31.0" prefWidth="105.0" promptText="Phân loại" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+
+   </ComboBox>
+   <TextField fx:id="hoTenField" layoutX="122.0" layoutY="148.0" prefHeight="31.0" prefWidth="285.0" promptText="Họ tên" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+       <font>
+           <Font name="Comic Sans MS" size="14.0" />
+       </font>
+   </TextField>
+   <Label alignment="CENTER" layoutX="226.0" layoutY="30.0" prefHeight="22.0" prefWidth="347.0" text="Ghi nhận phản ánh, khuyến nghị">
+       <font>
+           <Font name="Comic Sans MS" size="18.0" />
+       </font>
+   </Label>
+   <DatePicker fx:id="ngayGhiNhanPick" layoutX="506.0" layoutY="207.0" prefHeight="31.0" prefWidth="122.0" promptText="Ngày ghi nhận" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+       
+   </DatePicker>
+   <TextArea fx:id="noiDungArea" layoutX="246.0" layoutY="270.0" prefHeight="142.0" prefWidth="375.0" promptText="Nội Dung">
+       <font>
+           <Font name="Comic Sans MS" size="15.0" />
+       </font>
+   </TextArea>
+   <Line endX="100.0" layoutX="399.0" layoutY="55.0" startX="-100.0" />
+   <TextField fx:id="soDienThoaiField" layoutX="456.0" layoutY="148.0" prefHeight="31.0" prefWidth="175.0" promptText="Số điện thoại" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+      <font>
+         <Font name="Comic Sans MS" size="14.0" />
+      </font>
+   </TextField>
+   <TextField layoutX="122.0" layoutY="207.0" prefHeight="31.0" prefWidth="334.0" promptText="Địa chỉ" style="-fx-background-radius: 10; -fx-border-radius: 10;">
+      <font>
+         <Font name="Comic Sans MS" size="14.0" />
+      </font>
+   </TextField>
+   <Button fx:id="ghiNhan" layoutX="334.0" layoutY="436.0" mnemonicParsing="false" onAction="#ghiNhan" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: #90eeed; -fx-background-radius: 10; -fx-border-radius: 10;" text="Ghi nhận" textAlignment="CENTER">
+      <font>
+         <Font name="Comic Sans MS" size="15.0" />
+      </font>
+   </Button>
+</AnchorPane>

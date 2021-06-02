@@ -1,5 +1,7 @@
 package com.project1.Main;
 
+import com.project1.Case2.NoiDungPhanAnh;
+
 import javax.json.*;
 import java.io.InputStream;
 import java.net.URL;
@@ -371,6 +373,22 @@ public class GiaoTiep {
     public static void xoaNhanKhau(int id) throws SQLException {
         Statement stmt = con.createStatement();
         stmt.execute("DELETE FROM nhankhau "+ " WHERE ID = " + id + ";");
-
+    }
+    public static void setPhanAnh(NoiDungPhanAnh noiDung) throws SQLException {
+        Statement stmt = con.createStatement();
+        String sql1 = "INSERT INTO noidungphananh(hoten, sdt, ngay, phanloai, noidung";
+        String sql2 = ") VALUES('" +  noiDung.getHoTen() + "', '" + noiDung.getSoDienThoai() + "', '" +
+                noiDung.getNgay() + "', '" + noiDung.getPhanLoai() +"', '"+noiDung.getNoiDung()+"'" ;
+        stmt.execute(sql1 + sql2 + ");");
+    }
+    public static ArrayList<NoiDungPhanAnh> getPhanAnh() throws SQLException {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from noidungphananh");
+        ArrayList<NoiDungPhanAnh> arrayList = new ArrayList<>();
+        while (rs.next()) {
+            arrayList.add(new NoiDungPhanAnh(rs.getInt(1),rs.getString(2),rs.getString(3)
+                    ,rs.getString(4),rs.getString(5),rs.getString(6)));
+        }
+        return arrayList;
     }
 }
