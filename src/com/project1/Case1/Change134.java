@@ -49,7 +49,6 @@ public class Change134 implements Initializable {
     public Button xacNhanButton;
     public ToggleGroup sex = new ToggleGroup();
     int mode = 0;
-    String ns = "", tn = "", dn = "", gioi = "";
 
     public int getMode() {
         return mode;
@@ -75,25 +74,10 @@ public class Change134 implements Initializable {
     }
 
     public void xacNhan() throws SQLException, IOException {
-        if (namRadioButton.isSelected())
-            gioi = "Nam";
-        else
-            gioi = "Nữ";
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if (ngaySinhPick.getValue() != null)
-            ns = ngaySinhPick.getValue().format(dateTimeFormatter);
-        else
-            ns = "";
-        if (tuNgay.getValue() != null)
-            ns = tuNgay.getValue().format(dateTimeFormatter);
-        else
-            tn = "";
-        if (denNgay.getValue() != null)
-            ns = denNgay.getValue().format(dateTimeFormatter);
-        else
-            dn = "";
-
-        GiaoTiep.setTamTruTamVang(hoTenField.getText(), ns, gioi, noiThuongTruField.getText(), CMNDField.getText(), quocTichField.getText(), hoChieuField.getText(), tn, dn, lyDoField.getText(), mode);
+        //DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        GiaoTiep.setTamTruTamVang(hoTenField.getText(), ngaySinhPick.getEditor().getText(), ((RadioButton)sex.getSelectedToggle()).getText(),
+                noiThuongTruField.getText(), CMNDField.getText(), quocTichField.getText(), hoChieuField.getText(), tuNgay.getEditor().getText(),
+                denNgay.getEditor().getText(), lyDoField.getText(), mode);
 
         //thông báo thêm thành công
         Stage alert1 = new Stage();
@@ -161,13 +145,13 @@ public class Change134 implements Initializable {
             r5.setFontFamily("Times New Roman");
             r5.setText("Họ và tên: "+hoTenField.getText());
             r5.addBreak();
-            r5.setText("Ngày, tháng, năm sinh: " +ns+ "    Giới tính: " +gioi+ "  Quốc tịch: "+quocTichField.getText());
+            r5.setText("Ngày, tháng, năm sinh: " +ngaySinhPick.getEditor().getText()+ "    Giới tính: " +((RadioButton)sex.getSelectedToggle()).getText()+ "  Quốc tịch: "+quocTichField.getText());
             r5.addBreak();
             r5.setText("CMND số: " +CMNDField.getText()+ " Hộ chiếu số: "+hoChieuField.getText());
             r5.addBreak();
             r5.setText("Nơi thường trú, tạm trú: "+noiThuongTruField.getText());
             r5.addBreak();
-            r5.setText("Tạm vắng từ ngày, tháng, năm: " +tn+ " đến ngày "+dn);
+            r5.setText("Tạm vắng từ ngày, tháng, năm: " +tuNgay.getEditor().getText()+ " đến ngày "+denNgay.getEditor().getText());
             r5.addBreak();
             r5.setText("Lý do tạm vắng và nơi đến:");
             r5.addBreak();

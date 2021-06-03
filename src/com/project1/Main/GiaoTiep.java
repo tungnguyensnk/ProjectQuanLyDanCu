@@ -170,6 +170,10 @@ public class GiaoTiep {
             sql1 += ", dcthuongtrutrc";
             sql2 += ", '" + nhanKhau.getDcthuongtrutrc() + "'";
         }
+        if (!nhanKhau.getGhichu().isEmpty()) {
+            sql1 += ", ghichu";
+            sql2 += ", '" + nhanKhau.getGhichu() + "'";
+        }
         stmt.execute(sql1 + sql2 + ");");
     }
 
@@ -347,6 +351,7 @@ public class GiaoTiep {
         if(denNgay.trim().length()!=0)
             ghichu+="đến ngày "+tuNgay+" ";
         ghichu+=lyDo;
+        System.out.println(ghichu);
         themNhanKhau(new NhanKhau(0,hoTen,gioiTinh,ngaySinh,noiThuongTru,cmnd,ghichu));
     }
     public  static ArrayList<Double> getXY(String placeid){
