@@ -23,7 +23,7 @@ public class Change1 implements Initializable {
 
     /**
      * chức năng 1-1: hiển thị hộ khẩu
-     *
+     *ssf
      *
      * @throws IOException
      */
