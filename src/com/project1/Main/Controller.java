@@ -23,6 +23,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -40,8 +41,8 @@ public class Controller implements Initializable {
      *
      * @throws IOException
      */
-    public void loginCheck() throws IOException {
-        Connection con = GiaoTiep.connect(userName.getText(), passWord.getText());
+    public void loginCheck() throws IOException, SQLException {
+        Connection con = GiaoTiep.connect("t", "t");;
 
         /**
          * Lấy kết nối cho lớp ToKhaiYTeHangNgayGiaoTiep
@@ -55,7 +56,7 @@ public class Controller implements Initializable {
         /**
          * nếu kq không rỗng,tạo hiệu ứng thu nhỏ màn hình đăng nhập rồi phóng to màn hình menu
          */
-        if (con != null) {
+        if (GiaoTiep.dangNhap(userName.getText(),passWord.getText())) {
             Scene sc1 = exit.getScene();
             Stage st1 = (Stage) sc1.getWindow();
             Parent root = sc1.getRoot();
@@ -123,8 +124,23 @@ public class Controller implements Initializable {
     /**
      * quên mật khẩu
      */
-    public void forgot() {
-
+    public void forgot() throws IOException {
+        Stage alert1 = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Main/alert.fxml"));
+        Parent pr = loader.load();
+        Alert controller = loader.getController();
+        controller.setTextAlert("Cố nhớ lại xem");
+        Scene sc1 = new Scene(pr);
+        alert1.setScene(sc1);
+        sc1.setFill(Color.TRANSPARENT);
+        alert1.initStyle(StageStyle.TRANSPARENT);
+        alert1.setX(exit.getScene().getWindow().getX() + 230);
+        alert1.setY(exit.getScene().getWindow().getY() + 230);
+        alert1.setAlwaysOnTop(true);
+        alert1.show();
+        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        delay.setOnFinished(event -> alert1.close());
+        delay.play();
     }
 
     /**
@@ -133,7 +149,7 @@ public class Controller implements Initializable {
      * @param keyEvent
      * @throws IOException
      */
-    public void loginEnter(KeyEvent keyEvent) throws IOException {
+    public void loginEnter(KeyEvent keyEvent) throws IOException, SQLException {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             loginCheck();
         }

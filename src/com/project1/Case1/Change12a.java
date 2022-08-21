@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -69,7 +70,18 @@ public class Change12a implements Initializable {
 
     void setItems() {
         try {
-            nhanKhauList = FXCollections.observableArrayList(GiaoTiep.getNhanKhau());
+            if(GiaoTiep.getUserName().equals("totruong"))
+                nhanKhauList = FXCollections.observableArrayList(GiaoTiep.getNhanKhau());
+            else
+            {
+                ArrayList<NhanKhau> list = GiaoTiep.getNhanKhau();
+                ArrayList<NhanKhau> list1= new ArrayList<>();
+                for(NhanKhau nhanKhau :list){
+                    if(nhanKhau.getIdho() == Integer.valueOf(GiaoTiep.getUserName()))
+                        list1.add(nhanKhau);
+                }
+                nhanKhauList = FXCollections.observableArrayList(list1);
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

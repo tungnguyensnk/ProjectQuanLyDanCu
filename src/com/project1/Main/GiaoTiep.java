@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class GiaoTiep {
     private static String USER_NAME = "";
     private static Connection con;
-    private static String PLACE ="AIzaSyBPONpma_xftTYQdbRD2VD4nFTbq9I6xGk";
+    private static String PLACE ="AIzaSyA_6-KCJ27swN7H89t2MGxXahFioWo1Ecg";
     public static void setUserName(String userName) {
         USER_NAME = userName;
     }
@@ -44,7 +44,17 @@ public class GiaoTiep {
         }
         return con;
     }
+    public static boolean dangNhap(String username, String password) throws SQLException {
+        setUserName(username);
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from users");
+        while (rs.next()) {
+            if(username.equals(rs.getString(2)) && password.equals(rs.getString(3)))
+                return true;
+        }
+        return false;
 
+    }
     /**
      * lấy thông tin tất cả hộ khẩu, trả kết quả dạng ArrayList
      *

@@ -58,7 +58,10 @@ public class Change11a implements Initializable {
          * lấy dữ liệu hộ khẩu và tạo bảng
          */
         try {
-            hoKhauList = FXCollections.observableArrayList(GiaoTiep.getHoKhau());
+            if(GiaoTiep.getUserName().equals("totruong"))
+                hoKhauList = FXCollections.observableArrayList(GiaoTiep.getHoKhau());
+            else
+                hoKhauList = FXCollections.observableArrayList(GiaoTiep.getHoKhau(Integer.parseInt(GiaoTiep.getUserName())));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
